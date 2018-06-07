@@ -66,7 +66,8 @@ author = 'Matt Goldman, Brian Quistorff'
 # Ensure: Keep in sync with lib/setup.py
 # The short X.Y version.
 #version = '2.1'
-from pricingengine import __version__
+#from pricingengine import __version__
+__version__ = "2.2.0"
 version = __version__
 # The full version, including alpha/beta/rc tags. (For now, keep the same)
 release = version
