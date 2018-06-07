@@ -1,0 +1,212 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Overview of servers &#8212; Pricing Engine 2.2.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="overview-of-servers">
+<span id="overview-of-servers"></span><h1>Overview of servers<a class="headerlink" href="#overview-of-servers" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>Visual Studio Online (git server): https://econpricingengine.visualstudio.com/PricingEngine/</li>
+<li>Build Server's File Share (where built items can be downloaded by all): <code class="docutils literal"><span class="pre">\\tnr-stata\Public\PricingEngine</span></code></li>
+<li>Sharepoint page: https://microsoft.sharepoint.com/teams/PricingEngine (shorcut https://aka.ms/PricingEngine)</li>
+</ul>
+</div>
+<div class="section" id="build-server">
+<span id="build-server"></span><h1>Build Server<a class="headerlink" href="#build-server" title="Permalink to this headline">¶</a></h1>
+<p>We use <code class="docutils literal"><span class="pre">\\tnr-stata</span></code> as our &quot;build agent&quot; for our project.
+On every PR to master it lints and runs the python tests.
+It only pushes build products to the file share if you run one of the &quot;Install&quot; build processes.</p>
+<div class="section" id="modifying">
+<span id="modifying"></span><h2>Modifying<a class="headerlink" href="#modifying" title="Permalink to this headline">¶</a></h2>
+<p>It is &quot;stateful&quot; in that we have a set python environment that we re-use for every build
+(rather than recreating the environment for scratch every time).
+We do this so that PR to master complete faster. We use the python distribution at
+<code class="docutils literal"><span class="pre">C:\Program</span> <span class="pre">Files\Miniconda3</span></code> installation which just has the default root environment.
+Users may have their own Python distributions installed on tnr-stata
+(e.g. under <code class="docutils literal"><span class="pre">C:\Users\&lt;user&gt;\AppData\Local\Continuum\Anaconda3\</span></code>).
+We keep track of how to rebuild the Miniconda environment using the <code class="docutils literal"><span class="pre">tools/scripts/install_*.bat</span></code> files.
+If you add a package to the MiniConda environment (run the Miniconda terminal as admin)
+make sure to update the <code class="docutils literal"><span class="pre">install_packages.bat</span></code> file.</p>
+</div>
+</div>
+<div class="section" id="docs">
+<span id="docs"></span><h1>Docs<a class="headerlink" href="#docs" title="Permalink to this headline">¶</a></h1>
+<p>We use Sphinx to generate docs. Sphinx's native format is <code class="docutils literal"><span class="pre">.rst</span></code> so that's for format of the index file,
+but markdown is more common for developers so our other files are in that format.</p>
+<div class="section" id="customizing-output">
+<span id="customizing-output"></span><h2>Customizing output<a class="headerlink" href="#customizing-output" title="Permalink to this headline">¶</a></h2>
+<p>We can remove specific elements from the build docs.</p>
+<ul class="simple">
+<li>Remove a file: Append the path to the package's <code class="docutils literal"><span class="pre">%SPHINXAPIDOC%</span></code> line in makedocs.bat</li>
+<li>Remove a function/property/module: Add to the appropriate list in <code class="docutils literal"><span class="pre">docs/conf.py:skip()</span></code></li>
+</ul>
+<p>Docstrings are automatically turned in to docs via Sphinx's autodoc and can use the formatting of rst files.
+Help on rst/docstring format:</p>
+<ul class="simple">
+<li>Special docstring fields: http://www.sphinx-doc.org/en/stable/domains.html#info-field-lists</li>
+<li>Inserting math: http://www.sphinx-doc.org/en/stable/ext/math.html#math-support</li>
+<li>General rst/docstring format: http://www.sphinx-doc.org/en/stable/rest.html</li>
+<li>Inline markup (xref syntax): http://www.sphinx-doc.org/en/master/markup/inline.html#xref-syntax</li>
+</ul>
+</div>
+<div class="section" id="style-guide">
+<span id="style-guide"></span><h2>Style Guide<a class="headerlink" href="#style-guide" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Python Style Guide: https://google.github.io/styleguide/pyguide.html</li>
+</ul>
+</div>
+<div class="section" id="converting-user-guide-to-md">
+<span id="converting-user-guide-to-md"></span><h2>Converting User Guide to Md<a class="headerlink" href="#converting-user-guide-to-md" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">lyx</span> <span class="o">--</span><span class="n">export</span> <span class="n">latex</span> <span class="n">user_guide</span><span class="o">.</span><span class="n">lyx</span>
+<span class="n">pandoc</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">wrap</span> <span class="o">--</span><span class="n">atx</span><span class="o">-</span><span class="n">headers</span> <span class="o">-</span><span class="n">f</span> <span class="n">latex</span> <span class="o">-</span><span class="n">t</span> <span class="n">markdown</span> <span class="n">user_guide</span><span class="o">.</span><span class="n">tex</span> <span class="o">&gt;</span> <span class="n">user_guide</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p>Then:</p>
+<ul class="simple">
+<li>convert H2-&gt;H3, and H1 -&gt; H2</li>
+<li>Remove cruft at top and put in real title with H1 header</li>
+<li>Add extension &quot;.png&quot; to image file. Remove: {width=&quot;1\columnwidth&quot;}</li>
+<li>Replace <code class="docutils literal"><span class="pre">{\widehat}</span></code> with <code class="docutils literal"><span class="pre">\hat</span></code></li>
+<li>All the align environments need to be separated from content by an empty line and have the <span class="math">\(\)</span> replaced with <span class="math">\(\)</span>.</li>
+<li>Put backticks around all the <span class="math">\(...\)</span></li>
+<li>Unsure: Bibliography, labels (eq, fig, sec), align in other environment, pandoc's -markdown_strict</li>
+</ul>
+</div>
+</div>
+<div class="section" id="release">
+<span id="release"></span><h1>Release<a class="headerlink" href="#release" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="standard-checklist">
+<span id="standard-checklist"></span><h2>Standard checklist<a class="headerlink" href="#standard-checklist" title="Permalink to this headline">¶</a></h2>
+<p>What to do when releasing a new version. Check with 'root' and 'AML Workbench' environments.</p>
+<p>Source:</p>
+<ul class="simple">
+<li>Check that tests don't spew output or warnings. Run <code class="docutils literal"><span class="pre">runtests.bat</span></code> in <code class="docutils literal"><span class="pre">lib/tests/</span></code> in the command line to see.</li>
+<li>Make sure the OJ example runs</li>
+<li>If new version, check that it's been updated in <code class="docutils literal"><span class="pre">lib/pricingengine/__init__.py</span></code></li>
+<li>Did we change a package dependency? If so updated <code class="docutils literal"><span class="pre">lib/setup.py</span></code>.</li>
+<li>Updated the Changelog</li>
+<li>run tools/scripts/ensure_copyright.sh in bash and fix errors</li>
+<li>Ensure changes pushed to remote</li>
+<li>After PR completes, update files on the OneDrive <code class="docutils literal"><span class="pre">pricingengine-ext</span></code> folder: https://microsoft-my.sharepoint.com/:f:/p/bquist/Emw07qv66g5BpGYORCGLjkQBZre2lvzNVJUgulCOyJNkRA?e=uC52Z2</li>
+</ul>
+<p>VS Online:</p>
+<ul class="simple">
+<li>Build and Release =&gt; Build All &amp; Install</li>
+<li>Code =&gt; Tags: vX.X.X</li>
+</ul>
+<p>Sharepoint:</p>
+<ul class="simple">
+<li>Eventually: Make a news item linking to the package and mentioning the latest changelog entry. Send an email blast.</li>
+</ul>
+</div>
+<div class="section" id="release-tracker">
+<span id="release-tracker"></span><h2>Release Tracker<a class="headerlink" href="#release-tracker" title="Permalink to this headline">¶</a></h2>
+<p>https://microsoft.sharepoint.com/teams/RIInternal/SitePages/Release.aspx</p>
+<p>Notes:</p>
+<ul class="simple">
+<li>Trademark check. I appears that &quot;Pricing Engine&quot; was used by a company in the tech sector, but it disbanded in 2016</li>
+<li>Policheck: Running on the whole repo results in lots of false positives, so use <code class="docutils literal"><span class="pre">tools/scripts/policheck_collect.bat</span></code> to collect together just what we distribute.
+I wasn't able to export to xls files the results, but could get them from the &quot;Scan Results Folder&quot;</li>
+<li>Py projects liked on https://aka.ms/PythonNotes don't do any signing</li>
+<li>License summary: Redistribution=No, Modification=Yes, Scope of use=Anything</li>
+</ul>
+</div>
+</div>
+<div class="section" id="installation">
+<span id="installation"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="cntk">
+<span id="cntk"></span><h2>CNTK<a class="headerlink" href="#cntk" title="Permalink to this headline">¶</a></h2>
+<p>CNTK Python installation notes: https://docs.microsoft.com/en-us/cognitive-toolkit/setup-windows-python</p>
+<ul class="simple">
+<li>In particular, when using CPU, you'll need to unzip Intel's MKL library to a local folder and add the lib subfolder to the PATH environment.See https://docs.microsoft.com/en-us/cognitive-toolkit/setup-mkl-on-windows for details.</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Pricing Engine</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classes.html">Class Hierarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build/apidoc/pricingengine/pricingengine.html">pricingengine package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build/apidoc/msecore/msecore.html">msecore package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build/apidoc/msecoreml/msecoreml.html">msecoreml package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">Project History</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Matt Goldman, Brian Quistorff.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

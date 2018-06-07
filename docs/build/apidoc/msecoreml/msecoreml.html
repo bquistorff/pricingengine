@@ -1,0 +1,2296 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>msecoreml package &#8212; Pricing Engine 2.2.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="FAQ" href="../../../faq.html" />
+    <link rel="prev" title="msecore package" href="../msecore/msecore.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="msecoreml-package">
+<h1>msecoreml package<a class="headerlink" href="#msecoreml-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-msecoreml.pddataframeex">
+<span id="msecoreml-pddataframeex-module"></span><h2>msecoreml.pddataframeex module<a class="headerlink" href="#module-msecoreml.pddataframeex" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="msecoreml.pddataframeex.PdDataframeEx">
+<em class="property">class </em><code class="descclassname">msecoreml.pddataframeex.</code><code class="descname">PdDataframeEx</code><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>A collection of static utility methods that wrap common commands</p>
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.add_pct_change_cols">
+<em class="property">static </em><code class="descname">add_pct_change_cols</code><span class="sig-paren">(</span><em>dframe</em>, <em>src_colname</em>, <em>change_colname</em>, <em>startoffset=1</em>, <em>maxoffset=1</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.add_pct_change_cols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the percentage changes in a column’s value for multiple intervals.
+Add the changes for each interval as a new column to the data frame. 
+E.g. compute the percent change relative to the last 5 measurements</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dframe</strong> (<em>pd.DataFrame</em>) – </li>
+<li><strong>src_colname</strong> – </li>
+<li><strong>change_colname</strong> – </li>
+<li><strong>startoffset</strong> – </li>
+<li><strong>maxoffset</strong> – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.add_series_to_each_col">
+<em class="property">static </em><code class="descname">add_series_to_each_col</code><span class="sig-paren">(</span><em>series</em>, <em>dataframe</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.add_series_to_each_col" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a dataframe M of columns [a, b, c, …] and series of summands [s₀, s₁, …, sₙ], return the 
+dataframe consisting of the summand added to each column [a’, b’, c’, …]
+=&gt; a’ = [s₀ + a₀, s₁ + a₁, …, sₙ + aₙ]
+=&gt; b’ = [s₀ + b₀, s₁ + b₁, …, sₙ + bₙ]
+=&gt; c’ = [s₀ + c₀, s₁ + c₁, …, sₙ + cₙ]</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.agg_duplicates">
+<em class="property">static </em><code class="descname">agg_duplicates</code><span class="sig-paren">(</span><em>data</em>, <em>identifiers</em>, <em>unit_cols</em>, <em>price_cols</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.agg_duplicates" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Transforms df in order to eliminate duplicate observations using logic that would correspond with </dt>
+<dd>common pricing problems</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>data</strong> – DataFrame of raw data that may have duplicates</li>
+<li><strong>identifiers</strong> – list of columns that identify unique entries in the data set</li>
+<li><strong>unit_cols</strong> – list of DataFrame columns for which duplicates should be summed</li>
+<li><strong>price_cols</strong> – list of  DataFrame columns for which duplicates should be resolved by taking a min</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.append_cols_inplace">
+<em class="property">static </em><code class="descname">append_cols_inplace</code><span class="sig-paren">(</span><em>dest_df</em>, <em>source_df</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.append_cols_inplace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.append_rows_inplace">
+<em class="property">static </em><code class="descname">append_rows_inplace</code><span class="sig-paren">(</span><em>dest_df</em>, <em>source_df</em>, <em>simple_index=True</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.append_rows_inplace" title="Permalink to this definition">¶</a></dt>
+<dd><p>May change the storage type to floating-point precision
+Works row-by-row so may be slow</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dest_df</strong> – </li>
+<li><strong>source_df</strong> – </li>
+<li><strong>simple_index</strong> – We handle two types of indexing. simple_index=T (default) assumes that
+dest_df has a simple numerically increasing index and we just extend that (so
+we don’t look at the index values of source_df). simple_index=F looks at source_df and
+uses those index values to add to dest_df (which could result in overwritting if 
+the index values are duplicated).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.append_series_to_dataframe">
+<em class="property">static </em><code class="descname">append_series_to_dataframe</code><span class="sig-paren">(</span><em>series</em>, <em>dataframe</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.append_series_to_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a dataframe by appending the given series as a new column to the end of the dataframe</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>series</strong> – The new column to append</li>
+<li><strong>dataframe</strong> – A dataframe with a single column index to which to append the column</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A single dataframe containing the dataframe with the new column appended</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.append_to_col_multiindex">
+<em class="property">static </em><code class="descname">append_to_col_multiindex</code><span class="sig-paren">(</span><em>dataframe</em>, <em>new_name</em>, <em>new_values</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.append_to_col_multiindex" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.append_to_row_index">
+<em class="property">static </em><code class="descname">append_to_row_index</code><span class="sig-paren">(</span><em>df</em>, <em>col_names</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.append_to_row_index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.append_uniform_col_index">
+<em class="property">static </em><code class="descname">append_uniform_col_index</code><span class="sig-paren">(</span><em>dataframe</em>, <em>index_value</em>, <em>index_name</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.append_uniform_col_index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.assign_inplace">
+<em class="property">static </em><code class="descname">assign_inplace</code><span class="sig-paren">(</span><em>dest_df</em>, <em>source_df</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.assign_inplace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hard to modify a dataframe in place (like for modifying func parameters)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dest_df</strong> – Currently, this needs to be an empty df</li>
+<li><strong>source_df</strong> – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.broadcast_scale">
+<em class="property">static </em><code class="descname">broadcast_scale</code><span class="sig-paren">(</span><em>dataframe</em>, <em>scales</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.broadcast_scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a dataframe M of columns [c₀, c₁, …, cₘ] and series of scales [s₀, s₁, …, sₙ], return the 
+dataframe consisting of each column scaled by each scale (m * n columns)
+=&gt; [s₀*c₀, s₀*c₁, …, s₀*cₘ, s₁*c₀, s₁*c₁, …, sₙ*cₘ, sₙ*c₀, sₙ*c₁, …, sₙ*cₘ]
+=&gt; [M*s₀, M*s₁, …, M*sₙ]</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.cast_col_inplace">
+<em class="property">static </em><code class="descname">cast_col_inplace</code><span class="sig-paren">(</span><em>dataframe</em>, <em>colname</em>, <em>dtype</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.cast_col_inplace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cast a column in a dataframe to a new type - INPLACE</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.concat_along_rows">
+<em class="property">static </em><code class="descname">concat_along_rows</code><span class="sig-paren">(</span><em>dataframes</em>, <em>levels=None</em>, <em>name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.concat_along_rows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a dataframe combining all the given dataframes</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dataframes</strong> – List of dataframes and series, all with the same number of rows and the same index</li>
+<li><strong>levels</strong> – </li>
+<li><strong>name</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A single dataframe containing all the given columns</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.concat_frames">
+<em class="property">static </em><code class="descname">concat_frames</code><span class="sig-paren">(</span><em>frames</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.concat_frames" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>iterable of DataFrame frames</strong> (<em>An</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Single concatenated data frame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.drop_col_inplace">
+<em class="property">static </em><code class="descname">drop_col_inplace</code><span class="sig-paren">(</span><em>dataframe</em>, <em>col</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.drop_col_inplace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.drop_dates">
+<em class="property">static </em><code class="descname">drop_dates</code><span class="sig-paren">(</span><em>data</em>, <em>date_col</em>, <em>ratio_dates_to_drop</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.drop_dates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides a subsample of the data where whole dates either kept or dropped.
+Does so in a way that kept dates have equal spacing</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>data</strong> – </li>
+<li><strong>date_col</strong> – </li>
+<li><strong>ratio_dates_to_drop</strong> – For every kept date, how many to drop. 0 means don’t drop any</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.drop_index_level_unlabelled">
+<em class="property">static </em><code class="descname">drop_index_level_unlabelled</code><span class="sig-paren">(</span><em>df</em>, <em>levels=0</em>, <em>droplevel=True</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.drop_index_level_unlabelled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opposite version of keep_index_level_unlabelled(). See there for help</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.drop_rows_index_vals">
+<em class="property">static </em><code class="descname">drop_rows_index_vals</code><span class="sig-paren">(</span><em>df</em>, <em>vals</em>, <em>level=None</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.drop_rows_index_vals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Like the opposite of pd.xs (except I can’t yet take in tuples for vals and level</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>df</strong> – </li>
+<li><strong>vals</strong> – vals or tuple of vals</li>
+<li><strong>level</strong> – level name (or int) or list of levels</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">modified df</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.fill_missing">
+<em class="property">static </em><code class="descname">fill_missing</code><span class="sig-paren">(</span><em>data</em>, <em>panel_cols</em>, <em>date_col</em>, <em>day_interval</em>, <em>fill_nan=None</em>, <em>fill_zero=None</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.fill_missing" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Fills in missing observations between the first and last available date at the cadence specified. </dt>
+<dd>Newly created values for all columns default to their last available value (unless specified otherwise)</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>data</strong> – Dataframe containing raw data</li>
+<li><strong>panel_cols</strong> – list of columns that serve as panel identifiers</li>
+<li><strong>date_col</strong> – Column which indicates the date. Must be poppulated by datetime</li>
+<li><strong>fill_nan</strong> – list of  DataFrame columns which are set to nan for all missing obs</li>
+<li><strong>fill_zero</strong> – list of  DataFrame columns which are set to zero for all missing obs</li>
+<li><strong>day_interval</strong> – Number of days between consecutive observations</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.gen_cartesian_product">
+<em class="property">static </em><code class="descname">gen_cartesian_product</code><span class="sig-paren">(</span><em>series_list</em>, <em>series_names</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.gen_cartesian_product" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do cartesian product
+But built-in forgets type so convert back</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.gen_df_diff">
+<em class="property">static </em><code class="descname">gen_df_diff</code><span class="sig-paren">(</span><em>df</em>, <em>var</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.gen_df_diff" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.gen_labels">
+<em class="property">static </em><code class="descname">gen_labels</code><span class="sig-paren">(</span><em>dframe</em>, <em>cond</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.gen_labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>For ML - generates “labels” of 0 and 1. 
+Applies the given condition to each row in the dframe and produce a 0 or 1 label</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dframe</strong> (<em>pd.DataFrame</em>) – </li>
+<li><strong>cond</strong> – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.gen_pct_change">
+<em class="property">static </em><code class="descname">gen_pct_change</code><span class="sig-paren">(</span><em>dframe</em>, <em>colname</em>, <em>offset=1</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.gen_pct_change" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a series representing the percentage changes in a column’s value.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dframe</strong> (<em>pd.DataFrame</em>) – </li>
+<li><strong>colname</strong> – </li>
+<li><strong>offset</strong> (<em>int</em>) – How many intervals back should we compare to?</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Pct changes for all rows in the dataframe</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.get_cell_by_multiindex">
+<em class="property">static </em><code class="descname">get_cell_by_multiindex</code><span class="sig-paren">(</span><em>dataframe</em>, <em>row_level_value_by_name</em>, <em>col_level_value_by_name</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.get_cell_by_multiindex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a single column as specified by the given multiindex level values.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dataframe</strong> (<em>pd.DataFrame</em>) – The dataframe from which to get the value</li>
+<li><strong>row_level_value_by_name</strong> (<em>dictionary</em>) – dictionary mapping index name to level value, specifying a level 
+value for each index in the row multiindex</li>
+<li><strong>col_level_value_by_name</strong> (<em>dictionary</em>) – dictionary mapping index name to level value, specifying a level 
+value for each index in the col multiindex</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The specified value</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">Exception raised if no such cell can be found or if multiple such cellss are found.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.get_col_by_multiindex">
+<em class="property">static </em><code class="descname">get_col_by_multiindex</code><span class="sig-paren">(</span><em>dataframe</em>, <em>level_value_by_name</em>, <em>as_series=True</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.get_col_by_multiindex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a single column as specified by the given multiindex level values.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dataframe</strong> (<em>pd.DataFrame</em>) – The dataframe from which to get the column.</li>
+<li><strong>level_value_by_name</strong> (<em>dictionary</em>) – dictionary mapping index name to level value, specifying a 
+level value for each index in the multiindex</li>
+<li><strong>as_series</strong> (<em>bool</em>) – If True, return the column as a pd.Series, thereby dropping any column multiindex 
+information. If False, return a pd.Dataframe consisting of a single column.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The specified column, as either a pd.Series or pd.DataFrame.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">Exception raised if no such column can be found or if multiple such columns are found.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.get_col_by_name">
+<em class="property">static </em><code class="descname">get_col_by_name</code><span class="sig-paren">(</span><em>dataframe</em>, <em>col_name</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.get_col_by_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.get_col_from_indicator">
+<em class="property">static </em><code class="descname">get_col_from_indicator</code><span class="sig-paren">(</span><em>df</em>, <em>indicator</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.get_col_from_indicator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.get_col_index_values">
+<em class="property">static </em><code class="descname">get_col_index_values</code><span class="sig-paren">(</span><em>df</em>, <em>index_name</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.get_col_index_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.get_column_or_index">
+<em class="property">static </em><code class="descname">get_column_or_index</code><span class="sig-paren">(</span><em>dataframe</em>, <em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.get_column_or_index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.get_nan_inf_indicator">
+<em class="property">static </em><code class="descname">get_nan_inf_indicator</code><span class="sig-paren">(</span><em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.get_nan_inf_indicator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.get_row_index_values">
+<em class="property">static </em><code class="descname">get_row_index_values</code><span class="sig-paren">(</span><em>df</em>, <em>index_name</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.get_row_index_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.groupbynot">
+<em class="property">static </em><code class="descname">groupbynot</code><span class="sig-paren">(</span><em>df</em>, <em>not_list</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.groupbynot" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.impute_panel_column">
+<em class="property">static </em><code class="descname">impute_panel_column</code><span class="sig-paren">(</span><em>dataframe</em>, <em>index_name</em>, <em>fill_value=0</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.impute_panel_column" title="Permalink to this definition">¶</a></dt>
+<dd><p>For a given dataframe consisting of one or more panels, fill rows such that for the given row
+index, each panel has a row for each known level.</p>
+<p>For example, in the following table, there is no entry for apples on Tuesday. Therefore, that row is added 
+with the specified fill value (here, 0.0).</p>
+<p>NOTE: The same fill value is used across all columns, regardless of column type.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="33%" />
+<col width="21%" />
+<col width="29%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">day</th>
+<th class="head">item</th>
+<th class="head">price</th>
+<th class="head">quality</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Mon</td>
+<td>oranges</td>
+<td>1.0</td>
+<td>‘good’</td>
+</tr>
+<tr class="row-odd"><td>Tue</td>
+<td>oranges</td>
+<td>1.1</td>
+<td>‘good’</td>
+</tr>
+<tr class="row-even"><td>Mon</td>
+<td>apples</td>
+<td>2.0</td>
+<td>‘okay’</td>
+</tr>
+<tr class="row-odd"><td>Mon</td>
+<td>bananas</td>
+<td>3.0</td>
+<td>‘okay’</td>
+</tr>
+<tr class="row-even"><td>Tue</td>
+<td>bananas</td>
+<td>3.1</td>
+<td>‘good’</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="32%" />
+<col width="20%" />
+<col width="32%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">day</th>
+<th class="head">item</th>
+<th class="head">price</th>
+<th class="head">quality</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Mon</td>
+<td>oranges</td>
+<td>1.0</td>
+<td>‘good’</td>
+</tr>
+<tr class="row-odd"><td>Tue</td>
+<td>oranges</td>
+<td>1.1</td>
+<td>‘good’</td>
+</tr>
+<tr class="row-even"><td>Mon</td>
+<td>apples</td>
+<td>2.0</td>
+<td>‘okay’</td>
+</tr>
+<tr class="row-odd"><td>Tue</td>
+<td>apples</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="row-even"><td>Mon</td>
+<td>bananas</td>
+<td>3.0</td>
+<td>‘okay’</td>
+</tr>
+<tr class="row-odd"><td>Tue</td>
+<td>bananas</td>
+<td>3.1</td>
+<td>‘good’</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dataframe</strong> – The dataframe into which to insert rows.</li>
+<li><strong>index_name</strong> – The name of the index level for which to fill in missing items</li>
+<li><strong>fill_value</strong> – The value to use for filling in missing entries</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A copy of the original dataframe with missing rows inserted.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.interact_dataframes">
+<em class="property">static </em><code class="descname">interact_dataframes</code><span class="sig-paren">(</span><em>dataframe_list</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.interact_dataframes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.interact_series_with_dataframe">
+<em class="property">static </em><code class="descname">interact_series_with_dataframe</code><span class="sig-paren">(</span><em>dataframe</em>, <em>scales</em>, <em>col_name_format=None</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.interact_series_with_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a dataframe by multiplying each column in the dataframe by a corresponding series of scale values</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dataframe</strong> – A dataframe with k columns and n rows</li>
+<li><strong>scales</strong> – A 1-dimensional pandas series [s₀, s₁, … sₙ]</li>
+<li><strong>col_name_format</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dataframe where each column is the pairwise product of the original column with the scale values
+[x₀, x₁, … xₙ] -&gt; [x₀s₀, x₁s₁, …, xₙsₙ]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.keep_index_level_unlabelled">
+<em class="property">static </em><code class="descname">keep_index_level_unlabelled</code><span class="sig-paren">(</span><em>df</em>, <em>levels=0</em>, <em>droplevel=True</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.keep_index_level_unlabelled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the modified df where rows are dropped where the index levels have values
+that aren’t in the label list. These end up being printed as nan
+If you extract the index as idx=mi.remove_levels([&lt;other levels&gt;]) then
+math.isnan(idx.values)==True for some values</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.multiindex_merge_m1_full">
+<em class="property">static </em><code class="descname">multiindex_merge_m1_full</code><span class="sig-paren">(</span><em>dfl</em>, <em>dfr</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.multiindex_merge_m1_full" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does a m:1 merge from l to r assuming dfr.index.names is a subset of those in dfl. Pandas utils don’t work.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.panel_type">
+<em class="property">static </em><code class="descname">panel_type</code><span class="sig-paren">(</span><em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.panel_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.prepend_col_names">
+<em class="property">static </em><code class="descname">prepend_col_names</code><span class="sig-paren">(</span><em>dataframe</em>, <em>prefix</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.prepend_col_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepend each column name in the given dataframe with the specified prefix</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dataframe</strong> – The dataframe in which to prepend the columns</li>
+<li><strong>prefix</strong> – The string to pre-pend to the column names</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.prepend_series_to_dataframe">
+<em class="property">static </em><code class="descname">prepend_series_to_dataframe</code><span class="sig-paren">(</span><em>series</em>, <em>dataframe</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.prepend_series_to_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a dataframe by prepending the given series as a new column at the start of the dataframe</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>series</strong> – The new column to append</li>
+<li><strong>dataframe</strong> – A dataframe with a single column index to which to prepend the column</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A single dataframe containing the dataframe with the new column prepended</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.reset_row_index">
+<em class="property">static </em><code class="descname">reset_row_index</code><span class="sig-paren">(</span><em>df</em>, <em>inplace=False</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.reset_row_index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.select_and_drop">
+<em class="property">static </em><code class="descname">select_and_drop</code><span class="sig-paren">(</span><em>df</em>, <em>colname</em>, <em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.select_and_drop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects on a variable and then drops it. 
+(Like how xs selects on a value of an index-level and then drops the level.)</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.set_row_index">
+<em class="property">static </em><code class="descname">set_row_index</code><span class="sig-paren">(</span><em>df</em>, <em>col_names</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.set_row_index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.stack_as_block_diagonal">
+<em class="property">static </em><code class="descname">stack_as_block_diagonal</code><span class="sig-paren">(</span><em>dataframe</em>, <em>index_name</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.stack_as_block_diagonal" title="Permalink to this definition">¶</a></dt>
+<dd><p>For a given dataframe, add/drop columns as-needed so that its column index matches the specified target index. 
+Columns added are filled with zeroes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dataframe</strong> – The base dataframe for to pivot to a block diagonal</li>
+<li><strong>index_name</strong> – The name of the index on which to block rows</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dataframe where the rows have been pivoted such that each level in the index is a block
+in a block diagonal.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="81%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>site</td>
+<td>1       2       3</td>
+</tr>
+<tr class="row-even"><td>item</td>
+<td>A   B   A   B   A   B</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>1   2   10  20  100 200</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>3   4   30  40  300 400</td>
+</tr>
+</tbody>
+</table>
+<p>=&gt;     
+(index_name = site)</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="22%" />
+<col width="30%" />
+<col width="26%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>site</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr class="row-even"><td>item</td>
+<td>A   B</td>
+<td>A   B</td>
+<td>A   B</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>1  2</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>3  4</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>&#160;</td>
+<td>10  20</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>30  40</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>100 200</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>300 400</td>
+</tr>
+</tbody>
+</table>
+<p>=&gt;                                            
+(index_name = item)</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="43%" />
+<col width="39%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>site</td>
+<td>1   2   3</td>
+<td>1   2   3</td>
+</tr>
+<tr class="row-even"><td>item</td>
+<td>A   A   A</td>
+<td>B   B   B</td>
+</tr>
+<tr class="row-odd"><td>A</td>
+<td>1   10  100</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>3   30  300</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>B</td>
+<td>&#160;</td>
+<td>2   20  200</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>4   40  400</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.str_cat">
+<em class="property">static </em><code class="descname">str_cat</code><span class="sig-paren">(</span><em>dataframe</em>, <em>col_names</em>, <em>sep=None</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.str_cat" title="Permalink to this definition">¶</a></dt>
+<dd><p>String concatenate the given columns (names)
+Returns a new series with the concatenated text</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.str_split_paths">
+<em class="property">static </em><code class="descname">str_split_paths</code><span class="sig-paren">(</span><em>dataframe</em>, <em>colname</em>, <em>sep='/'</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.str_split_paths" title="Permalink to this definition">¶</a></dt>
+<dd><p>If Column Data is a ‘path’ into a hierarchy, this method
+will split the paths and return a data frame with each level
+in the path represented by its own column</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pddataframeex.PdDataframeEx.using_default_index">
+<em class="property">static </em><code class="descname">using_default_index</code><span class="sig-paren">(</span><em>dataframe</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pddataframeex.PdDataframeEx.using_default_index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="msecoreml.pddataframeex.UnitTimeDFType">
+<em class="property">class </em><code class="descclassname">msecoreml.pddataframeex.</code><code class="descname">UnitTimeDFType</code><a class="headerlink" href="#msecoreml.pddataframeex.UnitTimeDFType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="attribute">
+<dt id="msecoreml.pddataframeex.UnitTimeDFType.CROSS_SECTION">
+<code class="descname">CROSS_SECTION</code><em class="property"> = 1</em><a class="headerlink" href="#msecoreml.pddataframeex.UnitTimeDFType.CROSS_SECTION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="msecoreml.pddataframeex.UnitTimeDFType.PANEL">
+<code class="descname">PANEL</code><em class="property"> = 3</em><a class="headerlink" href="#msecoreml.pddataframeex.UnitTimeDFType.PANEL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="msecoreml.pddataframeex.UnitTimeDFType.TIME_SERIES">
+<code class="descname">TIME_SERIES</code><em class="property"> = 2</em><a class="headerlink" href="#msecoreml.pddataframeex.UnitTimeDFType.TIME_SERIES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-msecoreml.pdgroupbyex">
+<span id="msecoreml-pdgroupbyex-module"></span><h2>msecoreml.pdgroupbyex module<a class="headerlink" href="#module-msecoreml.pdgroupbyex" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="msecoreml.pdgroupbyex.PdGroupByEx">
+<em class="property">class </em><code class="descclassname">msecoreml.pdgroupbyex.</code><code class="descname">PdGroupByEx</code><a class="headerlink" href="#msecoreml.pdgroupbyex.PdGroupByEx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="msecoreml.pdgroupbyex.PdGroupByEx.LAG_COL_NAME">
+<code class="descname">LAG_COL_NAME</code><em class="property"> = '{0} lag{1}'</em><a class="headerlink" href="#msecoreml.pdgroupbyex.PdGroupByEx.LAG_COL_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="msecoreml.pdgroupbyex.PdGroupByEx.LAG_DIFF_COL_NAME">
+<code class="descname">LAG_DIFF_COL_NAME</code><em class="property"> = '{0} lag_diff{1}'</em><a class="headerlink" href="#msecoreml.pdgroupbyex.PdGroupByEx.LAG_DIFF_COL_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="msecoreml.pdgroupbyex.PdGroupByEx.LEAD_COL_NAME">
+<code class="descname">LEAD_COL_NAME</code><em class="property"> = '{0} lead{1}'</em><a class="headerlink" href="#msecoreml.pdgroupbyex.PdGroupByEx.LEAD_COL_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="msecoreml.pdgroupbyex.PdGroupByEx.LEAD_DIFF_COL_NAME">
+<code class="descname">LEAD_DIFF_COL_NAME</code><em class="property"> = '{0} lead_diff{1}'</em><a class="headerlink" href="#msecoreml.pdgroupbyex.PdGroupByEx.LEAD_DIFF_COL_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pdgroupbyex.PdGroupByEx.exp_moving_avg">
+<em class="property">static </em><code class="descname">exp_moving_avg</code><span class="sig-paren">(</span><em>groupby</em>, <em>halflife</em>, <em>min_periods</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdgroupbyex.PdGroupByEx.exp_moving_avg" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Compute the Exponential Weighted Moving Average for each instance (x) using the following weights (w):
+wᵢ := (exp(log(0.5) / halflife))ⁱ
+exp_rolling_avg = (wₜ·xₜ + wₜ₋₁·xₜ₋₁ + …. w₀·x₀) / (wₜ + wₜ₋₁ + … + w₀)</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>groupby</strong> – </li>
+<li><strong>halflife</strong> – The period of time for the exponential weight to reduce to one half</li>
+<li><strong>min_periods</strong> – The minimum number of non-missing values in the window, including current value, 
+required (NaN returned otherwise)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A single series where each instance is the Exponential Weighted Moving Average of the series up to
+and including that instance</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pdgroupbyex.PdGroupByEx.gen_fore_diffs">
+<em class="property">static </em><code class="descname">gen_fore_diffs</code><span class="sig-paren">(</span><em>groupby</em>, <em>leads</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdgroupbyex.PdGroupByEx.gen_fore_diffs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a dataframe of where each column corresponds to the difference of an offset series with the given series</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>groupby</strong> – </li>
+<li><strong>leads</strong> – The values by which to shift the series</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A list of #fore columns where column i is the differnece of the 
+left shift series (lag - i) and the given series</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>if n = 3 and lag = 2
+series = [x₀, x₁, x₂]
+col₀ = [x₂-x₀, NA, NA]
+col₁ = [x₁-x₀, x₂-x₁, NA]
+In general for a given fore = l and a series of length n,
+colₖ = [xₗ-x₀, xₗ₊₁-x₁,…, NA]</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pdgroupbyex.PdGroupByEx.gen_lag_diffs">
+<em class="property">static </em><code class="descname">gen_lag_diffs</code><span class="sig-paren">(</span><em>groupby</em>, <em>lags</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdgroupbyex.PdGroupByEx.gen_lag_diffs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a dataframe of where each column corresponds to the difference of a given series and an offset series=</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>groupby</strong> – </li>
+<li><strong>lags</strong> – The maximum number of values by which to shift the series</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A list of #lag columns where column i is the difference of the series and 
+a right shift of size (lag - i) of the given series:</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>if n = 3 and lag = 2
+series = [x₀, x₁, x₂]
+col₀ = [NA, NA, x₂-x₀]
+col₁ = [NA, x₁-x₀, x₂-x₁]
+In general for a given lag = l and a series of length n,
+colₖ = [NA, NA,…, xₖ-x₀, …, xₖ-xₙ₋ₗ₋₁₊ₖ]</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pdgroupbyex.PdGroupByEx.gen_lags">
+<em class="property">static </em><code class="descname">gen_lags</code><span class="sig-paren">(</span><em>groupby</em>, <em>lag</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdgroupbyex.PdGroupByEx.gen_lags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a dataframe of where each column corresponds to an offset series of the given series</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>groupby</strong> – </li>
+<li><strong>lag</strong> – The maximum number of values by which to shift the series</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A list of #lag columns where column i is a right shift of size (lag - i) of the given series:</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>if n = 3 and lag = 2
+series = [x₀, x₁, x₂]
+col₀ = [NA, NA, x₀]
+col₁ = [NA, x₀, x₁]
+In general for a given lag = l and a series of length n,
+colₖ = [NA, NA,…, x₀, …, xₙ₋ₗ₋₁₊ₖ]</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pdgroupbyex.PdGroupByEx.gen_leads">
+<em class="property">static </em><code class="descname">gen_leads</code><span class="sig-paren">(</span><em>groupby</em>, <em>leads</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdgroupbyex.PdGroupByEx.gen_leads" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a dataframe of where each column corresponds to an offset series of the given series</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>groupby</strong> – </li>
+<li><strong>leads</strong> – The numbers of values by which to shift the series</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A list of #lead columns where column i is a left shift of size (lead - i) of the given series:</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>if n = 3 and lead = 2
+series = [x₀, x₁, x₂]
+col₀ = [x₁, x₂, NA]
+col₁ = [x₂, NA, NA]
+In general for a given lean = l and a series of length n,
+colₖ = [xₖ₊₁, xₖ₊₂, … xₙ, NA,…, NA]</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pdgroupbyex.PdGroupByEx.get_selection_name">
+<em class="property">static </em><code class="descname">get_selection_name</code><span class="sig-paren">(</span><em>groupby</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdgroupbyex.PdGroupByEx.get_selection_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pdgroupbyex.PdGroupByEx.get_shift_name">
+<em class="property">static </em><code class="descname">get_shift_name</code><span class="sig-paren">(</span><em>name_pattern</em>, <em>col_name</em>, <em>shift</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdgroupbyex.PdGroupByEx.get_shift_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-msecoreml.pdmultiindexex">
+<span id="msecoreml-pdmultiindexex-module"></span><h2>msecoreml.pdmultiindexex module<a class="headerlink" href="#module-msecoreml.pdmultiindexex" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="msecoreml.pdmultiindexex.PdMultiIndexEx">
+<em class="property">class </em><code class="descclassname">msecoreml.pdmultiindexex.</code><code class="descname">PdMultiIndexEx</code><a class="headerlink" href="#msecoreml.pdmultiindexex.PdMultiIndexEx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>A collection of utility methods for working with Pandas multi-indexes.</p>
+<dl class="staticmethod">
+<dt id="msecoreml.pdmultiindexex.PdMultiIndexEx.align_index">
+<em class="property">static </em><code class="descname">align_index</code><span class="sig-paren">(</span><em>multiindex</em>, <em>index_names</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdmultiindexex.PdMultiIndexEx.align_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Align given multiindex to specified index</p>
+<p>Get an updated version of the given multinindex with indexes ordered as specified by the set of index
+names where indexes not yet contained in the multiindex are added but have all missing values and names 
+in the multiindex but not in index_names are dropped</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>multiindex</strong> (<code class="xref py py-class docutils literal"><span class="pre">MultiIndex</span></code>) – The multinindex to update</li>
+<li><strong>index_names</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – An ordered list of index names for the new index</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">An updated version of the given multiindex with indexes ordered as specified by the set of index
+names where indexes not yet contained in the multiindex are added but have all missing values.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-class docutils literal"><span class="pre">MultiIndex</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>For the following examples, let mutliindex be the following column multiindex</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="12%" />
+<col width="12%" />
+<col width="12%" />
+<col width="12%" />
+<col width="12%" />
+<col width="12%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>letter</td>
+<td>A</td>
+<td>B</td>
+<td>A</td>
+<td>B</td>
+<td>A</td>
+<td>A</td>
+</tr>
+<tr class="row-even"><td>number</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>blah</td>
+<td>0</td>
+<td>0</td>
+<td>A</td>
+<td>A</td>
+<td>C</td>
+<td>C</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first">Input:</p>
+<blockquote>
+<div><ul class="simple">
+<li>index_names: [number, missing, blah, letter]</li>
+</ul>
+</div></blockquote>
+<p>Output:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>number</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>missing</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+</tr>
+<tr class="row-odd"><td>letter</td>
+<td>A</td>
+<td>B</td>
+<td>A</td>
+<td>B</td>
+<td>A</td>
+<td>A</td>
+</tr>
+<tr class="row-even"><td>blah</td>
+<td>0</td>
+<td>0</td>
+<td>A</td>
+<td>A</td>
+<td>C</td>
+<td>C</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first">Input:</p>
+<blockquote>
+<div><ul class="simple">
+<li>index_names: [number, missing]</li>
+</ul>
+</div></blockquote>
+<p>Output:</p>
+<blockquote class="last">
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>number</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>missing</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pdmultiindexex.PdMultiIndexEx.concat_index_levels">
+<em class="property">static </em><code class="descname">concat_index_levels</code><span class="sig-paren">(</span><em>midx</em>, <em>sep='_'</em>, <em>filter_blanks=True</em>, <em>name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdmultiindexex.PdMultiIndexEx.concat_index_levels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes all the levels of a multiindex, turns to string and then concatenates into plain Index.
+:param midx:
+:param str sep: Separator
+:param filter_blanks: Do we only put sep between non-blank entries?
+:param name: final name for Index</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pdmultiindexex.PdMultiIndexEx.fillna_multiindex">
+<em class="property">static </em><code class="descname">fillna_multiindex</code><span class="sig-paren">(</span><em>idx</em>, <em>value=''</em>, <em>level_nums=None</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdmultiindexex.PdMultiIndexEx.fillna_multiindex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indexes sometimes a level l in a multi-index will have has nan’s stored as -1 in the .labels[l] 
+for something not in .levels[l]</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="c1">#will return things with math.nan</span>
+<span class="o">.</span><span class="n">fillna</span><span class="p">()</span><span class="o">/.</span><span class="n">hasnans</span> <span class="c1">#aren&#39;t implemented</span>
+<span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">set_levels</span><span class="p">([</span><span class="n">l</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">levels</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1">#Doesn&#39;t work</span>
+<span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="n">l</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="c1">#returns some right</span>
+<span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">set_levels</span><span class="p">([</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="n">l</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">levels</span><span class="p">))],</span> 
+                    <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1">#Doesn&#39;t work</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pdmultiindexex.PdMultiIndexEx.get_1level_block_indicator">
+<em class="property">static </em><code class="descname">get_1level_block_indicator</code><span class="sig-paren">(</span><em>multiindex</em>, <em>index_name</em>, <em>index_values</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdmultiindexex.PdMultiIndexEx.get_1level_block_indicator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get an indicator array indicating the positions in the multiindex with one of the specified values</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>multiindex</strong> (<code class="xref py py-class docutils literal"><span class="pre">MultiIndex</span></code>) – The multiindex for which to get an indicator</li>
+<li><strong>index_name</strong> (<em>str</em>) – The name of the index for which to build an indicator for the specified values</li>
+<li><strong>index_values</strong> (<em>list</em><em>(</em><em>str</em><em> or </em><em>int</em><em>)</em>) – A list of values for which the indicator should be True</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A boolean array corresponding to the values of the multiindex with a True values
+corresponding to multiindex locations with the specified values.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-class docutils literal"><span class="pre">numpy.array</span></code> of bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>For the following examples, let the mutliindex be the column index of the following dataframe</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">site</th>
+<th class="head">1</th>
+<th class="head">1</th>
+<th class="head">2</th>
+<th class="head">2</th>
+<th class="head">3</th>
+<th class="head">Nan</th>
+</tr>
+<tr class="row-even"><th class="head">item</th>
+<th class="head">A</th>
+<th class="head">B</th>
+<th class="head">A</th>
+<th class="head">B</th>
+<th class="head">A</th>
+<th class="head">B</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>&#160;</td>
+<td>1</td>
+<td>2</td>
+<td>10</td>
+<td>20</td>
+<td>100</td>
+<td>200</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>3</td>
+<td>4</td>
+<td>30</td>
+<td>40</td>
+<td>300</td>
+<td>400</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first">Input:</p>
+<blockquote>
+<div><ul class="simple">
+<li>index_name: site</li>
+<li>index_values: [1, 2]</li>
+</ul>
+</div></blockquote>
+<p>Output:</p>
+<blockquote>
+<div><p>[True, True, True, True, False, False]</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first">Input:</p>
+<blockquote>
+<div><ul class="simple">
+<li>index_name: site</li>
+<li>index_values: [NaN]</li>
+</ul>
+</div></blockquote>
+<dl class="last docutils">
+<dt>Output:</dt>
+<dd><p class="first last">[False, False, False, False, True, True]</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pdmultiindexex.PdMultiIndexEx.get_aligned_index">
+<em class="property">static </em><code class="descname">get_aligned_index</code><span class="sig-paren">(</span><em>source_index</em>, <em>target_index_names</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdmultiindexex.PdMultiIndexEx.get_aligned_index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pdmultiindexex.PdMultiIndexEx.get_levelvalues_by_name">
+<em class="property">static </em><code class="descname">get_levelvalues_by_name</code><span class="sig-paren">(</span><em>multiindex</em>, <em>index_name</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdmultiindexex.PdMultiIndexEx.get_levelvalues_by_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of level values for the index with the specified name</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>multiindex</strong> – The multi-index containing the specified target index</li>
+<li><strong>index_name</strong> – The name of the index for which to get the level values</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A list of level values for the index with the specified name</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="81%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>site</td>
+<td>1   1   2   2   3   3</td>
+</tr>
+<tr class="row-even"><td>item</td>
+<td>A   B   A   B   A   B</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>1   2   10  20  100 200</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>3   4   30  40  300 400</td>
+</tr>
+</tbody>
+</table>
+<p>index_name = site =&gt; [1, 2, 3]
+index_name = item =&gt; [A, B]</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pdmultiindexex.PdMultiIndexEx.get_nlevel_block_indicator">
+<em class="property">static </em><code class="descname">get_nlevel_block_indicator</code><span class="sig-paren">(</span><em>multiindex</em>, <em>index_value_byname</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdmultiindexex.PdMultiIndexEx.get_nlevel_block_indicator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get an indicator array indicating the positions in the multiindex with the specified values</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>multiindex</strong> (<code class="xref py py-class docutils literal"><span class="pre">MultiIndex</span></code>) – The multiindex for which to get an indicator</li>
+<li><strong>index_value_byname</strong> (<em>dict</em><em>(</em><em>str</em><em>, </em><em>str</em><em> or </em><em>int</em><em>)</em>) – A dictionary containg a mapping of index name to target value for each
+index in the multiindex.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A boolean array corresponding to the values of the multiindex with a True values
+corresponding to multiindex locations with the specified values.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-class docutils literal"><span class="pre">numpy.array</span></code> of bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>For the following examples, let the mutliindex be the column index of the following dataframe</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">site</th>
+<th class="head">1</th>
+<th class="head">1</th>
+<th class="head">2</th>
+<th class="head">NaN</th>
+<th class="head">3</th>
+<th class="head">NaN</th>
+</tr>
+<tr class="row-even"><th class="head">item</th>
+<th class="head">A</th>
+<th class="head">B</th>
+<th class="head">A</th>
+<th class="head">B</th>
+<th class="head">A</th>
+<th class="head">B</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>&#160;</td>
+<td>1</td>
+<td>2</td>
+<td>10</td>
+<td>20</td>
+<td>100</td>
+<td>200</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>3</td>
+<td>4</td>
+<td>30</td>
+<td>40</td>
+<td>300</td>
+<td>400</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first">Input:</p>
+<blockquote>
+<div><ul class="simple">
+<li>value_by_name: {site:1, item:B}</li>
+</ul>
+</div></blockquote>
+<p>Output:</p>
+<blockquote>
+<div><p>[False, True, False, False, False, False]</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first">Input:</p>
+<blockquote>
+<div><ul class="simple">
+<li>value_by_name: {site:Nan, item:B}</li>
+</ul>
+</div></blockquote>
+<p>Output:</p>
+<blockquote class="last">
+<div><p>[False, False, False, True, False, True]</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pdmultiindexex.PdMultiIndexEx.get_nlevel_singleton_indicator">
+<em class="property">static </em><code class="descname">get_nlevel_singleton_indicator</code><span class="sig-paren">(</span><em>multiindex</em>, <em>value_by_name</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdmultiindexex.PdMultiIndexEx.get_nlevel_singleton_indicator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get an indicator array indicating the single position in the multiindex with the specified values</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>multiindex</strong> (<code class="xref py py-class docutils literal"><span class="pre">MultiIndex</span></code>) – The multiindex for which to get an indicator</li>
+<li><strong>value_by_name</strong> (<em>dict</em><em>(</em><em>str</em><em>, </em><em>str</em><em> or </em><em>int</em><em>)</em>) – A dictionary containg a mapping of index name to target value for each index in 
+the multiindex</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A boolean array corresponding to the values of the multiindex with a single True value
+corresponding to the multiindex location with the specified values.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-class docutils literal"><span class="pre">numpy.array</span></code> of bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>For the following examples, let the mutliindex be the column index of the following dataframe</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">site</th>
+<th class="head">1</th>
+<th class="head">1</th>
+<th class="head">2</th>
+<th class="head">2</th>
+<th class="head">3</th>
+<th class="head">Nan</th>
+</tr>
+<tr class="row-even"><th class="head">item</th>
+<th class="head">A</th>
+<th class="head">B</th>
+<th class="head">A</th>
+<th class="head">B</th>
+<th class="head">A</th>
+<th class="head">B</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>&#160;</td>
+<td>1</td>
+<td>2</td>
+<td>10</td>
+<td>20</td>
+<td>100</td>
+<td>200</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>3</td>
+<td>4</td>
+<td>30</td>
+<td>40</td>
+<td>300</td>
+<td>400</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first">Input:</p>
+<blockquote>
+<div><ul class="simple">
+<li>value_by_name: {site:1, item:B}</li>
+</ul>
+</div></blockquote>
+<p>Output:</p>
+<blockquote>
+<div><p>[False, True, False, False, False, False]</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first">Input:</p>
+<blockquote>
+<div><ul class="simple">
+<li>value_by_name: {site:Nan, item:B}</li>
+</ul>
+</div></blockquote>
+<p>Output:</p>
+<blockquote class="last">
+<div><p>[False, False, False, False, False, True]</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pdmultiindexex.PdMultiIndexEx.get_some_levels_block_indicator">
+<em class="property">static </em><code class="descname">get_some_levels_block_indicator</code><span class="sig-paren">(</span><em>multiindex</em>, <em>index_value_byname</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdmultiindexex.PdMultiIndexEx.get_some_levels_block_indicator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get an indicator array indicating the positions in the multiindex with the specified values</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>multiindex</strong> – The multiindex for which to get an indicator</li>
+<li><strong>index_value_byname</strong> – A dictionary containg a mapping of index name to target value for 
+some (not nessecarily all) indices in the multiindex.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A boolean array corresponding to the values of the multiindex with a True values
+corresponding to multiindex locations with the specified values.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="81%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>site</td>
+<td>1   1   2   2   NaN Nan</td>
+</tr>
+<tr class="row-even"><td>item</td>
+<td>A   B   A   B   A   B</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>1   2   10  20  100 200</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>3   4   30  40  300 400</td>
+</tr>
+</tbody>
+</table>
+<p>{site:1, item:B} =&gt; [False, True, False, False, False, False]
+{site:Nan, item:B} =&gt; [False, False, False, False, True, True]</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pdmultiindexex.PdMultiIndexEx.midx_from_list_of_namedarray">
+<em class="property">static </em><code class="descname">midx_from_list_of_namedarray</code><span class="sig-paren">(</span><em>na_list</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdmultiindexex.PdMultiIndexEx.midx_from_list_of_namedarray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a MultiIndex from a list of Index’s or pd.Series’s</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>na_list</strong> – list of Index’s, or pd.Series (needs .values and .name) for each</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pdmultiindexex.PdMultiIndexEx.rename_mi_level_names">
+<em class="property">static </em><code class="descname">rename_mi_level_names</code><span class="sig-paren">(</span><em>idx</em>, <em>level</em>, <em>dict_map</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdmultiindexex.PdMultiIndexEx.rename_mi_level_names" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pdmultiindexex.PdMultiIndexEx.to_frame">
+<em class="property">static </em><code class="descname">to_frame</code><span class="sig-paren">(</span><em>midx</em>, <em>index=True</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdmultiindexex.PdMultiIndexEx.to_frame" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-msecoreml.pdonehotencoder">
+<span id="msecoreml-pdonehotencoder-module"></span><h2>msecoreml.pdonehotencoder module<a class="headerlink" href="#module-msecoreml.pdonehotencoder" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="msecoreml.pdonehotencoder.PdOneHotEncoder">
+<em class="property">class </em><code class="descclassname">msecoreml.pdonehotencoder.</code><code class="descname">PdOneHotEncoder</code><span class="sig-paren">(</span><em>drop_base=True</em>, <em>base_criteria='freq'</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdonehotencoder.PdOneHotEncoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">msecoreml.basetransformer.BaseTransformer</span></code></p>
+<p>Wrapper for pandas.Series One-Hot encoder</p>
+<p>The transformed values will adhere to the following:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The row index of the returned dataframe will equal that of the given series (the series to be transformed)</li>
+<li>The column index of the returned dataframe will contain a single index with name equal to the name of the
+series and the level of each column corresponding the value of the item that column encodes.</li>
+</ul>
+<p>Note:</p>
+<ul class="simple">
+<li>The empty string is encoded like any other string.</li>
+<li>None is treated as missing and is not encoded.</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="24%" />
+<col width="52%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Letter</th>
+<th class="head">Number</th>
+<th class="head">ValueToEncode</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>A</td>
+<td>1</td>
+<td>“Coke”</td>
+</tr>
+<tr class="row-odd"><td>A</td>
+<td>2</td>
+<td>“Pepsi”</td>
+</tr>
+<tr class="row-even"><td>B</td>
+<td>1</td>
+<td>“Tab”</td>
+</tr>
+<tr class="row-odd"><td>B</td>
+<td>2</td>
+<td>“Pepsi”</td>
+</tr>
+<tr class="row-even"><td>C</td>
+<td>1</td>
+<td>“”</td>
+</tr>
+<tr class="row-odd"><td>C</td>
+<td>2</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p>The following dataframe is returned, where the column multi-index contains a single index ValueToEncode with 
+levels [Coke, Pepsi, Tab]</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="27%" />
+<col width="13%" />
+<col width="16%" />
+<col width="11%" />
+<col width="7%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Value Letter</th>
+<th class="head">Value Number</th>
+<th class="head">“Coke”</th>
+<th class="head">“Pepsi”</th>
+<th class="head">“Tab”</th>
+<th class="head">“”</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>A</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>A</td>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>B</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>B</td>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>C</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td>C</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl class="attribute">
+<dt id="msecoreml.pdonehotencoder.PdOneHotEncoder.BASE_FREQ">
+<code class="descname">BASE_FREQ</code><em class="property"> = 'freq'</em><a class="headerlink" href="#msecoreml.pdonehotencoder.PdOneHotEncoder.BASE_FREQ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="msecoreml.pdonehotencoder.PdOneHotEncoder.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>drop_base=True</em>, <em>base_criteria='freq'</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdonehotencoder.PdOneHotEncoder.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>drop_base</strong> – When returning the transformation, do we include one-hots for all, or all-minus-one
+The latter is sometime called “dummy variables” in contrast to “normal” one-hot-encoding which does all.</li>
+<li><strong>base_criteria</strong> – How to determine base. Options:
+freq - String. Modal value. This works better with penalization.
+&lt;number&gt; - Number as String. Value to be the base.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="msecoreml.pdonehotencoder.PdOneHotEncoder.base_criteria">
+<code class="descname">base_criteria</code><a class="headerlink" href="#msecoreml.pdonehotencoder.PdOneHotEncoder.base_criteria" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="msecoreml.pdonehotencoder.PdOneHotEncoder.drop_base">
+<code class="descname">drop_base</code><a class="headerlink" href="#msecoreml.pdonehotencoder.PdOneHotEncoder.drop_base" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="msecoreml.pdonehotencoder.PdOneHotEncoder.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>series</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdonehotencoder.PdOneHotEncoder.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the the encoder to the given series</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>series</strong> – The series to which to fit an encoding</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="msecoreml.pdonehotencoder.PdOneHotEncoder.fit_transform">
+<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>series</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdonehotencoder.PdOneHotEncoder.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit an encoder to the given series and return the encoded values of the series</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>series</strong> – The series to which to fit an encoding and then transform.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The dataframe resulting from encoding the given series</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="msecoreml.pdonehotencoder.PdOneHotEncoder.labels">
+<code class="descname">labels</code><a class="headerlink" href="#msecoreml.pdonehotencoder.PdOneHotEncoder.labels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="msecoreml.pdonehotencoder.PdOneHotEncoder.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>series</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdonehotencoder.PdOneHotEncoder.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Encode the given series using the previously fit encoding</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>series</strong> – The series to encode</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The dataframe resulting from encoding the given series</td>
+</tr>
+</tbody>
+</table>
+<p>If a new value is encountered in the series (i.e., a value that was not present in the series
+used to fit the encoder), the resulting encoding for that value will be all zeroes. For example,</p>
+<p>Fit:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="13%" />
+<col width="33%" />
+<col width="10%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">ValueToEncode</th>
+<th class="head">==&gt;</th>
+<th class="head">ValueToEncode</th>
+<th class="head">Coke</th>
+<th class="head">Pepsi</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Coke</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>Pepsi</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>Pepsi</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Transform:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="13%" />
+<col width="33%" />
+<col width="10%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">ValueToEncode</th>
+<th class="head">==&gt;</th>
+<th class="head">ValueToEncode</th>
+<th class="head">Coke</th>
+<th class="head">Pepsi</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Coke</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>Tab</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-msecoreml.pdseriesex">
+<span id="msecoreml-pdseriesex-module"></span><h2>msecoreml.pdseriesex module<a class="headerlink" href="#module-msecoreml.pdseriesex" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="msecoreml.pdseriesex.PdSeriesEx">
+<em class="property">class </em><code class="descclassname">msecoreml.pdseriesex.</code><code class="descname">PdSeriesEx</code><a class="headerlink" href="#msecoreml.pdseriesex.PdSeriesEx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="staticmethod">
+<dt id="msecoreml.pdseriesex.PdSeriesEx.avg_across_series">
+<em class="property">static </em><code class="descname">avg_across_series</code><span class="sig-paren">(</span><em>series_collection</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdseriesex.PdSeriesEx.avg_across_series" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a series by taking the average across the given set of series</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>series_collection</strong> – A list of 1-dimensional pandas series 
+[[x1₀, x1₁, … x1ₙ], [x2₀, x2₁, … x2ₙ], … [xK₀, xK₁, … xKₙ]]</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The elementwise avereage of the the series 
+[(x1₀ + x2₀ + .. + xK₀) / K, (x1₁ + x2₁ + .. + xK₁) / K,… ]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pdseriesex.PdSeriesEx.concat_along_rows">
+<em class="property">static </em><code class="descname">concat_along_rows</code><span class="sig-paren">(</span><em>series</em>, <em>levels=None</em>, <em>name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdseriesex.PdSeriesEx.concat_along_rows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a dataframe combining all the given series</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>series</strong> – List of series</li>
+<li><strong>levels</strong> – </li>
+<li><strong>name</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A single dataframe containing all the given columns</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pdseriesex.PdSeriesEx.exp_moving_avg">
+<em class="property">static </em><code class="descname">exp_moving_avg</code><span class="sig-paren">(</span><em>series</em>, <em>halflife</em>, <em>min_periods</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdseriesex.PdSeriesEx.exp_moving_avg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the Exponential Weighted Moving Average for each instance (x) using the following weights (w):
+wᵢ := (exp(log(0.5) / halflife))ⁱ
+exp_rolling_avg = (wₜ·xₜ + wₜ₋₁·xₜ₋₁ + …. w₀·x₀) / (wₜ + wₜ₋₁ + … + w₀)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>series</strong> – data</li>
+<li><strong>halflife</strong> – The period of time for the exponential weight to reduce to one half</li>
+<li><strong>min_periods</strong> – The minimum number of non-missing values in the window required (NaN returned otherwise)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A single series where each instance is the Exponential Weighted Moving Average of the series up to
+and including that instance</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pdseriesex.PdSeriesEx.gen_fore_diffs">
+<em class="property">static </em><code class="descname">gen_fore_diffs</code><span class="sig-paren">(</span><em>series</em>, <em>fore</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdseriesex.PdSeriesEx.gen_fore_diffs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a dataframe of where each column corresponds to the difference of an offset series with the given series</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>series</strong> – A 1-dimensional pandas series [x₀, x₁, … xₙ]</li>
+<li><strong>fore</strong> – The maximum number of values by which to shift the series</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dataframe with #fore columns where column i is the differnece of the 
+left shift series (lag - i) and the given series</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>if n = 3 and lag = 2
+series = [x₀, x₁, x₂]
+col₀   = [x₂-x₀, NA, NA]
+col₁   = [x₁-x₀, x₂-x₁, NA]
+In general for a given fore = l and a series of length n,
+colₖ = [xₗ-x₀, xₗ₊₁-x₁,…, NA]</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pdseriesex.PdSeriesEx.gen_lag_diffs">
+<em class="property">static </em><code class="descname">gen_lag_diffs</code><span class="sig-paren">(</span><em>series</em>, <em>lag</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdseriesex.PdSeriesEx.gen_lag_diffs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a dataframe of where each column corresponds to the difference of a given series and an offset series=</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>series</strong> – A 1-dimensional pandas series [x₀, x₁, … xₙ]</li>
+<li><strong>lag</strong> – The maximum number of values by which to shift the series</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dataframe with #lag columns where column i is the differnece of the series and 
+a right shift of size (lag - i) of the given series:</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>if n = 3 and lag = 2
+series = [x₀, x₁, x₂]
+col₀ = [NA, NA, x₂-x₀]
+col₁ = [NA, x₁-x₀, x₂-x₁]
+In general for a given lag = l and a series of length n,
+colₖ = [NA, NA,…, xₖ-x₀, …, xₖ-xₙ₋ₗ₋₁₊ₖ]</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pdseriesex.PdSeriesEx.gen_lags">
+<em class="property">static </em><code class="descname">gen_lags</code><span class="sig-paren">(</span><em>series</em>, <em>lag</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdseriesex.PdSeriesEx.gen_lags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a dataframe of where each column corresponds to an offset series of the given series</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>series</strong> – A 1-dimensional pandas series [x₀, x₁, … xₙ]</li>
+<li><strong>lag</strong> – The maximum number of values by which to shift the series</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dataframe with #lag columns where column i is a right shift of size (lag - i) of the given series:</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>if n = 3 and lag = 2
+series = [x₀, x₁, x₂]
+col₀ = [NA, NA, x₀]
+col₁ = [NA, x₀, x₁]
+In general for a given lag = l and a series of length n,
+colₖ = [NA, NA,…, x₀, …, xₙ₋ₗ₋₁₊ₖ]</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pdseriesex.PdSeriesEx.gen_leads">
+<em class="property">static </em><code class="descname">gen_leads</code><span class="sig-paren">(</span><em>series</em>, <em>lead</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdseriesex.PdSeriesEx.gen_leads" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pdseriesex.PdSeriesEx.gen_log_series">
+<em class="property">static </em><code class="descname">gen_log_series</code><span class="sig-paren">(</span><em>series</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdseriesex.PdSeriesEx.gen_log_series" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a series by taking the log of each instance in the given series.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>series</strong> – A 1-dimensional pandas series [x₀, x₁, … xₙ]</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A series the log values of the given series [log(x₀), log(x₁), …, log(xₙ)]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pdseriesex.PdSeriesEx.gen_scaled_series">
+<em class="property">static </em><code class="descname">gen_scaled_series</code><span class="sig-paren">(</span><em>series</em>, <em>scales</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdseriesex.PdSeriesEx.gen_scaled_series" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a series by multiplying a given series by a corresponding series of scale values</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>series</strong> – A 1-dimensional pandas series [x₀, x₁, … xₙ]</li>
+<li><strong>scales</strong> – A 1-dimensional pandas series [s₀, s₁, … sₙ]</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The pairwise product of the two series [x₀s₀, x₁s₁, …, xₙsₙ]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pdseriesex.PdSeriesEx.get_nan_inf_indicator">
+<em class="property">static </em><code class="descname">get_nan_inf_indicator</code><span class="sig-paren">(</span><em>series</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdseriesex.PdSeriesEx.get_nan_inf_indicator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pdseriesex.PdSeriesEx.root_meansqr">
+<em class="property">static </em><code class="descname">root_meansqr</code><span class="sig-paren">(</span><em>series</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdseriesex.PdSeriesEx.root_meansqr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.pdseriesex.PdSeriesEx.sum_across_series">
+<em class="property">static </em><code class="descname">sum_across_series</code><span class="sig-paren">(</span><em>series_collection</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.pdseriesex.PdSeriesEx.sum_across_series" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a series by taking the average across the given set of series</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>series_collection</strong> – A list of 1-dimensional pandas series 
+[[x1₀, x1₁, … x1ₙ], [x2₀, x2₁, … x2ₙ], … [xK₀, xK₁, … xKₙ]]</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The elementwise sum of the the series [(x1₀ + x2₀ + .. + xK₀), (x1₁ + x2₁ + .. + xK₁),… ]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-msecoreml.sample_splitting">
+<span id="msecoreml-sample-splitting-module"></span><h2>msecoreml.sample_splitting module<a class="headerlink" href="#module-msecoreml.sample_splitting" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="msecoreml.sample_splitting.SampleSplitting">
+<em class="property">class </em><code class="descclassname">msecoreml.sample_splitting.</code><code class="descname">SampleSplitting</code><a class="headerlink" href="#msecoreml.sample_splitting.SampleSplitting" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Classes for dealing with fold info</p>
+<dl class="staticmethod">
+<dt id="msecoreml.sample_splitting.SampleSplitting.filter_folds">
+<em class="property">static </em><code class="descname">filter_folds</code><span class="sig-paren">(</span><em>row_selector</em>, <em>folds=None</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.sample_splitting.SampleSplitting.filter_folds" title="Permalink to this definition">¶</a></dt>
+<dd><p>:param row_selector:1/0 array
+:param folds:folds</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="msecoreml.sample_splitting.SampleSplitting.filter_index_list">
+<em class="property">static </em><code class="descname">filter_index_list</code><span class="sig-paren">(</span><em>row_selector_bool</em>, <em>index_list</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.sample_splitting.SampleSplitting.filter_index_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="msecoreml.sample_splitting.SingleFoldFullOverlap">
+<em class="property">class </em><code class="descclassname">msecoreml.sample_splitting.</code><code class="descname">SingleFoldFullOverlap</code><a class="headerlink" href="#msecoreml.sample_splitting.SingleFoldFullOverlap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Looks like a KFold-type object, but returns a single fold with all (non-label) indexes in both train, test
+Used for NO_SPLIT option in <a class="reference internal" href="../pricingengine/pricingengine.estimation.html#pricingengine.estimation.double_ml.DoubleML" title="pricingengine.estimation.double_ml.DoubleML"><code class="xref py py-class docutils literal"><span class="pre">DoubleML</span></code></a> or 
+<a class="reference internal" href="../pricingengine/pricingengine.estimation.html#pricingengine.estimation.dynamic_dml.DynamicDML" title="pricingengine.estimation.dynamic_dml.DynamicDML"><code class="xref py py-class docutils literal"><span class="pre">DynamicDML</span></code></a></p>
+<dl class="method">
+<dt id="msecoreml.sample_splitting.SingleFoldFullOverlap.get_n_splits">
+<code class="descname">get_n_splits</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.sample_splitting.SingleFoldFullOverlap.get_n_splits" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="msecoreml.sample_splitting.SingleFoldFullOverlap.n_splits">
+<code class="descname">n_splits</code><a class="headerlink" href="#msecoreml.sample_splitting.SingleFoldFullOverlap.n_splits" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="msecoreml.sample_splitting.SingleFoldFullOverlap.split">
+<code class="descname">split</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em><span class="sig-paren">)</span><a class="headerlink" href="#msecoreml.sample_splitting.SingleFoldFullOverlap.split" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-msecoreml">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-msecoreml" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">Pricing Engine</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../classes.html">Class Hierarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pricingengine/pricingengine.html">pricingengine package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../msecore/msecore.html">msecore package</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">msecoreml package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-msecoreml.pddataframeex">msecoreml.pddataframeex module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-msecoreml.pdgroupbyex">msecoreml.pdgroupbyex module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-msecoreml.pdmultiindexex">msecoreml.pdmultiindexex module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-msecoreml.pdonehotencoder">msecoreml.pdonehotencoder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-msecoreml.pdseriesex">msecoreml.pdseriesex module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-msecoreml.sample_splitting">msecoreml.sample_splitting module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-msecoreml">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../history.html">Project History</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../msecore/msecore.html" title="previous chapter">msecore package</a></li>
+      <li>Next: <a href="../../../faq.html" title="next chapter">FAQ</a></li>
+  </ul></li>
+</ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Matt Goldman, Brian Quistorff.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,575 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>pricingengine package &#8212; Pricing Engine 2.2.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="pricingengine.estimation package" href="pricingengine.estimation.html" />
+    <link rel="prev" title="Class Hierarchy" href="../../../classes.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="pricingengine-package">
+<h1>pricingengine package<a class="headerlink" href="#pricingengine-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pricingengine.estimation.html">pricingengine.estimation package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.estimation.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.estimation.html#module-pricingengine.estimation.double_ml">pricingengine.estimation.double_ml module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.estimation.html#module-pricingengine.estimation.dynamic_dml">pricingengine.estimation.dynamic_dml module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.estimation.html#module-pricingengine.estimation.estimation_dataset">pricingengine.estimation.estimation_dataset module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.estimation.html#module-pricingengine.estimation.regression">pricingengine.estimation.regression module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.estimation.html#module-pricingengine.estimation.typed_dataset">pricingengine.estimation.typed_dataset module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.estimation.html#module-pricingengine.estimation">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pricingengine.featurizers.html">pricingengine.featurizers package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.featurizers.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.featurizers.html#module-pricingengine.featurizers.default_dynamic_featurizer">pricingengine.featurizers.default_dynamic_featurizer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.featurizers.html#module-pricingengine.featurizers.default_panel_featurizer">pricingengine.featurizers.default_panel_featurizer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.featurizers.html#module-pricingengine.featurizers">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pricingengine.models.html">pricingengine.models package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.models.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.models.html#module-pricingengine.models.boosting">pricingengine.models.boosting module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.models.html#module-pricingengine.models.causalmodel">pricingengine.models.causalmodel module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.models.html#module-pricingengine.models.debiased_lasso">pricingengine.models.debiased_lasso module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.models.html#module-pricingengine.models.ensemble">pricingengine.models.ensemble module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.models.html#module-pricingengine.models.fast_debiased_lasso">pricingengine.models.fast_debiased_lasso module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.models.html#module-pricingengine.models.lasso">pricingengine.models.lasso module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.models.html#module-pricingengine.models.linearmodel">pricingengine.models.linearmodel module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.models.html#module-pricingengine.models.model">pricingengine.models.model module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.models.html#module-pricingengine.models.multitask_ols">pricingengine.models.multitask_ols module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.models.html#module-pricingengine.models.neural_net">pricingengine.models.neural_net module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.models.html#module-pricingengine.models.ols">pricingengine.models.ols module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.models.html#module-pricingengine.models.post_lasso">pricingengine.models.post_lasso module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.models.html#module-pricingengine.models.prepredicted">pricingengine.models.prepredicted module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.models.html#module-pricingengine.models.randomforest">pricingengine.models.randomforest module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.models.html#module-pricingengine.models.ridge">pricingengine.models.ridge module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.models.html#module-pricingengine.models.zero">pricingengine.models.zero module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.models.html#module-pricingengine.models">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pricingengine.utilities.html">pricingengine.utilities package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.utilities.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.utilities.html#module-pricingengine.utilities.ddml_marginal_effects">pricingengine.utilities.ddml_marginal_effects module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.utilities.html#module-pricingengine.utilities.predictions">pricingengine.utilities.predictions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.utilities.html#module-pricingengine.utilities">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pricingengine.variables.html">pricingengine.variables package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.variables.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.variables.html#module-pricingengine.variables.const_var">pricingengine.variables.const_var module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.variables.html#module-pricingengine.variables.own_past_agg_var">pricingengine.variables.own_past_agg_var module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.variables.html#module-pricingengine.variables.own_var">pricingengine.variables.own_var module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.variables.html#module-pricingengine.variables.p_to_p_var">pricingengine.variables.p_to_p_var module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.variables.html#module-pricingengine.variables.peer_agg_var">pricingengine.variables.peer_agg_var module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.variables.html#module-pricingengine.variables.var_builder">pricingengine.variables.var_builder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.variables.html#module-pricingengine.variables">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-pricingengine.dataset">
+<span id="pricingengine-dataset-module"></span><h2>pricingengine.dataset module<a class="headerlink" href="#module-pricingengine.dataset" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pricingengine.dataset.DataSet">
+<em class="property">class </em><code class="descclassname">pricingengine.dataset.</code><code class="descname">DataSet</code><span class="sig-paren">(</span><em>data</em>, <em>schema</em>, <em>index_colnames</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.dataset.DataSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>The DataSet class combines un-schematized data with a schema that specifies column meta-data</p>
+<dl class="method">
+<dt id="pricingengine.dataset.DataSet.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>data</em>, <em>schema</em>, <em>index_colnames</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.dataset.DataSet.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes a new instance of the DataSet class.</p>
+<p>The given data-schema pair needs to adhere to the following expectations:</p>
+<ul class="simple">
+<li>Each column defined in the given schema must be contained in the corresponding given data</li>
+<li>Each column must have a data type corresponding to its schema DataType as follows:<ul>
+<li>DataType.NUMERIC: integer or floating-point</li>
+<li>DataType.DATE_TIME: datetime</li>
+<li>DataType.CATEGORICAL: string or integer</li>
+</ul>
+</li>
+<li>The dataset owns the indexing for its dataframe (existing row indexes on the dataframe will be removed)</li>
+<li>The dataset does not mutate the input data (it makes its own copy)</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>data</strong> – The time series data to be used for computing effects</li>
+<li><strong>schema</strong> – The schema specifying the meta-data for the time series</li>
+<li><strong>index_colnames</strong> – A list of column names to be used to construct panels from the given data</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.dataset.DataSet.data">
+<code class="descname">data</code><a class="headerlink" href="#pricingengine.dataset.DataSet.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>The time series data underlying this dataset. 
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.dataset.DataSet.fit_encoders">
+<code class="descname">fit_encoders</code><span class="sig-paren">(</span><em>enc_dict</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.dataset.DataSet.fit_encoders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fits the encoders in a dictionary generated by gen_encoders()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.dataset.DataSet.gen_encoders">
+<code class="descname">gen_encoders</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.dataset.DataSet.gen_encoders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionary colname:encoder for all CATEGORICAL cols plus the time col</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.dataset.DataSet.get_all_cols_by_coltype">
+<code class="descname">get_all_cols_by_coltype</code><span class="sig-paren">(</span><em>col_type</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.dataset.DataSet.get_all_cols_by_coltype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all columns fron the dataset with the specified id</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.dataset.DataSet.get_col_by_coltype">
+<code class="descname">get_col_by_coltype</code><span class="sig-paren">(</span><em>col_type</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.dataset.DataSet.get_col_by_coltype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the column fron the dataset with the specified id</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.dataset.DataSet.get_col_by_name">
+<code class="descname">get_col_by_name</code><span class="sig-paren">(</span><em>col_name</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.dataset.DataSet.get_col_by_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the column fron the dataset with the specified name</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.dataset.DataSet.num_cols">
+<code class="descname">num_cols</code><a class="headerlink" href="#pricingengine.dataset.DataSet.num_cols" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of columns in the underlying data</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.dataset.DataSet.num_rows">
+<code class="descname">num_rows</code><a class="headerlink" href="#pricingengine.dataset.DataSet.num_rows" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of rows in the underlying data</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.dataset.DataSet.schema">
+<code class="descname">schema</code><a class="headerlink" href="#pricingengine.dataset.DataSet.schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>The user-defined schema for this dataset</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pricingengine.schema">
+<span id="pricingengine-schema-module"></span><h2>pricingengine.schema module<a class="headerlink" href="#module-pricingengine.schema" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pricingengine.schema.ColDef">
+<em class="property">class </em><code class="descclassname">pricingengine.schema.</code><code class="descname">ColDef</code><span class="sig-paren">(</span><em>col_name</em>, <em>data_type</em>, <em>col_type=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.schema.ColDef" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Class used to define name and type of each column of data. Will typically reside in a Schema object</p>
+<dl class="method">
+<dt id="pricingengine.schema.ColDef.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>col_name</em>, <em>data_type</em>, <em>col_type=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.schema.ColDef.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>col_name</strong> (<em>str</em>) – Name of the column</li>
+<li><strong>data_type</strong> (<a class="reference internal" href="#pricingengine.schema.DataType" title="pricingengine.schema.DataType"><em>DataType</em></a>) – Type of the column</li>
+<li><strong>col_tag</strong> (<a class="reference internal" href="pricingengine.estimation.html#pricingengine.estimation.typed_dataset.ColType" title="pricingengine.estimation.typed_dataset.ColType"><em>ColType</em></a>) – Additional meta data specifying the feature category of the column</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.schema.ColDef.col_name">
+<code class="descname">col_name</code><a class="headerlink" href="#pricingengine.schema.ColDef.col_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of this column</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The name of this column</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.schema.ColDef.col_type">
+<code class="descname">col_type</code><a class="headerlink" href="#pricingengine.schema.ColDef.col_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>The type for this column</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The id for this column</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="pricingengine.estimation.html#pricingengine.estimation.typed_dataset.ColType" title="pricingengine.estimation.typed_dataset.ColType">ColType</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.schema.ColDef.data_type">
+<code class="descname">data_type</code><a class="headerlink" href="#pricingengine.schema.ColDef.data_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>The datatype of this column</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The type of this column</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#pricingengine.schema.DataType" title="pricingengine.schema.DataType">DataType</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pricingengine.schema.DataType">
+<em class="property">class </em><code class="descclassname">pricingengine.schema.</code><code class="descname">DataType</code><a class="headerlink" href="#pricingengine.schema.DataType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">enum.Enum</span></code></p>
+<p>Machine-learning category of column type (i.e., to handle cases where a column of ints may actually
+represent categorical data)</p>
+<dl class="attribute">
+<dt id="pricingengine.schema.DataType.CATEGORICAL">
+<code class="descname">CATEGORICAL</code><em class="property"> = 3</em><a class="headerlink" href="#pricingengine.schema.DataType.CATEGORICAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.schema.DataType.DATE_TIME">
+<code class="descname">DATE_TIME</code><em class="property"> = 4</em><a class="headerlink" href="#pricingengine.schema.DataType.DATE_TIME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.schema.DataType.NUMERIC">
+<code class="descname">NUMERIC</code><em class="property"> = 2</em><a class="headerlink" href="#pricingengine.schema.DataType.NUMERIC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="pricingengine.schema.DataType.is_supported_dtype">
+<em class="property">static </em><code class="descname">is_supported_dtype</code><span class="sig-paren">(</span><em>data_type</em>, <em>dtype</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.schema.DataType.is_supported_dtype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if the specifed data type is supported for the given DataType</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>data_type</strong> (<a class="reference internal" href="#pricingengine.schema.DataType" title="pricingengine.schema.DataType"><em>DataType</em></a>) – The type of the column</li>
+<li><strong>dtype</strong> (<em>dtype</em>) – The underlying data type of values contained in the column</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pricingengine.schema.DataType.verify_is_supported_dtype">
+<em class="property">static </em><code class="descname">verify_is_supported_dtype</code><span class="sig-paren">(</span><em>data_type</em>, <em>dtype</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.schema.DataType.verify_is_supported_dtype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if dtype is supported for data_type</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pricingengine.schema.Schema">
+<em class="property">class </em><code class="descclassname">pricingengine.schema.</code><code class="descname">Schema</code><span class="sig-paren">(</span><em>col_defs</em>, <em>time_colname=None</em>, <em>panel_colnames=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.schema.Schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Specifies the column information for a corresponding data set</p>
+<p>The schema must adhere to the following expectations:</p>
+<ul class="simple">
+<li>Each column id can be applied to only a single column</li>
+<li>Each column name can only be applied to a single column</li>
+</ul>
+<dl class="method">
+<dt id="pricingengine.schema.Schema.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>col_defs</em>, <em>time_colname=None</em>, <em>panel_colnames=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.schema.Schema.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Created a new instance of a Schema</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>col_defs</strong> (<em>list</em>) – A list of column ColDef objects specifying the columns in a time series</li>
+<li><strong>time_colname</strong> (<em>str</em>) – Col name that corresponds to the time variable</li>
+<li><strong>panel_col_names</strong> (<em>list</em>) – Column names which divide the data into time series, or None if
+the data contains only a single time series.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.schema.Schema.get_col_defs">
+<code class="descname">get_col_defs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.schema.Schema.get_col_defs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of column definitions</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of the column definitions for this schema</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.schema.Schema.get_col_names">
+<code class="descname">get_col_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.schema.Schema.get_col_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a list of the names of all columns specified in the schema</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of column names</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.schema.Schema.get_col_types">
+<code class="descname">get_col_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.schema.Schema.get_col_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a list of all the ColTypes defined in the schema</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of the ColTypes defined in the schmea</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.schema.Schema.get_coldef_bycoltype">
+<code class="descname">get_coldef_bycoltype</code><span class="sig-paren">(</span><em>col_type</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.schema.Schema.get_coldef_bycoltype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the definition of the column with the specified id or None if there is no such column</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>col_type</strong> – the ColType for which to find the column</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The name of the column with the specified id</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.schema.Schema.get_coldef_byname">
+<code class="descname">get_coldef_byname</code><span class="sig-paren">(</span><em>col_name</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.schema.Schema.get_coldef_byname" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the definition of the column with the specified name or None if there is no such column</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>col_name</strong> – the column name for which to find the column</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The column with the specified name</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.schema.Schema.get_colname_bycoltype">
+<code class="descname">get_colname_bycoltype</code><span class="sig-paren">(</span><em>col_type</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.schema.Schema.get_colname_bycoltype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the name of the column with the specified id or None if there is no such column</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>col_type</strong> – the ColType for which to find the column</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The name of the column with the specified id</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.schema.Schema.get_colnames_bycoltype">
+<code class="descname">get_colnames_bycoltype</code><span class="sig-paren">(</span><em>col_type</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.schema.Schema.get_colnames_bycoltype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of column names, or an empty list, of the column of the specified type</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>col_type</strong> – the ColType for which to find columns</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of column names for columns of the specified data type</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.schema.Schema.get_colnames_bydatatype">
+<code class="descname">get_colnames_bydatatype</code><span class="sig-paren">(</span><em>data_type</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.schema.Schema.get_colnames_bydatatype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of column names, or an empty list, of the column of the specified type</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data_type</strong> – the DataType for which to find columns</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of column names for columns of the specified data type</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.schema.Schema.get_panel_col_names">
+<code class="descname">get_panel_col_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.schema.Schema.get_panel_col_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of index columns, or an empty list if the time series corresponds to a single panel</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of the names of the columns that are index columns</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.schema.Schema.get_time_col_name">
+<code class="descname">get_time_col_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.schema.Schema.get_time_col_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get col_name corresponding to TIME var</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pricingengine">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pricingengine" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">Pricing Engine</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../classes.html">Class Hierarchy</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">pricingengine package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pricingengine.dataset">pricingengine.dataset module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pricingengine.schema">pricingengine.schema module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pricingengine">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../msecore/msecore.html">msecore package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../msecoreml/msecoreml.html">msecoreml package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../history.html">Project History</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../../../classes.html" title="previous chapter">Class Hierarchy</a></li>
+      <li>Next: <a href="pricingengine.estimation.html" title="next chapter">pricingengine.estimation package</a></li>
+  </ul></li>
+</ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Matt Goldman, Brian Quistorff.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

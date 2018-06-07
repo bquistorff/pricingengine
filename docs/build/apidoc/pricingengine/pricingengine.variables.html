@@ -1,0 +1,511 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>pricingengine.variables package &#8212; Pricing Engine 2.2.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="msecore package" href="../msecore/msecore.html" />
+    <link rel="prev" title="pricingengine.utilities package" href="pricingengine.utilities.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="pricingengine-variables-package">
+<h1>pricingengine.variables package<a class="headerlink" href="#pricingengine-variables-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-pricingengine.variables.const_var">
+<span id="pricingengine-variables-const-var-module"></span><h2>pricingengine.variables.const_var module<a class="headerlink" href="#module-pricingengine.variables.const_var" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pricingengine.variables.const_var.ConstVar">
+<em class="property">class </em><code class="descclassname">pricingengine.variables.const_var.</code><code class="descname">ConstVar</code><span class="sig-paren">(</span><em>interaction_levels=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.variables.const_var.ConstVar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.variables.var_builder.VarBuilder" title="pricingengine.variables.var_builder.VarBuilder"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.variables.var_builder.VarBuilder</span></code></a></p>
+<p>Measure impact of a unit’s own treatment value</p>
+<dl class="method">
+<dt id="pricingengine.variables.const_var.ConstVar.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>interaction_levels=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.variables.const_var.ConstVar.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a ConstVar class which can be used to create a constant variable and corresponding
+interactions</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>interaction_levels</strong> – List of column names (CATEGORICAL OR NUMERIC) used to interact
+with the core_variable</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pricingengine.variables.own_past_agg_var">
+<span id="pricingengine-variables-own-past-agg-var-module"></span><h2>pricingengine.variables.own_past_agg_var module<a class="headerlink" href="#module-pricingengine.variables.own_past_agg_var" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pricingengine.variables.own_past_agg_var.OwnPastAggVar">
+<em class="property">class </em><code class="descclassname">pricingengine.variables.own_past_agg_var.</code><code class="descname">OwnPastAggVar</code><span class="sig-paren">(</span><em>treatment_column</em>, <em>geometric_weight</em>, <em>min_lag=None</em>, <em>max_lag=None</em>, <em>min_seasonal_diff=None</em>, <em>max_seasonal_diff=None</em>, <em>interaction_levels=None</em>, <em>unpenalize_core_treatment=False</em>, <em>scale_core=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.variables.own_past_agg_var.OwnPastAggVar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.variables.var_builder.VarBuilder" title="pricingengine.variables.var_builder.VarBuilder"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.variables.var_builder.VarBuilder</span></code></a></p>
+<p>Measure treatment impacts of a unit’s own treatment aggregated across multiple time periods useing geometric decay</p>
+<dl class="method">
+<dt id="pricingengine.variables.own_past_agg_var.OwnPastAggVar.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>treatment_column</em>, <em>geometric_weight</em>, <em>min_lag=None</em>, <em>max_lag=None</em>, <em>min_seasonal_diff=None</em>, <em>max_seasonal_diff=None</em>, <em>interaction_levels=None</em>, <em>unpenalize_core_treatment=False</em>, <em>scale_core=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.variables.own_past_agg_var.OwnPastAggVar.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize a new FeatureBuilder for datasets with the specified schema</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>treatment_column</strong> – The residualized treatment that will be used for treatment generation</li>
+<li><strong>geometric_weight</strong> – multiplicative decay applied to periods with progressively greater lag</li>
+<li><strong>min_lag</strong> – The smallest lag to use in generating the treatment</li>
+<li><strong>max_lag</strong> – The largest lag to use in generating the treatment</li>
+<li><strong>interaction_levels</strong> – List of lists. Each sub-list is a list of columns that will be 
+collectively interacted. If a sub-list is of length 2, this correspodns to a second-order interaction.</li>
+<li><strong>unpenalize_core_treatment</strong> – Boolean value. If true, the core_treatment feature will not be penalized by 
+any ML methods used for treatment effect estimation</li>
+<li><strong>scale_core</strong> (<em>Bool</em>) – Scale core feature to be normalized with variance 1 before creating interactions.
+If false, do not scale.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.variables.own_past_agg_var.OwnPastAggVar.expand_coeff">
+<code class="descname">expand_coeff</code><span class="sig-paren">(</span><em>coeff</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.variables.own_past_agg_var.OwnPastAggVar.expand_coeff" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pricingengine.variables.own_var">
+<span id="pricingengine-variables-own-var-module"></span><h2>pricingengine.variables.own_var module<a class="headerlink" href="#module-pricingengine.variables.own_var" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pricingengine.variables.own_var.OwnVar">
+<em class="property">class </em><code class="descclassname">pricingengine.variables.own_var.</code><code class="descname">OwnVar</code><span class="sig-paren">(</span><em>treatment_column</em>, <em>lag=0</em>, <em>seasonal_diff=0</em>, <em>interaction_levels=None</em>, <em>unpenalize_core_treatment=False</em>, <em>scale_core=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.variables.own_var.OwnVar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.variables.var_builder.VarBuilder" title="pricingengine.variables.var_builder.VarBuilder"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.variables.var_builder.VarBuilder</span></code></a></p>
+<p>Measure impact of a unit’s own treatment value</p>
+<dl class="method">
+<dt id="pricingengine.variables.own_var.OwnVar.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>treatment_column</em>, <em>lag=0</em>, <em>seasonal_diff=0</em>, <em>interaction_levels=None</em>, <em>unpenalize_core_treatment=False</em>, <em>scale_core=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.variables.own_var.OwnVar.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>lag</strong> – 0 spcified contemporaneous treatment, positive values lagged treatments, negative values future
+treatments</li>
+<li><strong>lag</strong> – lag of variable to use</li>
+<li><strong>seasonal_difference</strong> – seasonal_difference to use in constructing variable. 
+If zero, do not use a seasonal difference.</li>
+<li><strong>interaction_levels</strong> – List of lists. Each sub-list is a list of columns that will be 
+collectively interacted. If a sub-list is of length 2, this correspodns to a second-order interaction.</li>
+<li><strong>unpenalize_core_treatment</strong> – Boolean value. If true, the core_treatment feature will not be penalized by 
+any ML methods used for treatment effect estimation</li>
+<li><strong>scale_core</strong> (<em>Bool</em>) – Scale core feature to be normalized with variance 1 before creating interactions. 
+If false, do not scale.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.variables.own_var.OwnVar.lag_feature_from_outcome">
+<code class="descname">lag_feature_from_outcome</code><a class="headerlink" href="#pricingengine.variables.own_var.OwnVar.lag_feature_from_outcome" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pricingengine.variables.p_to_p_var">
+<span id="pricingengine-variables-p-to-p-var-module"></span><h2>pricingengine.variables.p_to_p_var module<a class="headerlink" href="#module-pricingengine.variables.p_to_p_var" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pricingengine.variables.p_to_p_var.PToPVar">
+<em class="property">class </em><code class="descclassname">pricingengine.variables.p_to_p_var.</code><code class="descname">PToPVar</code><span class="sig-paren">(</span><em>treatment_column</em>, <em>competition_var</em>, <em>impact_dict</em>, <em>lag=0</em>, <em>seasonal_diff=0</em>, <em>interaction_levels=None</em>, <em>unpenalize_core_treatment=False</em>, <em>scale_core=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.variables.p_to_p_var.PToPVar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.variables.var_builder.VarBuilder" title="pricingengine.variables.var_builder.VarBuilder"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.variables.var_builder.VarBuilder</span></code></a></p>
+<p>Class used to measure impact of the treatment value assigned to a particular peer for a particular self</p>
+<dl class="attribute">
+<dt id="pricingengine.variables.p_to_p_var.PToPVar.TOSTRING">
+<code class="descname">TOSTRING</code><em class="property"> = '_to_'</em><a class="headerlink" href="#pricingengine.variables.p_to_p_var.PToPVar.TOSTRING" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.variables.p_to_p_var.PToPVar.TREATMENT">
+<code class="descname">TREATMENT</code><em class="property"> = 'treatment'</em><a class="headerlink" href="#pricingengine.variables.p_to_p_var.PToPVar.TREATMENT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.variables.p_to_p_var.PToPVar.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>treatment_column</em>, <em>competition_var</em>, <em>impact_dict</em>, <em>lag=0</em>, <em>seasonal_diff=0</em>, <em>interaction_levels=None</em>, <em>unpenalize_core_treatment=False</em>, <em>scale_core=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.variables.p_to_p_var.PToPVar.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize a new FeatureBuilder for datasets with the specified schema</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>treatment_column</strong> – Name of treatment variable to be used.</li>
+<li><strong>competition_var</strong> – A panel variable (usually item) along the dimension of which a 
+cross-instance competition is allowed</li>
+<li><strong>impact_dict</strong> – Dictionary of impactor to impacted pairs where both the impactor and impacted are 
+values of the competition_var</li>
+<li><strong>lag</strong> – lag of variable to use</li>
+<li><strong>seasonal_difference</strong> – seasonal_difference to use in constructing variable. 
+If zero, do not use a seasonal difference.</li>
+<li><strong>interaction_levels</strong> – List of lists. Each sub-list is a list of columns that will be 
+collectively interacted. If a sub-list is of length 2, this correspodns to a second-order interaction.</li>
+<li><strong>unpenalize_core_treatment</strong> – Boolean value. If true, the core_treatment feature will not be penalized by 
+any ML methods used for treatment effect estimation</li>
+<li><strong>scale_core</strong> (<em>Bool</em>) – Scale core feature to be normalized with variance 1 before creating interactions.
+If false, do not scale.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.variables.p_to_p_var.PToPVar.lag_feature_from_outcome">
+<code class="descname">lag_feature_from_outcome</code><a class="headerlink" href="#pricingengine.variables.p_to_p_var.PToPVar.lag_feature_from_outcome" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pricingengine.variables.peer_agg_var">
+<span id="pricingengine-variables-peer-agg-var-module"></span><h2>pricingengine.variables.peer_agg_var module<a class="headerlink" href="#module-pricingengine.variables.peer_agg_var" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pricingengine.variables.peer_agg_var.PeerAggVar">
+<em class="property">class </em><code class="descclassname">pricingengine.variables.peer_agg_var.</code><code class="descname">PeerAggVar</code><span class="sig-paren">(</span><em>treatment_column</em>, <em>competition_var</em>, <em>hierarchy_col=None</em>, <em>lag=0</em>, <em>seasonal_diff=0</em>, <em>aux_col_name=None</em>, <em>bandwidth=None</em>, <em>kernel=None</em>, <em>interaction_levels=None</em>, <em>unpenalize_core_treatment=False</em>, <em>store_weights=True</em>, <em>weighting_column=None</em>, <em>scale_core=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.variables.peer_agg_var.PeerAggVar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.variables.var_builder.VarBuilder" title="pricingengine.variables.var_builder.VarBuilder"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.variables.var_builder.VarBuilder</span></code></a></p>
+<p>Class used to measure weighted average impact of the treatment value assigned to one’s peers</p>
+<dl class="attribute">
+<dt id="pricingengine.variables.peer_agg_var.PeerAggVar.HIERARCHY">
+<code class="descname">HIERARCHY</code><em class="property"> = 'hier'</em><a class="headerlink" href="#pricingengine.variables.peer_agg_var.PeerAggVar.HIERARCHY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.variables.peer_agg_var.PeerAggVar.INSTANCE_PTREATMENT">
+<code class="descname">INSTANCE_PTREATMENT</code><em class="property"> = 'p_treat'</em><a class="headerlink" href="#pricingengine.variables.peer_agg_var.PeerAggVar.INSTANCE_PTREATMENT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.variables.peer_agg_var.PeerAggVar.INSTANCE_PTREATMENTxREV_WEIGHT">
+<code class="descname">INSTANCE_PTREATMENTxREV_WEIGHT</code><em class="property"> = 'p_treat * rev weight'</em><a class="headerlink" href="#pricingengine.variables.peer_agg_var.PeerAggVar.INSTANCE_PTREATMENTxREV_WEIGHT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.variables.peer_agg_var.PeerAggVar.INSTANCE_REVENUE">
+<code class="descname">INSTANCE_REVENUE</code><em class="property"> = 'rev'</em><a class="headerlink" href="#pricingengine.variables.peer_agg_var.PeerAggVar.INSTANCE_REVENUE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.variables.peer_agg_var.PeerAggVar.INSTANCE_REV_WEIGHT">
+<code class="descname">INSTANCE_REV_WEIGHT</code><em class="property"> = 'rev weight'</em><a class="headerlink" href="#pricingengine.variables.peer_agg_var.PeerAggVar.INSTANCE_REV_WEIGHT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.variables.peer_agg_var.PeerAggVar.N_TO_1_REV_AUX_WEIGHTED">
+<code class="descname">N_TO_1_REV_AUX_WEIGHTED</code><em class="property"> = 'Nto1 Revenue*Aux Weighted'</em><a class="headerlink" href="#pricingengine.variables.peer_agg_var.PeerAggVar.N_TO_1_REV_AUX_WEIGHTED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.variables.peer_agg_var.PeerAggVar.N_TO_1_REV_WEIGHTED">
+<code class="descname">N_TO_1_REV_WEIGHTED</code><em class="property"> = 'Nto1 Revenue Weighted'</em><a class="headerlink" href="#pricingengine.variables.peer_agg_var.PeerAggVar.N_TO_1_REV_WEIGHTED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.variables.peer_agg_var.PeerAggVar.N_TO_1_UNWEIGHTED">
+<code class="descname">N_TO_1_UNWEIGHTED</code><em class="property"> = 'Nto1 Unweighted'</em><a class="headerlink" href="#pricingengine.variables.peer_agg_var.PeerAggVar.N_TO_1_UNWEIGHTED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.variables.peer_agg_var.PeerAggVar.WINDOW_SIZE">
+<code class="descname">WINDOW_SIZE</code><em class="property"> = 2</em><a class="headerlink" href="#pricingengine.variables.peer_agg_var.PeerAggVar.WINDOW_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.variables.peer_agg_var.PeerAggVar.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>treatment_column</em>, <em>competition_var</em>, <em>hierarchy_col=None</em>, <em>lag=0</em>, <em>seasonal_diff=0</em>, <em>aux_col_name=None</em>, <em>bandwidth=None</em>, <em>kernel=None</em>, <em>interaction_levels=None</em>, <em>unpenalize_core_treatment=False</em>, <em>store_weights=True</em>, <em>weighting_column=None</em>, <em>scale_core=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.variables.peer_agg_var.PeerAggVar.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize a new FeatureBuilder for datasets with the specified schema</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>core_treatment</strong> – Name of treatment variable to be used.</li>
+<li><strong>competition_var</strong> – A panel variable (usually item) along the dimension of which a cross-instance 
+competition (or alternatively spill-over effects) is allowed</li>
+<li><strong>hierarchy_var</strong> – A categorical variable that groups products and defines the structure of competition. 
+If omitted all instances with the same conditioning variables will be allowed to compete.</li>
+<li><strong>aux_col_name</strong> – Name of a numerical column which is used to “weight” cross product effects. 
+I.E. Products closer to each other in this column are presumed to compete/complement more strongly.</li>
+<li><strong>bandwidth</strong> – A positive float used to divide distance in the aux_column before applying the kernel.
+Larger values will allow for more disperese products to compete with each other.</li>
+<li><strong>kernel</strong> – A lambda function that converts distance (in the aux col name) to a weighting. Default is
+a Gaussian PDF.</li>
+<li><strong>interaction_levels</strong> – List of lists. Each sub-list is a list of columns that will be collectively
+interacted. If a sub-list is of length 2, this correspodns to a second-order interaction.</li>
+<li><strong>unpenalize_core_treatment</strong> – Boolean value. If ture, the core_treatment feature will not be penalized by 
+any ML methods used for treatment effect estimation</li>
+<li><strong>store_weights</strong> – If True, stores the needed cross-treatment weights inside this class. 
+This takes up space, but allows the build method to run faster on future computations.</li>
+<li><strong>weighting_column</strong> – Additional column used to weight effects. May desire to use revenue-weighting
+if trying to approximate IIA structure of demand in estiamting cross-price effects.</li>
+<li><strong>scale_core</strong> (<em>Bool</em>) – Scale core feature to be normalized with variance 1 before creating interactions. 
+If false, do not scale.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.variables.peer_agg_var.PeerAggVar.lag_feature_from_outcome">
+<code class="descname">lag_feature_from_outcome</code><a class="headerlink" href="#pricingengine.variables.peer_agg_var.PeerAggVar.lag_feature_from_outcome" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pricingengine.variables.var_builder">
+<span id="pricingengine-variables-var-builder-module"></span><h2>pricingengine.variables.var_builder module<a class="headerlink" href="#module-pricingengine.variables.var_builder" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pricingengine.variables.var_builder.VarBuilder">
+<em class="property">class </em><code class="descclassname">pricingengine.variables.var_builder.</code><code class="descname">VarBuilder</code><span class="sig-paren">(</span><em>treatment_column</em>, <em>interaction_levels=None</em>, <em>unpenalize_core_treatment=False</em>, <em>scale_core=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.variables.var_builder.VarBuilder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Base class used for treatment construction</p>
+<dl class="attribute">
+<dt id="pricingengine.variables.var_builder.VarBuilder.AUX_COL_NAME">
+<code class="descname">AUX_COL_NAME</code><em class="property"> = 'interaction'</em><a class="headerlink" href="#pricingengine.variables.var_builder.VarBuilder.AUX_COL_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.variables.var_builder.VarBuilder.BASELINE_PEN_RATIO">
+<code class="descname">BASELINE_PEN_RATIO</code><em class="property"> = 0.01</em><a class="headerlink" href="#pricingengine.variables.var_builder.VarBuilder.BASELINE_PEN_RATIO" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.variables.var_builder.VarBuilder.CUSTOM_FEATURE_INDEX">
+<code class="descname">CUSTOM_FEATURE_INDEX</code><em class="property"> = 'custom feature'</em><a class="headerlink" href="#pricingengine.variables.var_builder.VarBuilder.CUSTOM_FEATURE_INDEX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.variables.var_builder.VarBuilder.FEATURE_TYPE_COL_NAME">
+<code class="descname">FEATURE_TYPE_COL_NAME</code><em class="property"> = 'Feature Type'</em><a class="headerlink" href="#pricingengine.variables.var_builder.VarBuilder.FEATURE_TYPE_COL_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.variables.var_builder.VarBuilder.IMPACTOR">
+<code class="descname">IMPACTOR</code><em class="property"> = 'impactor_'</em><a class="headerlink" href="#pricingengine.variables.var_builder.VarBuilder.IMPACTOR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.variables.var_builder.VarBuilder.INTERACTION_SEP">
+<code class="descname">INTERACTION_SEP</code><em class="property"> = '#'</em><a class="headerlink" href="#pricingengine.variables.var_builder.VarBuilder.INTERACTION_SEP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.variables.var_builder.VarBuilder.LEAD_COL_NAME">
+<code class="descname">LEAD_COL_NAME</code><em class="property"> = 'lead'</em><a class="headerlink" href="#pricingengine.variables.var_builder.VarBuilder.LEAD_COL_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.variables.var_builder.VarBuilder.NAN_STR">
+<code class="descname">NAN_STR</code><em class="property"> = 'nan'</em><a class="headerlink" href="#pricingengine.variables.var_builder.VarBuilder.NAN_STR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.variables.var_builder.VarBuilder.PEER_TREATMENT_DELIMITER">
+<code class="descname">PEER_TREATMENT_DELIMITER</code><em class="property"> = ' on '</em><a class="headerlink" href="#pricingengine.variables.var_builder.VarBuilder.PEER_TREATMENT_DELIMITER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.variables.var_builder.VarBuilder.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>treatment_column</em>, <em>interaction_levels=None</em>, <em>unpenalize_core_treatment=False</em>, <em>scale_core=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.variables.var_builder.VarBuilder.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize a new FeatureBuilder for datasets with the specified schema</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>core_treatment</strong> – Name of treatment variable to be used</li>
+<li><strong>interactor</strong> (<em>Interactor</em>) – Instance of interactor class that specified how core pull forward feature is 
+interacted</li>
+<li><strong>unpenalize_core_treatment</strong> – Boolean value. If true, the core_treatment feature will not be penalized 
+by any ML methods used for treatment effect estimation</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.variables.var_builder.VarBuilder.build">
+<code class="descname">build</code><span class="sig-paren">(</span><em>estimation_dataset</em>, <em>encoders</em>, <em>treatments=None</em>, <em>panel=None</em>, <em>outcome_lead=0</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.variables.var_builder.VarBuilder.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build the feature(s) for the given dataset</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>estimation_dataset</strong> – The estimation_dataset from which to build the features</li>
+<li><strong>encoders</strong> – Encoders used to create dummies from categorical variables</li>
+<li><strong>treatments</strong> – Raw treatment residuals used to create treatment features</li>
+<li><strong>panel</strong> – </li>
+<li><strong>outcome_lead</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A list of series with an index mathcing that of the input dataset and the computed feature values</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.variables.var_builder.VarBuilder.get_indices">
+<code class="descname">get_indices</code><span class="sig-paren">(</span><em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.variables.var_builder.VarBuilder.get_indices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.variables.var_builder.VarBuilder.interactor">
+<code class="descname">interactor</code><a class="headerlink" href="#pricingengine.variables.var_builder.VarBuilder.interactor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.variables.var_builder.VarBuilder.scale_list">
+<code class="descname">scale_list</code><a class="headerlink" href="#pricingengine.variables.var_builder.VarBuilder.scale_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.variables.var_builder.VarBuilder.treatment_column">
+<code class="descname">treatment_column</code><a class="headerlink" href="#pricingengine.variables.var_builder.VarBuilder.treatment_column" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.variables.var_builder.VarBuilder.unpenalize_core_treatment">
+<code class="descname">unpenalize_core_treatment</code><a class="headerlink" href="#pricingengine.variables.var_builder.VarBuilder.unpenalize_core_treatment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.variables.var_builder.VarBuilder.var_builder_sig">
+<code class="descname">var_builder_sig</code><a class="headerlink" href="#pricingengine.variables.var_builder.VarBuilder.var_builder_sig" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.variables.var_builder.VarBuilder.verify_sig_exists">
+<code class="descname">verify_sig_exists</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.variables.var_builder.VarBuilder.verify_sig_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make sure that child class provides a treatment builder signature</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pricingengine.variables">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pricingengine.variables" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">Pricing Engine</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../classes.html">Class Hierarchy</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="pricingengine.html">pricingengine package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="pricingengine.html#subpackages">Subpackages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.html#module-pricingengine.dataset">pricingengine.dataset module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.html#module-pricingengine.schema">pricingengine.schema module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.html#module-pricingengine">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../msecore/msecore.html">msecore package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../msecoreml/msecoreml.html">msecoreml package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../history.html">Project History</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="pricingengine.html">pricingengine package</a><ul>
+      <li>Previous: <a href="pricingengine.utilities.html" title="previous chapter">pricingengine.utilities package</a></li>
+      <li>Next: <a href="../msecore/msecore.html" title="next chapter">msecore package</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Matt Goldman, Brian Quistorff.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

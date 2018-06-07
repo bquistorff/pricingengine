@@ -1,0 +1,1190 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>pricingengine.models package &#8212; Pricing Engine 2.2.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="pricingengine.utilities package" href="pricingengine.utilities.html" />
+    <link rel="prev" title="pricingengine.featurizers package" href="pricingengine.featurizers.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="pricingengine-models-package">
+<h1>pricingengine.models package<a class="headerlink" href="#pricingengine-models-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-pricingengine.models.boosting">
+<span id="pricingengine-models-boosting-module"></span><h2>pricingengine.models.boosting module<a class="headerlink" href="#module-pricingengine.models.boosting" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pricingengine.models.boosting.BoostedTrees">
+<em class="property">class </em><code class="descclassname">pricingengine.models.boosting.</code><code class="descname">BoostedTrees</code><span class="sig-paren">(</span><em>learning_rate=0.1</em>, <em>n_estimators=100</em>, <em>max_depth=3</em>, <em>random_state=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.boosting.BoostedTrees" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.models.model.Model" title="pricingengine.models.model.Model"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.models.model.Model</span></code></a></p>
+<p>Wrapper to sci-kit learn GradientBoostingRegressor model</p>
+<dl class="method">
+<dt id="pricingengine.models.boosting.BoostedTrees.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>learning_rate=0.1</em>, <em>n_estimators=100</em>, <em>max_depth=3</em>, <em>random_state=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.boosting.BoostedTrees.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>learning_rate</strong> – This is the shrinkage (regularization) parameter</li>
+<li><strong>n_estimators</strong> – Number of Trees</li>
+<li><strong>max_depth</strong> – maximum depth of the individual regression estimators. 
+The maximum depth limits the number of nodes in the tree. 
+Tune this parameter for best performance; the best value depends on the interaction of the input variables.</li>
+<li><strong>random_state</strong> – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pricingengine.models.causalmodel">
+<span id="pricingengine-models-causalmodel-module"></span><h2>pricingengine.models.causalmodel module<a class="headerlink" href="#module-pricingengine.models.causalmodel" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pricingengine.models.causalmodel.CausalModel">
+<em class="property">class </em><code class="descclassname">pricingengine.models.causalmodel.</code><code class="descname">CausalModel</code><a class="headerlink" href="#pricingengine.models.causalmodel.CausalModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.models.linearmodel.LinearModel" title="pricingengine.models.linearmodel.LinearModel"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.models.linearmodel.LinearModel</span></code></a></p>
+<p>Abstact base class for all linear causal models</p>
+<dl class="attribute">
+<dt id="pricingengine.models.causalmodel.CausalModel.SE_NAME">
+<code class="descname">SE_NAME</code><em class="property"> = 'se'</em><a class="headerlink" href="#pricingengine.models.causalmodel.CausalModel.SE_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.causalmodel.CausalModel.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.causalmodel.CausalModel.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.causalmodel.CausalModel.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>mtx_x</em>, <em>vec_y</em>, <em>cluster_groups=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.causalmodel.CausalModel.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reimplement the model.fit now that we have a new parameter</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>mtx_x</strong> – A Pandas Dataframe of m rows by n columns</li>
+<li><strong>vec_y</strong> – A Pandas Series of length m</li>
+<li><strong>cluster_groups</strong> – Optional pandas series of length m indicating
+group ids for clustering</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.causalmodel.CausalModel.get_standard_errors">
+<code class="descname">get_standard_errors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.causalmodel.CausalModel.get_standard_errors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the standard errors of the computed model</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.causalmodel.CausalModel.get_variance_matrix">
+<code class="descname">get_variance_matrix</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.causalmodel.CausalModel.get_variance_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the standard errors of the computed model</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pricingengine.models.debiased_lasso">
+<span id="pricingengine-models-debiased-lasso-module"></span><h2>pricingengine.models.debiased_lasso module<a class="headerlink" href="#module-pricingengine.models.debiased_lasso" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pricingengine.models.debiased_lasso.DebiasedLasso">
+<em class="property">class </em><code class="descclassname">pricingengine.models.debiased_lasso.</code><code class="descname">DebiasedLasso</code><span class="sig-paren">(</span><em>allowed_bias=None</em>, <em>lasso_tol=0.001</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.debiased_lasso.DebiasedLasso" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.models.causalmodel.CausalModel" title="pricingengine.models.causalmodel.CausalModel"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.models.causalmodel.CausalModel</span></code></a></p>
+<p>Wrapper to sci-kit learn LassoCV model</p>
+<dl class="method">
+<dt id="pricingengine.models.debiased_lasso.DebiasedLasso.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>allowed_bias=None</em>, <em>lasso_tol=0.001</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.debiased_lasso.DebiasedLasso.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.debiased_lasso.DebiasedLasso.get_coefficients">
+<code class="descname">get_coefficients</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.debiased_lasso.DebiasedLasso.get_coefficients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the coefficients of the computed model</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.debiased_lasso.DebiasedLasso.get_standard_errors">
+<code class="descname">get_standard_errors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.debiased_lasso.DebiasedLasso.get_standard_errors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the coefficients of the computed model</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.debiased_lasso.DebiasedLasso.get_variance_matrix">
+<code class="descname">get_variance_matrix</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.debiased_lasso.DebiasedLasso.get_variance_matrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pricingengine.models.ensemble">
+<span id="pricingengine-models-ensemble-module"></span><h2>pricingengine.models.ensemble module<a class="headerlink" href="#module-pricingengine.models.ensemble" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pricingengine.models.ensemble.BucketSS">
+<em class="property">class </em><code class="descclassname">pricingengine.models.ensemble.</code><code class="descname">BucketSS</code><span class="sig-paren">(</span><em>models</em>, <em>num_splits</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.ensemble.BucketSS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.models.model.SampleSplitModel" title="pricingengine.models.model.SampleSplitModel"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.models.model.SampleSplitModel</span></code></a></p>
+<p>Bucket of Models is just picking the one best model via submodel MSE.
+The final MSE is in-sample.</p>
+<dl class="method">
+<dt id="pricingengine.models.ensemble.BucketSS.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>models</em>, <em>num_splits</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.ensemble.BucketSS.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="pricingengine.models.ensemble.BucketSS.gen_best_ensemble">
+<em class="property">static </em><code class="descname">gen_best_ensemble</code><span class="sig-paren">(</span><em>models</em>, <em>num_splits</em>, <em>norm_weights_one=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.ensemble.BucketSS.gen_best_ensemble" title="Permalink to this definition">¶</a></dt>
+<dd><p>The “Best” model from CCDDHNR 2017 is gen_best_ensemble([Lasso, BoostedTrees, RandomForest, NeuralNet], 5, True)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pricingengine.models.ensemble.CrossFitContainer">
+<em class="property">class </em><code class="descclassname">pricingengine.models.ensemble.</code><code class="descname">CrossFitContainer</code><span class="sig-paren">(</span><em>base_models</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.ensemble.CrossFitContainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.models.model.SampleSplitModel" title="pricingengine.models.model.SampleSplitModel"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.models.model.SampleSplitModel</span></code></a></p>
+<p>A convenient way to store separate copies of the same model that are trained on different folds of data.
+Often they are models of the same class.
+The MSE is out-of-sample.</p>
+<dl class="method">
+<dt id="pricingengine.models.ensemble.CrossFitContainer.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>base_models</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.ensemble.CrossFitContainer.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.ensemble.CrossFitContainer.base_models">
+<code class="descname">base_models</code><a class="headerlink" href="#pricingengine.models.ensemble.CrossFitContainer.base_models" title="Permalink to this definition">¶</a></dt>
+<dd><p>Access list of base models</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.ensemble.CrossFitContainer.get_feature_info">
+<code class="descname">get_feature_info</code><span class="sig-paren">(</span><em>avg_splits=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.ensemble.CrossFitContainer.get_feature_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a df with rows as folds/splits and columns for each variable</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pricingengine.models.ensemble.CrossFitContainer.wrap_generic_if_needed">
+<em class="property">static </em><code class="descname">wrap_generic_if_needed</code><span class="sig-paren">(</span><em>base_model</em>, <em>n_folds</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.ensemble.CrossFitContainer.wrap_generic_if_needed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="pricingengine.models.ensemble.CrossFitContainer.wrap_single_model_if_needed">
+<em class="property">static </em><code class="descname">wrap_single_model_if_needed</code><span class="sig-paren">(</span><em>base_model</em>, <em>n_folds</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.ensemble.CrossFitContainer.wrap_single_model_if_needed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pricingengine.models.ensemble.StackedSS">
+<em class="property">class </em><code class="descclassname">pricingengine.models.ensemble.</code><code class="descname">StackedSS</code><span class="sig-paren">(</span><em>models</em>, <em>num_splits</em>, <em>norm_weights_one=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.ensemble.StackedSS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.models.model.SampleSplitModel" title="pricingengine.models.model.SampleSplitModel"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.models.model.SampleSplitModel</span></code></a></p>
+<p>Stacked Generalization (stacking) is weighting submodels by doing a regression of 
+output on the models’ OOS predictions.
+Some of the literature does this via a leave-one-out predictions but we do it off of out-of-fold predictions
+(NB: A “committee” would be equal weights)
+The “Ensemble” model from CCDDHNR 2017 is StackedSS([Lasso, BoostedTrees, RandomForest, NeuralNet], 5, True)
+The MSE is in-sample.
+For multi-task learning assumes equal weights among outcomes</p>
+<dl class="method">
+<dt id="pricingengine.models.ensemble.StackedSS.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>models</em>, <em>num_splits</em>, <em>norm_weights_one=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.ensemble.StackedSS.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pricingengine.models.fast_debiased_lasso">
+<span id="pricingengine-models-fast-debiased-lasso-module"></span><h2>pricingengine.models.fast_debiased_lasso module<a class="headerlink" href="#module-pricingengine.models.fast_debiased_lasso" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pricingengine.models.fast_debiased_lasso.FastDebiasedLasso">
+<em class="property">class </em><code class="descclassname">pricingengine.models.fast_debiased_lasso.</code><code class="descname">FastDebiasedLasso</code><span class="sig-paren">(</span><em>lasso_tol=0.001</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.fast_debiased_lasso.FastDebiasedLasso" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.models.causalmodel.CausalModel" title="pricingengine.models.causalmodel.CausalModel"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.models.causalmodel.CausalModel</span></code></a></p>
+<p>Wrapper to sci-kit learn LassoCV model</p>
+<dl class="method">
+<dt id="pricingengine.models.fast_debiased_lasso.FastDebiasedLasso.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>lasso_tol=0.001</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.fast_debiased_lasso.FastDebiasedLasso.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.fast_debiased_lasso.FastDebiasedLasso.get_coefficients">
+<code class="descname">get_coefficients</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.fast_debiased_lasso.FastDebiasedLasso.get_coefficients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the coefficients of the computed model</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.fast_debiased_lasso.FastDebiasedLasso.get_standard_errors">
+<code class="descname">get_standard_errors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.fast_debiased_lasso.FastDebiasedLasso.get_standard_errors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the coefficients of the computed model</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.fast_debiased_lasso.FastDebiasedLasso.get_variance_matrix">
+<code class="descname">get_variance_matrix</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.fast_debiased_lasso.FastDebiasedLasso.get_variance_matrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pricingengine.models.lasso">
+<span id="pricingengine-models-lasso-module"></span><h2>pricingengine.models.lasso module<a class="headerlink" href="#module-pricingengine.models.lasso" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pricingengine.models.lasso.Lasso">
+<em class="property">class </em><code class="descclassname">pricingengine.models.lasso.</code><code class="descname">Lasso</code><span class="sig-paren">(</span><em>alpha=1.0</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.lasso.Lasso" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.models.linearmodel.LinearModel" title="pricingengine.models.linearmodel.LinearModel"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.models.linearmodel.LinearModel</span></code></a></p>
+<p>Wrapper to sci-kit learn Lasso model</p>
+<dl class="method">
+<dt id="pricingengine.models.lasso.Lasso.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>alpha=1.0</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.lasso.Lasso.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.lasso.Lasso.get_coefficients">
+<code class="descname">get_coefficients</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.lasso.Lasso.get_coefficients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the coefficients of the computed model</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pricingengine.models.lasso.LassoCV">
+<em class="property">class </em><code class="descclassname">pricingengine.models.lasso.</code><code class="descname">LassoCV</code><span class="sig-paren">(</span><em>tol=0.0001</em>, <em>max_iter=1000</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.lasso.LassoCV" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.models.causalmodel.CausalModel" title="pricingengine.models.causalmodel.CausalModel"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.models.causalmodel.CausalModel</span></code></a></p>
+<p>Wrapper to sci-kit learn LassoCV model</p>
+<dl class="method">
+<dt id="pricingengine.models.lasso.LassoCV.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>tol=0.0001</em>, <em>max_iter=1000</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.lasso.LassoCV.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.lasso.LassoCV.get_coefficients">
+<code class="descname">get_coefficients</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.lasso.LassoCV.get_coefficients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the coefficients of the computed model</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.lasso.LassoCV.get_standard_errors">
+<code class="descname">get_standard_errors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.lasso.LassoCV.get_standard_errors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the coefficients of the computed model</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.lasso.LassoCV.get_variance_matrix">
+<code class="descname">get_variance_matrix</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.lasso.LassoCV.get_variance_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the standard errors of the computed model</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.lasso.LassoCV.variance">
+<code class="descname">variance</code><a class="headerlink" href="#pricingengine.models.lasso.LassoCV.variance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the underlying results object (contains more statistical properties)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pricingengine.models.linearmodel">
+<span id="pricingengine-models-linearmodel-module"></span><h2>pricingengine.models.linearmodel module<a class="headerlink" href="#module-pricingengine.models.linearmodel" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pricingengine.models.linearmodel.LinearModel">
+<em class="property">class </em><code class="descclassname">pricingengine.models.linearmodel.</code><code class="descname">LinearModel</code><a class="headerlink" href="#pricingengine.models.linearmodel.LinearModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.models.model.Model" title="pricingengine.models.model.Model"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.models.model.Model</span></code></a></p>
+<p>Abstact base class for all linear models</p>
+<dl class="attribute">
+<dt id="pricingengine.models.linearmodel.LinearModel.COEF_NAME">
+<code class="descname">COEF_NAME</code><em class="property"> = 'coef'</em><a class="headerlink" href="#pricingengine.models.linearmodel.LinearModel.COEF_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.linearmodel.LinearModel.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.linearmodel.LinearModel.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.linearmodel.LinearModel.get_coefficients">
+<code class="descname">get_coefficients</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.linearmodel.LinearModel.get_coefficients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the coefficients of the computed model</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pricingengine.models.model">
+<span id="pricingengine-models-model-module"></span><h2>pricingengine.models.model module<a class="headerlink" href="#module-pricingengine.models.model" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pricingengine.models.model.Model">
+<em class="property">class </em><code class="descclassname">pricingengine.models.model.</code><code class="descname">Model</code><a class="headerlink" href="#pricingengine.models.model.Model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Abstract base class for all basic models. 
+Will handle:
+* removing non-complete observations
+* making sure return type has appropriate container (e.g. Panda’s index)
+* type checks</p>
+<dl class="attribute">
+<dt id="pricingengine.models.model.Model.AVG_ERROR_COL_NAME">
+<code class="descname">AVG_ERROR_COL_NAME</code><em class="property"> = 'avg error'</em><a class="headerlink" href="#pricingengine.models.model.Model.AVG_ERROR_COL_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.model.Model.CONST_NAME">
+<code class="descname">CONST_NAME</code><em class="property"> = 'const'</em><a class="headerlink" href="#pricingengine.models.model.Model.CONST_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.model.Model.ERROR_VAR_NAME">
+<code class="descname">ERROR_VAR_NAME</code><em class="property"> = 'error'</em><a class="headerlink" href="#pricingengine.models.model.Model.ERROR_VAR_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.model.Model.MAE_NAME">
+<code class="descname">MAE_NAME</code><em class="property"> = 'MAE'</em><a class="headerlink" href="#pricingengine.models.model.Model.MAE_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.model.Model.MSE_NAME">
+<code class="descname">MSE_NAME</code><em class="property"> = 'MSE'</em><a class="headerlink" href="#pricingengine.models.model.Model.MSE_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.model.Model.ONLY_SUBMODEL">
+<code class="descname">ONLY_SUBMODEL</code><em class="property"> = 'only'</em><a class="headerlink" href="#pricingengine.models.model.Model.ONLY_SUBMODEL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.model.Model.PREDICTION_COL_NAME">
+<code class="descname">PREDICTION_COL_NAME</code><em class="property"> = 'prediction'</em><a class="headerlink" href="#pricingengine.models.model.Model.PREDICTION_COL_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.model.Model.R2_NAME">
+<code class="descname">R2_NAME</code><em class="property"> = 'R2'</em><a class="headerlink" href="#pricingengine.models.model.Model.R2_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.model.Model.RESIDUAL_COL_NAME">
+<code class="descname">RESIDUAL_COL_NAME</code><em class="property"> = 'residual'</em><a class="headerlink" href="#pricingengine.models.model.Model.RESIDUAL_COL_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.model.Model.SMAPE_NAME">
+<code class="descname">SMAPE_NAME</code><em class="property"> = 'sMAPE'</em><a class="headerlink" href="#pricingengine.models.model.Model.SMAPE_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.model.Model.SUBMODEL_COLNAME">
+<code class="descname">SUBMODEL_COLNAME</code><em class="property"> = 'Submodel'</em><a class="headerlink" href="#pricingengine.models.model.Model.SUBMODEL_COLNAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.model.Model.VARIABLE_COLNAME">
+<code class="descname">VARIABLE_COLNAME</code><em class="property"> = 'variable'</em><a class="headerlink" href="#pricingengine.models.model.Model.VARIABLE_COLNAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.model.Model.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.model.Model.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.model.Model.coeff_of_determination">
+<code class="descname">coeff_of_determination</code><a class="headerlink" href="#pricingengine.models.model.Model.coeff_of_determination" title="Permalink to this definition">¶</a></dt>
+<dd><p>r^2/R^2: Coefficient of determination . Will ignore NaNs</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.model.Model.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.model.Model.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a copy of the model object</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.model.Model.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.model.Model.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the model to the given training and target data</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>x</strong> – A Pandas Dataframe of m rows by n columns</li>
+<li><strong>y</strong> – A Pandas Series of length m</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.model.Model.fit_and_predict">
+<code class="descname">fit_and_predict</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.model.Model.fit_and_predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>A combined fit and predict that might be a bit more data efficient
+Sets accuracy statistics
+Currently, will not predict for observations where outcome is missing</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>x</strong> – matrix of features</li>
+<li><strong>y</strong> – vector of realized outcomes</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.model.Model.fit_predict_and_residualize">
+<code class="descname">fit_predict_and_residualize</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.model.Model.fit_predict_and_residualize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets accuracy statistics</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pricingengine.models.model.Model.get_flat_array">
+<em class="property">static </em><code class="descname">get_flat_array</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.model.Model.get_flat_array" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="pricingengine.models.model.Model.get_possible_col_index">
+<em class="property">static </em><code class="descname">get_possible_col_index</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.model.Model.get_possible_col_index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.model.Model.mae">
+<code class="descname">mae</code><a class="headerlink" href="#pricingengine.models.model.Model.mae" title="Permalink to this definition">¶</a></dt>
+<dd><p>mae() Mean Absolute Error. Will ignore NaNs</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.model.Model.mse">
+<code class="descname">mse</code><a class="headerlink" href="#pricingengine.models.model.Model.mse" title="Permalink to this definition">¶</a></dt>
+<dd><p>mspe: Mean Squared Error also called mean squared prediction error (mspe). Will ignore NaNs</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.model.Model.n_tasks">
+<code class="descname">n_tasks</code><a class="headerlink" href="#pricingengine.models.model.Model.n_tasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of “tasks”. 1 indicates standard estimation. More indicates multi-task</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pricingengine.models.model.Model.n_tasks_from_y">
+<em class="property">static </em><code class="descname">n_tasks_from_y</code><span class="sig-paren">(</span><em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.model.Model.n_tasks_from_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.model.Model.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>x</em>, <em>y_true=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.model.Model.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform the given data using the previously fit model</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> – A Pandas Dataframe of k rows and n columns</li>
+<li><strong>y_true</strong> – If passed in then sets accuracy statistics</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The Pandas series of length k resulting from applying the fit model to the given values</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.model.Model.predict_and_residualize">
+<code class="descname">predict_and_residualize</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.model.Model.predict_and_residualize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute residuals using a prefit model
+Sets accuracy statistics</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>x</strong> – matrix of features</li>
+<li><strong>y</strong> – vector of realized outcomes</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pricingengine.models.model.Model.put_prediction_in_whole">
+<em class="property">static </em><code class="descname">put_prediction_in_whole</code><span class="sig-paren">(</span><em>prediction</em>, <em>full_n</em>, <em>inclusion_mask</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.model.Model.put_prediction_in_whole" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.model.Model.rmse">
+<code class="descname">rmse</code><a class="headerlink" href="#pricingengine.models.model.Model.rmse" title="Permalink to this definition">¶</a></dt>
+<dd><p>rmspe: Root Mean Squared Error also called root mean squared prediction error (rmspe). Will ignore NaNs</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.model.Model.smape">
+<code class="descname">smape</code><a class="headerlink" href="#pricingengine.models.model.Model.smape" title="Permalink to this definition">¶</a></dt>
+<dd><p>smape: Symmetric Mean Absolute Percent Error. Use this rather than MAPE as that can be Inf. Will ignore NaNs</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pricingengine.models.model.Model.wrap_y_if_needed">
+<em class="property">static </em><code class="descname">wrap_y_if_needed</code><span class="sig-paren">(</span><em>y</em>, <em>x</em>, <em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.model.Model.wrap_y_if_needed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.model.Model.x_column_index">
+<code class="descname">x_column_index</code><a class="headerlink" href="#pricingengine.models.model.Model.x_column_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the colum Index/MultiIndex from the training data</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pricingengine.models.model.SampleSplitModel">
+<em class="property">class </em><code class="descclassname">pricingengine.models.model.</code><code class="descname">SampleSplitModel</code><span class="sig-paren">(</span><em>num_splits</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.model.SampleSplitModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>ABC for models that keep track of what parts of data were used for fitting certain components.
+The most common case is that you have several ML models that fit on one section and then
+are used to predict out on another.
+Will handle:
+* removing non-complete observations
+* making sure return type has appropriate container (e.g. Panda’s index)
+* type checks</p>
+<dl class="attribute">
+<dt id="pricingengine.models.model.SampleSplitModel.FOLD_COLNAME">
+<code class="descname">FOLD_COLNAME</code><em class="property"> = 'fold'</em><a class="headerlink" href="#pricingengine.models.model.SampleSplitModel.FOLD_COLNAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.model.SampleSplitModel.NO_SPLIT">
+<code class="descname">NO_SPLIT</code><em class="property"> = 'no split'</em><a class="headerlink" href="#pricingengine.models.model.SampleSplitModel.NO_SPLIT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.model.SampleSplitModel.RECORDER_TRAININGON_NAME">
+<code class="descname">RECORDER_TRAININGON_NAME</code><em class="property"> = 'trainingOn'</em><a class="headerlink" href="#pricingengine.models.model.SampleSplitModel.RECORDER_TRAININGON_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.model.SampleSplitModel.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>num_splits</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.model.SampleSplitModel.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.model.SampleSplitModel.coeff_of_determination">
+<code class="descname">coeff_of_determination</code><a class="headerlink" href="#pricingengine.models.model.SampleSplitModel.coeff_of_determination" title="Permalink to this definition">¶</a></dt>
+<dd><p>r^2/R^2: Coefficient of determination . Will ignore NaNs</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.model.SampleSplitModel.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>folds</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.model.SampleSplitModel.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the model to the given training and target data</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>x</strong> – A Pandas Dataframe of m rows by n columns</li>
+<li><strong>y</strong> – A Pandas Series of length m</li>
+<li><strong>folds</strong> – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.model.SampleSplitModel.fit_and_predict">
+<code class="descname">fit_and_predict</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>folds</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.model.SampleSplitModel.fit_and_predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>A combined fit and predict that might be a bit more data efficient
+Sets accuracy statistics
+Currently, will not predict for observations where outcome is missing</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>x</strong> – matrix of features</li>
+<li><strong>y</strong> – vector of realized outcomes</li>
+<li><strong>folds</strong> – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pricingengine.models.model.SampleSplitModel.fit_and_predict_mult">
+<em class="property">static </em><code class="descname">fit_and_predict_mult</code><span class="sig-paren">(</span><em>ssmodels</em>, <em>features</em>, <em>y_multi</em>, <em>folds</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.model.SampleSplitModel.fit_and_predict_mult" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ssmodels</strong> (<em>dict</em>) – </li>
+<li><strong>features</strong> (<em>dict</em>) – </li>
+<li><strong>y_multi</strong> (<em>dict</em>) – </li>
+<li><strong>folds</strong> – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.model.SampleSplitModel.fit_predict_and_residualize">
+<code class="descname">fit_predict_and_residualize</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>folds</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.model.SampleSplitModel.fit_predict_and_residualize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets accuracy statistics</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.model.SampleSplitModel.get_fit_diagnostics">
+<code class="descname">get_fit_diagnostics</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.model.SampleSplitModel.get_fit_diagnostics" title="Permalink to this definition">¶</a></dt>
+<dd><p>return a single-rowed dataframe of MAE, MSE, sMAPE, and R2</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.model.SampleSplitModel.mae">
+<code class="descname">mae</code><a class="headerlink" href="#pricingengine.models.model.SampleSplitModel.mae" title="Permalink to this definition">¶</a></dt>
+<dd><p>mae() Mean Absolute Error. Will ignore NaNs</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.model.SampleSplitModel.mse">
+<code class="descname">mse</code><a class="headerlink" href="#pricingengine.models.model.SampleSplitModel.mse" title="Permalink to this definition">¶</a></dt>
+<dd><p>mspe: Mean Squared Error also called mean squared prediction error (mspe). Will ignore NaNs</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.model.SampleSplitModel.n_tasks">
+<code class="descname">n_tasks</code><a class="headerlink" href="#pricingengine.models.model.SampleSplitModel.n_tasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of “tasks”. 1 indicates standard estimation. More indicates multi-task</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.model.SampleSplitModel.num_splits">
+<code class="descname">num_splits</code><a class="headerlink" href="#pricingengine.models.model.SampleSplitModel.num_splits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of divisions into which to split data for computing residuals</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.model.SampleSplitModel.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>x</em>, <em>folds=None</em>, <em>y_true=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.model.SampleSplitModel.predict" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>x</strong> – </li>
+<li><strong>folds</strong> – If none, then assumes that none of this data was used for fitting.</li>
+<li><strong>y_true</strong> – If passed in then sets accuracy statistics</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.model.SampleSplitModel.predict_and_residualize">
+<code class="descname">predict_and_residualize</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>folds=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.model.SampleSplitModel.predict_and_residualize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets accuracy statistics</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pricingengine.models.model.SampleSplitModel.predict_mult">
+<em class="property">static </em><code class="descname">predict_mult</code><span class="sig-paren">(</span><em>ssmodels</em>, <em>features</em>, <em>folds</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.model.SampleSplitModel.predict_mult" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ssmodels</strong> (<em>dict</em>) – </li>
+<li><strong>features</strong> (<em>dict</em>) – </li>
+<li><strong>folds</strong> – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.model.SampleSplitModel.rmse">
+<code class="descname">rmse</code><a class="headerlink" href="#pricingengine.models.model.SampleSplitModel.rmse" title="Permalink to this definition">¶</a></dt>
+<dd><p>rmspe: Root Mean Squared Error also called root mean squared prediction error (rmspe). Will ignore NaNs</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.model.SampleSplitModel.smape">
+<code class="descname">smape</code><a class="headerlink" href="#pricingengine.models.model.SampleSplitModel.smape" title="Permalink to this definition">¶</a></dt>
+<dd><p>smape: Symmetric Mean Absolute Percent Error. Use this rather than MAPE as that can be Inf. Will ignore NaNs</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.model.SampleSplitModel.x_column_index">
+<code class="descname">x_column_index</code><a class="headerlink" href="#pricingengine.models.model.SampleSplitModel.x_column_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the colum Index/MultiIndex from the training data</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pricingengine.models.multitask_ols">
+<span id="pricingengine-models-multitask-ols-module"></span><h2>pricingengine.models.multitask_ols module<a class="headerlink" href="#module-pricingengine.models.multitask_ols" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pricingengine.models.multitask_ols.MultiTaskOLS">
+<em class="property">class </em><code class="descclassname">pricingengine.models.multitask_ols.</code><code class="descname">MultiTaskOLS</code><span class="sig-paren">(</span><em>add_const=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.multitask_ols.MultiTaskOLS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.models.model.Model" title="pricingengine.models.model.Model"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.models.model.Model</span></code></a></p>
+<dl class="method">
+<dt id="pricingengine.models.multitask_ols.MultiTaskOLS.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>add_const=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.multitask_ols.MultiTaskOLS.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pricingengine.models.neural_net">
+<span id="pricingengine-models-neural-net-module"></span><h2>pricingengine.models.neural_net module<a class="headerlink" href="#module-pricingengine.models.neural_net" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pricingengine.models.neural_net.NeuralNet">
+<em class="property">class </em><code class="descclassname">pricingengine.models.neural_net.</code><code class="descname">NeuralNet</code><span class="sig-paren">(</span><em>hidden_layer_sizes=(2</em>, <em>)</em>, <em>max_iter=200</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.neural_net.NeuralNet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.models.model.Model" title="pricingengine.models.model.Model"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.models.model.Model</span></code></a></p>
+<p>Wrapper to sci-kit learn MLP Regressor</p>
+<dl class="method">
+<dt id="pricingengine.models.neural_net.NeuralNet.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>hidden_layer_sizes=(2</em>, <em>)</em>, <em>max_iter=200</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.neural_net.NeuralNet.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pricingengine.models.ols">
+<span id="pricingengine-models-ols-module"></span><h2>pricingengine.models.ols module<a class="headerlink" href="#module-pricingengine.models.ols" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pricingengine.models.ols.OLS">
+<em class="property">class </em><code class="descclassname">pricingengine.models.ols.</code><code class="descname">OLS</code><span class="sig-paren">(</span><em>add_const=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.ols.OLS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.models.causalmodel.CausalModel" title="pricingengine.models.causalmodel.CausalModel"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.models.causalmodel.CausalModel</span></code></a></p>
+<p>Wrapper to statsmodels’s ols model</p>
+<dl class="method">
+<dt id="pricingengine.models.ols.OLS.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>add_const=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.ols.OLS.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="pricingengine.models.ols.OLS.add_const">
+<em class="property">static </em><code class="descname">add_const</code><span class="sig-paren">(</span><em>mtx_x</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.ols.OLS.add_const" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.ols.OLS.add_est_results">
+<code class="descname">add_est_results</code><a class="headerlink" href="#pricingengine.models.ols.OLS.add_est_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the underlying results object (contains more statistical properties)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.ols.OLS.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>mtx_x</em>, <em>vec_y</em>, <em>cluster_groups=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.ols.OLS.fit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.ols.OLS.get_coefficients">
+<code class="descname">get_coefficients</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.ols.OLS.get_coefficients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the coefficients of the computed model</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.ols.OLS.get_standard_errors">
+<code class="descname">get_standard_errors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.ols.OLS.get_standard_errors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the stadnard errors of the computed model</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.ols.OLS.get_variance_matrix">
+<code class="descname">get_variance_matrix</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.ols.OLS.get_variance_matrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.ols.OLS.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>mtx_x</em>, <em>vec_y_true=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.ols.OLS.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ovewritting</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pricingengine.models.post_lasso">
+<span id="pricingengine-models-post-lasso-module"></span><h2>pricingengine.models.post_lasso module<a class="headerlink" href="#module-pricingengine.models.post_lasso" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pricingengine.models.post_lasso.PostLasso">
+<em class="property">class </em><code class="descclassname">pricingengine.models.post_lasso.</code><code class="descname">PostLasso</code><span class="sig-paren">(</span><em>lasso_model=LassoCV(alphas=None</em>, <em>copy_X=True</em>, <em>cv=None</em>, <em>eps=0.001</em>, <em>fit_intercept=True</em>, <em>max_iter=1000</em>, <em>n_alphas=100</em>, <em>n_jobs=1</em>, <em>normalize=False</em>, <em>positive=False</em>, <em>precompute='auto'</em>, <em>random_state=None</em>, <em>selection='cyclic'</em>, <em>tol=0.0001</em>, <em>verbose=False)</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.post_lasso.PostLasso" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.models.causalmodel.CausalModel" title="pricingengine.models.causalmodel.CausalModel"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.models.causalmodel.CausalModel</span></code></a></p>
+<p>Wrapper to sm ols after sci-kit LassoCV model</p>
+<dl class="method">
+<dt id="pricingengine.models.post_lasso.PostLasso.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>lasso_model=LassoCV(alphas=None</em>, <em>copy_X=True</em>, <em>cv=None</em>, <em>eps=0.001</em>, <em>fit_intercept=True</em>, <em>max_iter=1000</em>, <em>n_alphas=100</em>, <em>n_jobs=1</em>, <em>normalize=False</em>, <em>positive=False</em>, <em>precompute='auto'</em>, <em>random_state=None</em>, <em>selection='cyclic'</em>, <em>tol=0.0001</em>, <em>verbose=False)</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.post_lasso.PostLasso.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.post_lasso.PostLasso.add_est_results">
+<code class="descname">add_est_results</code><a class="headerlink" href="#pricingengine.models.post_lasso.PostLasso.add_est_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the underlying results object (contains more statistical properties)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.post_lasso.PostLasso.get_coefficients">
+<code class="descname">get_coefficients</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.post_lasso.PostLasso.get_coefficients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the coefficients of the computed model</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.post_lasso.PostLasso.get_standard_errors">
+<code class="descname">get_standard_errors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.post_lasso.PostLasso.get_standard_errors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the coefficients of the computed model</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.post_lasso.PostLasso.get_variance_matrix">
+<code class="descname">get_variance_matrix</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.post_lasso.PostLasso.get_variance_matrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pricingengine.models.prepredicted">
+<span id="pricingengine-models-prepredicted-module"></span><h2>pricingengine.models.prepredicted module<a class="headerlink" href="#module-pricingengine.models.prepredicted" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pricingengine.models.prepredicted.PrePredicted">
+<em class="property">class </em><code class="descclassname">pricingengine.models.prepredicted.</code><code class="descname">PrePredicted</code><span class="sig-paren">(</span><em>prediction</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.prepredicted.PrePredicted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.models.model.Model" title="pricingengine.models.model.Model"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.models.model.Model</span></code></a></p>
+<p>Currently only works for standard (non-multi-task learning) models</p>
+<dl class="method">
+<dt id="pricingengine.models.prepredicted.PrePredicted.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>prediction</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.prepredicted.PrePredicted.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>prediction</strong> – Must has same indexing as df used for prediction</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pricingengine.models.prepredicted.SSPrePredicted">
+<em class="property">class </em><code class="descclassname">pricingengine.models.prepredicted.</code><code class="descname">SSPrePredicted</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.prepredicted.SSPrePredicted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.models.model.SampleSplitModel" title="pricingengine.models.model.SampleSplitModel"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.models.model.SampleSplitModel</span></code></a></p>
+<p>Store results for a model that has already been fit and predicted.
+This is used for baseline models to allow us to separate that part 
+of the analysis pipeline.</p>
+<dl class="docutils">
+<dt>To store the data from a builtin DDML model: ::</dt>
+<dd>full_baseline_preds = pd.DataFrame()
+ddml.predict(ds, ret_pred=full_baseline_preds)
+PrePredicted.write_pred_df_to_csv(recorder_fname, full_baseline_preds)</dd>
+</dl>
+<p>The file will have have the first columns as the data (observation) index, 
+followed by columns Variable, Lead, Prediction.
+Rows in the recorder file are uniquely identified by (data-index, Variable, Lead).</p>
+<p>To load the data from this type of csv:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">builtin_predictions</span> <span class="o">=</span> <span class="n">PrePredicted</span><span class="o">.</span><span class="n">get_rec_df_from_csv</span><span class="p">(</span><span class="n">recorder_fname</span><span class="p">,</span> <span class="n">schema</span><span class="p">)</span>
+<span class="n">baselines</span> <span class="o">=</span> <span class="n">DynamicDML</span><span class="o">.</span><span class="n">gen_prepredicted_baselines</span><span class="p">(</span><span class="n">builtin_predictions</span><span class="p">)</span>
+<span class="n">ddml2</span> <span class="o">=</span> <span class="n">DynamicDML</span><span class="p">(</span><span class="n">baseline_model</span><span class="o">=</span><span class="n">baselines</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you estimate a DynamicDML model for the whole data and then one on a subset (to do out-of-sample evaluation) 
+then you will need different Prepredicteds because the folds will be different.</p>
+<dl class="method">
+<dt id="pricingengine.models.prepredicted.SSPrePredicted.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.prepredicted.SSPrePredicted.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.prepredicted.SSPrePredicted.get_coefficients">
+<code class="descname">get_coefficients</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.prepredicted.SSPrePredicted.get_coefficients" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="pricingengine.models.prepredicted.SSPrePredicted.get_rec_df_from_csv">
+<em class="property">static </em><code class="descname">get_rec_df_from_csv</code><span class="sig-paren">(</span><em>fname</em>, <em>schema</em>, <em>extra_index_vars=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.prepredicted.SSPrePredicted.get_rec_df_from_csv" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>fname</strong> – Filename</li>
+<li><strong>schema</strong> – Schema</li>
+<li><strong>extra_index_vars</strong> – Examples: [Model.VARIABLE_COLNAME, DynamicDML.LEAD_LEVEL_NAME]</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pricingengine.models.prepredicted.SSPrePredicted.write_rec_df_to_csv">
+<em class="property">static </em><code class="descname">write_rec_df_to_csv</code><span class="sig-paren">(</span><em>fname</em>, <em>recs</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.prepredicted.SSPrePredicted.write_rec_df_to_csv" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pricingengine.models.randomforest">
+<span id="pricingengine-models-randomforest-module"></span><h2>pricingengine.models.randomforest module<a class="headerlink" href="#module-pricingengine.models.randomforest" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pricingengine.models.randomforest.RandomForest">
+<em class="property">class </em><code class="descclassname">pricingengine.models.randomforest.</code><code class="descname">RandomForest</code><span class="sig-paren">(</span><em>n_estimators=10</em>, <em>max_depth=None</em>, <em>n_jobs=1</em>, <em>random_state=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.randomforest.RandomForest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.models.model.Model" title="pricingengine.models.model.Model"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.models.model.Model</span></code></a></p>
+<p>Wrapper to sci-kit learn RandomForestRegressor model</p>
+<dl class="method">
+<dt id="pricingengine.models.randomforest.RandomForest.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>n_estimators=10</em>, <em>max_depth=None</em>, <em>n_jobs=1</em>, <em>random_state=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.randomforest.RandomForest.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pricingengine.models.ridge">
+<span id="pricingengine-models-ridge-module"></span><h2>pricingengine.models.ridge module<a class="headerlink" href="#module-pricingengine.models.ridge" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pricingengine.models.ridge.Ridge">
+<em class="property">class </em><code class="descclassname">pricingengine.models.ridge.</code><code class="descname">Ridge</code><span class="sig-paren">(</span><em>alpha</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.ridge.Ridge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.models.causalmodel.CausalModel" title="pricingengine.models.causalmodel.CausalModel"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.models.causalmodel.CausalModel</span></code></a></p>
+<dl class="attribute">
+<dt id="pricingengine.models.ridge.Ridge.ALPHA_MAX">
+<code class="descname">ALPHA_MAX</code><em class="property"> = 999999</em><a class="headerlink" href="#pricingengine.models.ridge.Ridge.ALPHA_MAX" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper to sci-kit learn RidgeCV model</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.ridge.Ridge.ALPHA_MIN">
+<code class="descname">ALPHA_MIN</code><em class="property"> = 1e-08</em><a class="headerlink" href="#pricingengine.models.ridge.Ridge.ALPHA_MIN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.ridge.Ridge.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>alpha</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.ridge.Ridge.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.ridge.Ridge.get_coefficients">
+<code class="descname">get_coefficients</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.ridge.Ridge.get_coefficients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the coefficients of the computed model</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.ridge.Ridge.get_standard_errors">
+<code class="descname">get_standard_errors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.ridge.Ridge.get_standard_errors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the coefficients of the computed model</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.ridge.Ridge.get_variance_matrix">
+<code class="descname">get_variance_matrix</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.ridge.Ridge.get_variance_matrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.ridge.Ridge.variance">
+<code class="descname">variance</code><a class="headerlink" href="#pricingengine.models.ridge.Ridge.variance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the underlying results object (contains more statistical properties)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pricingengine.models.ridge.RidgeCV">
+<em class="property">class </em><code class="descclassname">pricingengine.models.ridge.</code><code class="descname">RidgeCV</code><a class="headerlink" href="#pricingengine.models.ridge.RidgeCV" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.models.causalmodel.CausalModel" title="pricingengine.models.causalmodel.CausalModel"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.models.causalmodel.CausalModel</span></code></a></p>
+<dl class="attribute">
+<dt id="pricingengine.models.ridge.RidgeCV.ALPHA_MAX">
+<code class="descname">ALPHA_MAX</code><em class="property"> = 999999</em><a class="headerlink" href="#pricingengine.models.ridge.RidgeCV.ALPHA_MAX" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper to sci-kit learn RidgeCV model</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.ridge.RidgeCV.ALPHA_MIN">
+<code class="descname">ALPHA_MIN</code><em class="property"> = 1e-08</em><a class="headerlink" href="#pricingengine.models.ridge.RidgeCV.ALPHA_MIN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.ridge.RidgeCV.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.ridge.RidgeCV.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.ridge.RidgeCV.get_coefficients">
+<code class="descname">get_coefficients</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.ridge.RidgeCV.get_coefficients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the coefficients of the computed model</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.ridge.RidgeCV.get_standard_errors">
+<code class="descname">get_standard_errors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.ridge.RidgeCV.get_standard_errors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the coefficients of the computed model</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.models.ridge.RidgeCV.get_variance_matrix">
+<code class="descname">get_variance_matrix</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.ridge.RidgeCV.get_variance_matrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.models.ridge.RidgeCV.variance">
+<code class="descname">variance</code><a class="headerlink" href="#pricingengine.models.ridge.RidgeCV.variance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the underlying results object (contains more statistical properties)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pricingengine.models.zero">
+<span id="pricingengine-models-zero-module"></span><h2>pricingengine.models.zero module<a class="headerlink" href="#module-pricingengine.models.zero" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pricingengine.models.zero.One">
+<em class="property">class </em><code class="descclassname">pricingengine.models.zero.</code><code class="descname">One</code><a class="headerlink" href="#pricingengine.models.zero.One" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.models.model.Model" title="pricingengine.models.model.Model"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.models.model.Model</span></code></a></p>
+<p>Always fits a constant OLS</p>
+<dl class="method">
+<dt id="pricingengine.models.zero.One.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.zero.One.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pricingengine.models.zero.Zero">
+<em class="property">class </em><code class="descclassname">pricingengine.models.zero.</code><code class="descname">Zero</code><a class="headerlink" href="#pricingengine.models.zero.Zero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.models.model.Model" title="pricingengine.models.model.Model"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.models.model.Model</span></code></a></p>
+<p>Model that always returns fitted values of 0. Residual is then equal to target.
+Used if you don’t want to partial out anything from a variable</p>
+<dl class="method">
+<dt id="pricingengine.models.zero.Zero.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.models.zero.Zero.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pricingengine.models">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pricingengine.models" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">Pricing Engine</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../classes.html">Class Hierarchy</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="pricingengine.html">pricingengine package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="pricingengine.html#subpackages">Subpackages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.html#module-pricingengine.dataset">pricingengine.dataset module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.html#module-pricingengine.schema">pricingengine.schema module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.html#module-pricingengine">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../msecore/msecore.html">msecore package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../msecoreml/msecoreml.html">msecoreml package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../history.html">Project History</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="pricingengine.html">pricingengine package</a><ul>
+      <li>Previous: <a href="pricingengine.featurizers.html" title="previous chapter">pricingengine.featurizers package</a></li>
+      <li>Next: <a href="pricingengine.utilities.html" title="next chapter">pricingengine.utilities package</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Matt Goldman, Brian Quistorff.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

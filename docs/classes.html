@@ -1,0 +1,153 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Class Hierarchy &#8212; Pricing Engine 2.2.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pricingengine package" href="build/apidoc/pricingengine/pricingengine.html" />
+    <link rel="prev" title="Welcome to Pricing Engine’s 2.2.0 documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="class-hierarchy">
+<span id="class-hierarchy"></span><h1>Class Hierarchy<a class="headerlink" href="#class-hierarchy" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="models">
+<span id="models"></span><h2>Models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h2>
+<p>Base Models:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">Model</span></code>: These are standard models that just train on data and produce predictions<ul>
+<li>Examples: <code class="docutils literal"><span class="pre">BoostedTrees</span></code>, <code class="docutils literal"><span class="pre">DebiasedLasso</span></code>, <code class="docutils literal"><span class="pre">LassoCV</span></code>, <code class="docutils literal"><span class="pre">NeuralNet</span></code></li>
+</ul>
+</li>
+<li><code class="docutils literal"><span class="pre">LinearModel</span></code> - (Inherits <code class="docutils literal"><span class="pre">Model</span></code>) Models that also provide coefficients on the features. Not a perfect name.</li>
+<li><code class="docutils literal"><span class="pre">CausalModel</span></code> - (Inherits <code class="docutils literal"><span class="pre">LinearModel</span></code>) Models that also provide standard errors and a covariance matrix of the coefficients.<ul>
+<li>Examples: <code class="docutils literal"><span class="pre">OLS</span></code>, <code class="docutils literal"><span class="pre">RidgeCV</span></code></li>
+</ul>
+</li>
+</ul>
+<p>SampleSplit/Fold-aware model. These are used directly by the estimation models which requir requires cross-fitting</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">SampleSplitModel</span></code>: Analogous to <code class="docutils literal"><span class="pre">Model</span></code>, but takes folds over the data for fit and predict.<ul>
+<li>Examples: <code class="docutils literal"><span class="pre">CrossFitContainer</span></code> (can wrap a basic <code class="docutils literal"><span class="pre">Model</span></code>), and ensemble models such as <code class="docutils literal"><span class="pre">StackedSS</span></code> (&quot;Stacked Generalization&quot;, takes other <code class="docutils literal"><span class="pre">SampleSplitModel</span></code>s) and <code class="docutils literal"><span class="pre">BucketSS</span></code> (&quot;Bucket of Models&quot;, takes other <code class="docutils literal"><span class="pre">SampleSplitModel</span></code>s)</li>
+</ul>
+</li>
+</ul>
+<p>Estimation Models:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">DoubleMLLikeModel</span></code>: Models that have a baseline stage where treatment and outcome are predicted (using a <code class="docutils literal"><span class="pre">SampleSplitModel</span></code>) and then a causal stage where residual outcome is regressed (using a <code class="docutils literal"><span class="pre">CausalModel</span></code>). They take <code class="docutils literal"><span class="pre">VarBuilder</span></code> objects that dynamically create variables rather being passed explicit features. They also take a data splitter which is used to split the data in the baseline.<ul>
+<li>Examples: <code class="docutils literal"><span class="pre">DoubleML</span></code>, <code class="docutils literal"><span class="pre">DynamicDML</span></code></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="variable-generation">
+<span id="variable-generation"></span><h2>Variable Generation<a class="headerlink" href="#variable-generation" title="Permalink to this headline">¶</a></h2>
+<p>The user needs to be able to specify how features are generated in the baseline stages and how to construct treatments in the causal model. At it's core this is done by providing lists of VarBuilders. Interally these lists are managed by <code class="docutils literal"><span class="pre">FeatureGenerator</span></code>s and <code class="docutils literal"><span class="pre">TreatmentGenerator</span></code>s.</p>
+<p><code class="docutils literal"><span class="pre">VarBuilder</span></code>: Takes data (including residualized variables in the treatment stage) and produce output (either features or treatments). For the DynamicDML case they also can make lead-specific variables. At the baseline stage this lead-specific building is necessary to distinguish between variables that are known when they occur (most variables) and those that are pre-determined (e.g. holiday schedules). At the causal stage they can construct variables from multiple different lead-specific residualization models to generate time-related effects like &quot;pull-forward&quot; effects.</p>
+<ul class="simple">
+<li>Examples: <code class="docutils literal"><span class="pre">OwnVar</span></code> (for a simple coefficient), <code class="docutils literal"><span class="pre">PToPVar</span></code> (e.g. cross-product price effects)</li>
+</ul>
+<p>Featurizer methods: These take a schema and produce lists of <code class="docutils literal"><span class="pre">VarBuilder</span></code>s.</p>
+<ul class="simple">
+<li>Examples: <code class="docutils literal"><span class="pre">default_dynamic_featurizer</span></code>, <code class="docutils literal"><span class="pre">default_panel_featurizer</span></code></li>
+</ul>
+</div>
+<div class="section" id="other">
+<span id="other"></span><h2>Other<a class="headerlink" href="#other" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">Schema</span></code>: Stores the <code class="docutils literal"><span class="pre">DataType</span></code> of each column (e.g. is an integer really a category variable to be 1-hot encoded) as well as <code class="docutils literal"><span class="pre">ColType</span></code> (Outcome,  Treatment, (normal control), or Predetermined (a control that is known in advance)).</p>
+<p><code class="docutils literal"><span class="pre">EstimationDataset</span></code>: Stores data, builds a multiindex, and stores the fold information when it's been fit using one of the Estimation Models</p>
+<p><code class="docutils literal"><span class="pre">Predictions</span></code>: Computers prediciton statistics from the Estimation Models</p>
+<p><code class="docutils literal"><span class="pre">DDMLMarginalEffects</span></code>: Helpful utility for complicated treatments</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Pricing Engine</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Class Hierarchy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#models">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#variable-generation">Variable Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#other">Other</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="build/apidoc/pricingengine/pricingengine.html">pricingengine package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build/apidoc/msecore/msecore.html">msecore package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build/apidoc/msecoreml/msecoreml.html">msecoreml package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">Project History</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to Pricing Engine’s 2.2.0 documentation!</a></li>
+      <li>Next: <a href="build/apidoc/pricingengine/pricingengine.html" title="next chapter">pricingengine package</a></li>
+  </ul></li>
+</ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Matt Goldman, Brian Quistorff.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

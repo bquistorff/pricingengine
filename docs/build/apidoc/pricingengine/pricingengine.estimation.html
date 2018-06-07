@@ -1,0 +1,1045 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>pricingengine.estimation package &#8212; Pricing Engine 2.2.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="pricingengine.featurizers package" href="pricingengine.featurizers.html" />
+    <link rel="prev" title="pricingengine package" href="pricingengine.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="pricingengine-estimation-package">
+<h1>pricingengine.estimation package<a class="headerlink" href="#pricingengine-estimation-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-pricingengine.estimation.double_ml">
+<span id="pricingengine-estimation-double-ml-module"></span><h2>pricingengine.estimation.double_ml module<a class="headerlink" href="#module-pricingengine.estimation.double_ml" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pricingengine.estimation.double_ml.DoubleML">
+<em class="property">class </em><code class="descclassname">pricingengine.estimation.double_ml.</code><code class="descname">DoubleML</code><span class="sig-paren">(</span><em>schema</em>, <em>baseline_model=LassoCV: LassoCV(alphas=None</em>, <em>copy_X=True</em>, <em>cv=None</em>, <em>eps=0.001</em>, <em>fit_intercept=True</em>, <em>max_iter=1000</em>, <em>n_alphas=100</em>, <em>n_jobs=1</em>, <em>normalize=False</em>, <em>positive=False</em>, <em>precompute='auto'</em>, <em>random_state=None</em>, <em>selection='cyclic'</em>, <em>tol=0.0001</em>, <em>verbose=False)</em>, <em>causal_model=OLS(add_const=False)</em>, <em>error_model=LassoCV: LassoCV(alphas=None</em>, <em>copy_X=True</em>, <em>cv=None</em>, <em>eps=0.001</em>, <em>fit_intercept=True</em>, <em>max_iter=1000</em>, <em>n_alphas=100</em>, <em>n_jobs=1</em>, <em>normalize=False</em>, <em>positive=False</em>, <em>precompute='auto'</em>, <em>random_state=None</em>, <em>selection='cyclic'</em>, <em>tol=0.0001</em>, <em>verbose=False)</em>, <em>treatment_builders=None</em>, <em>feature_builders=None</em>, <em>sample_splitter=KFold(n_splits=2</em>, <em>random_state=None</em>, <em>shuffle=True)</em>, <em>cluster_date=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.double_ml.DoubleML" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.estimation.double_ml.DoubleMLLikeModel" title="pricingengine.estimation.double_ml.DoubleMLLikeModel"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.estimation.double_ml.DoubleMLLikeModel</span></code></a></p>
+<p>Generic Double ML Model. Estimates the coefficient <span class="math">\(\beta\)</span> from the following partially linear model</p>
+<p><span class="math">\(Y = f(X) + \beta \cdot D + \epsilon\)</span></p>
+<p><span class="math">\(D = g(X) + \mu\)</span></p>
+<p>Note that the base models are cross-fit across folds (so a model’s predictions for its training data are not used).</p>
+<dl class="method">
+<dt id="pricingengine.estimation.double_ml.DoubleML.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>schema</em>, <em>baseline_model=LassoCV: LassoCV(alphas=None</em>, <em>copy_X=True</em>, <em>cv=None</em>, <em>eps=0.001</em>, <em>fit_intercept=True</em>, <em>max_iter=1000</em>, <em>n_alphas=100</em>, <em>n_jobs=1</em>, <em>normalize=False</em>, <em>positive=False</em>, <em>precompute='auto'</em>, <em>random_state=None</em>, <em>selection='cyclic'</em>, <em>tol=0.0001</em>, <em>verbose=False)</em>, <em>causal_model=OLS(add_const=False)</em>, <em>error_model=LassoCV: LassoCV(alphas=None</em>, <em>copy_X=True</em>, <em>cv=None</em>, <em>eps=0.001</em>, <em>fit_intercept=True</em>, <em>max_iter=1000</em>, <em>n_alphas=100</em>, <em>n_jobs=1</em>, <em>normalize=False</em>, <em>positive=False</em>, <em>precompute='auto'</em>, <em>random_state=None</em>, <em>selection='cyclic'</em>, <em>tol=0.0001</em>, <em>verbose=False)</em>, <em>treatment_builders=None</em>, <em>feature_builders=None</em>, <em>sample_splitter=KFold(n_splits=2</em>, <em>random_state=None</em>, <em>shuffle=True)</em>, <em>cluster_date=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.double_ml.DoubleML.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize a new DoubleML instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>schema</strong> – The expected schema of datasets that will be fit</li>
+<li><strong>baseline_model</strong> – Instance with subclass Model to be used for computing baseline
+treatment and outcome prediction models in first stage regressions.
+This object may also be a dict which points from each column name (all treatment and outcome variables)
+to a corresponding Model.</li>
+<li><strong>causal_model</strong> (<a class="reference internal" href="pricingengine.models.html#pricingengine.models.causalmodel.CausalModel" title="pricingengine.models.causalmodel.CausalModel"><em>CausalModel</em></a>) – Model to be used for computing treatment effects in second
+stage regression</li>
+<li><strong>error_model</strong> (<a class="reference internal" href="pricingengine.models.html#pricingengine.models.model.Model" title="pricingengine.models.model.Model"><em>Model</em></a>) – Model to be used for estimating average (absolute) error size as a 
+function of features (i.e. heteroskedasticity function)</li>
+<li><strong>feature_builders</strong> – List of VarBuilder objects used to create features for first stage regressions</li>
+<li><strong>treatment_builders</strong> – List of VarBuilder objects used to create treatments for second stage regressions</li>
+<li><strong>sample_splitter</strong> – member of sklearn.model_selection used for sample splitting. Default is KFold.</li>
+<li><strong>cluster_date</strong> – Bool (default True) input for whether or not to cluster standard erros at the level of the
+date column</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.double_ml.DoubleML.baseline_outcome_coefficients">
+<code class="descname">baseline_outcome_coefficients</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.double_ml.DoubleML.baseline_outcome_coefficients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return coefficients (averaged over splits) from first stage outcome regression
+Will account for baseline feature scaling</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.double_ml.DoubleML.baseline_treatment_coefficients">
+<code class="descname">baseline_treatment_coefficients</code><span class="sig-paren">(</span><em>treatment_name</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.double_ml.DoubleML.baseline_treatment_coefficients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get first stage coefficients (averaged over splits) from treatment regression corresponding to the given
+treatment_name.
+Will account for baseline feature scaling</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.estimation.double_ml.DoubleML.error_model">
+<code class="descname">error_model</code><a class="headerlink" href="#pricingengine.estimation.double_ml.DoubleML.error_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the model used to comptue predicted (absolute) error size</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.double_ml.DoubleML.fit_baseline_models_featurized">
+<code class="descname">fit_baseline_models_featurized</code><span class="sig-paren">(</span><em>features</em>, <em>outcome</em>, <em>treatments</em>, <em>folds</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.double_ml.DoubleML.fit_baseline_models_featurized" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit first-stage baseline models (but not causal model) for predicting treatment and outcome.
+Sub-utility used by fit_baseline_models().</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>features</strong> – dictionary of features used for prediction (expects one for error too)</li>
+<li><strong>outcome</strong> – dictionary of leads mapping to series of outcome leads</li>
+<li><strong>treatments</strong> – double dictionary mapping from lead and treatment_name to series of treatment leads</li>
+<li><strong>folds</strong> – list of train test splits used for cross validation</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pricingengine.estimation.double_ml.DoubleML.gen_prepredicted">
+<em class="property">static </em><code class="descname">gen_prepredicted</code><span class="sig-paren">(</span><em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.double_ml.DoubleML.gen_prepredicted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a DataFrame of recorded predictions in dictionary of PrePredicted models</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pricingengine.estimation.double_ml.DoubleML.get_rec_df_from_csv">
+<em class="property">static </em><code class="descname">get_rec_df_from_csv</code><span class="sig-paren">(</span><em>fname</em>, <em>schema</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.double_ml.DoubleML.get_rec_df_from_csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a csv file with recordings from a DoubleML prediction
+:param fname: filename of csv of recorded model predictions
+:param schema: Schema object
+:returns: DataFrame of prediction recordings</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.estimation.double_ml.DoubleML.outcome_baseline_models">
+<code class="descname">outcome_baseline_models</code><a class="headerlink" href="#pricingengine.estimation.double_ml.DoubleML.outcome_baseline_models" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the outcome baseline models</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.double_ml.DoubleML.predict_baseline">
+<code class="descname">predict_baseline</code><span class="sig-paren">(</span><em>features</em>, <em>folds=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.double_ml.DoubleML.predict_baseline" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>features</strong> – Either a single feature matrix or a dictionary:varname-&gt;feature matrix</li>
+<li><strong>folds</strong> – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.estimation.double_ml.DoubleML.treatment_baseline_models">
+<code class="descname">treatment_baseline_models</code><a class="headerlink" href="#pricingengine.estimation.double_ml.DoubleML.treatment_baseline_models" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the treatment baseline models</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pricingengine.estimation.double_ml.DoubleMLLikeModel">
+<em class="property">class </em><code class="descclassname">pricingengine.estimation.double_ml.</code><code class="descname">DoubleMLLikeModel</code><span class="sig-paren">(</span><em>schema</em>, <em>causal_model</em>, <em>treatment_builders</em>, <em>feature_builders</em>, <em>sample_splitter</em>, <em>cluster_date=True</em>, <em>no_constant=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.double_ml.DoubleMLLikeModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.estimation.regression.Estimation" title="pricingengine.estimation.regression.Estimation"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.estimation.regression.Estimation</span></code></a></p>
+<p>An abstract baseclass for DoubleML-like models (DoubleML/DynamicDML, etc.)</p>
+<dl class="attribute">
+<dt id="pricingengine.estimation.double_ml.DoubleMLLikeModel.NO_SPLIT">
+<code class="descname">NO_SPLIT</code><em class="property"> = 'no split'</em><a class="headerlink" href="#pricingengine.estimation.double_ml.DoubleMLLikeModel.NO_SPLIT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.estimation.double_ml.DoubleMLLikeModel.TYPE_COL_NAME">
+<code class="descname">TYPE_COL_NAME</code><em class="property"> = 'type'</em><a class="headerlink" href="#pricingengine.estimation.double_ml.DoubleMLLikeModel.TYPE_COL_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.double_ml.DoubleMLLikeModel.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>schema</em>, <em>causal_model</em>, <em>treatment_builders</em>, <em>feature_builders</em>, <em>sample_splitter</em>, <em>cluster_date=True</em>, <em>no_constant=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.double_ml.DoubleMLLikeModel.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>schema</strong> – The expected schema of datasets that will be fit</li>
+<li><strong>causal_model</strong> (<a class="reference internal" href="pricingengine.models.html#pricingengine.models.causalmodel.CausalModel" title="pricingengine.models.causalmodel.CausalModel"><em>CausalModel</em></a>) – Model to be used for computing treatment effects in second
+stage regression</li>
+<li><strong>treatment_builders</strong> – List of VarBuilder objects used to create treatments for second stage regressions</li>
+<li><strong>feature_builders</strong> – List of VarBuilder objects used to create features for first stage regressions</li>
+<li><strong>sample_splitter</strong> – member of sklearn.model_selection used for sample splitting. Default is KFold.</li>
+<li><strong>cluster_date</strong> – Bool (default True) input for whether or not to cluster standard erros at the level of the
+date column</li>
+<li><strong>no_constant</strong> – Bool (default False) to force the construction of ConstVar treatments with all
+available interactions. If True, these constants are omitted.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.double_ml.DoubleMLLikeModel.baseline_fit_diagnostics">
+<code class="descname">baseline_fit_diagnostics</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.double_ml.DoubleMLLikeModel.baseline_fit_diagnostics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get various prediction diagnostics for all baseline (first stage) regressions</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.double_ml.DoubleMLLikeModel.baseline_models_feat_info">
+<code class="descname">baseline_models_feat_info</code><span class="sig-paren">(</span><em>avg_splits=False</em>, <em>combine_vars=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.double_ml.DoubleMLLikeModel.baseline_models_feat_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return baseline model coefficients for all first stage models for the given lead</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>avg_splits</strong> (<em>bool</em>) – If true avgs diagnostics acrss model splits (otherwise returns
+separately).</li>
+<li><strong>combine_vars</strong> – Try to combine the different variable vectors into a df (works if same feature vector)
+If True, will return a single DF. If false, will return a <a class="reference external" href="dict:varname-">dict:varname-</a>&gt;DF (aggregated across leads)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.estimation.double_ml.DoubleMLLikeModel.causal_model">
+<code class="descname">causal_model</code><a class="headerlink" href="#pricingengine.estimation.double_ml.DoubleMLLikeModel.causal_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the causal model</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.double_ml.DoubleMLLikeModel.fit_baseline_models">
+<code class="descname">fit_baseline_models</code><span class="sig-paren">(</span><em>estimation_dataset</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.double_ml.DoubleMLLikeModel.fit_baseline_models" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit baseline (but not causal models) on DDML object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>estimation_dataset</strong> – EstimationDatset object on which baseline models are fit</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.double_ml.DoubleMLLikeModel.fit_causal_model">
+<code class="descname">fit_causal_model</code><span class="sig-paren">(</span><em>estimation_dataset</em>, <em>rm_baseline_interm_info=False</em>, <em>subst_treatment_builders=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.double_ml.DoubleMLLikeModel.fit_causal_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit only the causal model of DDML. Requires that you have already fit baseline models.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>estimation_dataset</strong> – </li>
+<li><strong>rm_baseline_interm_info</strong> – If you want to fit several different causal models,
+pass in rm_baseline_interm_info=False</li>
+<li><strong>subst_treatment_builders</strong> – overwrites existing treatment_builders in case you want to try a 
+different model</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.estimation.double_ml.DoubleMLLikeModel.num_splits">
+<code class="descname">num_splits</code><a class="headerlink" href="#pricingengine.estimation.double_ml.DoubleMLLikeModel.num_splits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of splits for cross-fitting</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pricingengine.estimation.dynamic_dml">
+<span id="pricingengine-estimation-dynamic-dml-module"></span><h2>pricingengine.estimation.dynamic_dml module<a class="headerlink" href="#module-pricingengine.estimation.dynamic_dml" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pricingengine.estimation.dynamic_dml.BaseAndError">
+<em class="property">class </em><code class="descclassname">pricingengine.estimation.dynamic_dml.</code><code class="descname">BaseAndError</code><span class="sig-paren">(</span><em>leads</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.BaseAndError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Model that will fit and predict baseline models and error</p>
+<dl class="method">
+<dt id="pricingengine.estimation.dynamic_dml.BaseAndError.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>leads</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.BaseAndError.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.dynamic_dml.BaseAndError.baseline_fit_diagnostics">
+<code class="descname">baseline_fit_diagnostics</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.BaseAndError.baseline_fit_diagnostics" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.dynamic_dml.BaseAndError.baseline_models_feat_info">
+<code class="descname">baseline_models_feat_info</code><span class="sig-paren">(</span><em>avg_splits=False</em>, <em>combine_vars=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.BaseAndError.baseline_models_feat_info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.dynamic_dml.BaseAndError.error_model_predict">
+<code class="descname">error_model_predict</code><span class="sig-paren">(</span><em>features_fit</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.BaseAndError.error_model_predict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.dynamic_dml.BaseAndError.fit_baseline_models_featurized">
+<code class="descname">fit_baseline_models_featurized</code><span class="sig-paren">(</span><em>common_features</em>, <em>lead_features</em>, <em>outcome_lead</em>, <em>treatments_lead</em>, <em>folds</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.BaseAndError.fit_baseline_models_featurized" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.dynamic_dml.BaseAndError.fit_error_model">
+<code class="descname">fit_error_model</code><span class="sig-paren">(</span><em>features_fit</em>, <em>err</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.BaseAndError.fit_error_model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="pricingengine.estimation.dynamic_dml.BaseAndError.gen_prepredicted">
+<em class="property">static </em><code class="descname">gen_prepredicted</code><span class="sig-paren">(</span><em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.BaseAndError.gen_prepredicted" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.dynamic_dml.BaseAndError.predict_baseline">
+<code class="descname">predict_baseline</code><span class="sig-paren">(</span><em>common_features</em>, <em>lead_features</em>, <em>fold_fit_info</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.BaseAndError.predict_baseline" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pricingengine.estimation.dynamic_dml.DDMLOptions">
+<em class="property">class </em><code class="descclassname">pricingengine.estimation.dynamic_dml.</code><code class="descname">DDMLOptions</code><span class="sig-paren">(</span><em>min_lead=1</em>, <em>max_lead=1</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.DDMLOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Options for computing effects using Dynamic DoubleML</p>
+<dl class="method">
+<dt id="pricingengine.estimation.dynamic_dml.DDMLOptions.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>min_lead=1</em>, <em>max_lead=1</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.DDMLOptions.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new DDMLOptions instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>min_lead</strong> – Smallest lead to model</li>
+<li><strong>max_lead</strong> – Largest lead to model</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.estimation.dynamic_dml.DDMLOptions.leads">
+<code class="descname">leads</code><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.DDMLOptions.leads" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return list where each element is a number of periods ahead to compute effects</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pricingengine.estimation.dynamic_dml.DynamicDML">
+<em class="property">class </em><code class="descclassname">pricingengine.estimation.dynamic_dml.</code><code class="descname">DynamicDML</code><span class="sig-paren">(</span><em>schema</em>, <em>baseline_model=LassoCV: LassoCV(alphas=None</em>, <em>copy_X=True</em>, <em>cv=None</em>, <em>eps=0.001</em>, <em>fit_intercept=True</em>, <em>max_iter=1000</em>, <em>n_alphas=100</em>, <em>n_jobs=1</em>, <em>normalize=False</em>, <em>positive=False</em>, <em>precompute='auto'</em>, <em>random_state=None</em>, <em>selection='cyclic'</em>, <em>tol=0.0001</em>, <em>verbose=False)</em>, <em>causal_model=OLS(add_const=False)</em>, <em>error_model=LassoCV: LassoCV(alphas=None</em>, <em>copy_X=True</em>, <em>cv=None</em>, <em>eps=0.001</em>, <em>fit_intercept=True</em>, <em>max_iter=1000</em>, <em>n_alphas=100</em>, <em>n_jobs=1</em>, <em>normalize=False</em>, <em>positive=False</em>, <em>precompute='auto'</em>, <em>random_state=None</em>, <em>selection='cyclic'</em>, <em>tol=0.0001</em>, <em>verbose=False)</em>, <em>feature_builders=None</em>, <em>treatment_builders=None</em>, <em>training_filter=None</em>, <em>options=DDMLOptions(1</em>, <em>1)</em>, <em>outcome_model_type='level'</em>, <em>treatment_diff_models=[]</em>, <em>sample_splitter=KFold(n_splits=2</em>, <em>random_state=None</em>, <em>shuffle=True)</em>, <em>cluster_date=True</em>, <em>cv_structure_fn=None</em>, <em>multi_task=False</em>, <em>no_constant=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.DynamicDML" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.estimation.double_ml.DoubleMLLikeModel" title="pricingengine.estimation.double_ml.DoubleMLLikeModel"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.estimation.double_ml.DoubleMLLikeModel</span></code></a></p>
+<p>A series of DoubleML models, each lead contains a separate first stage model that corresponds to forecasting
+the outcome at a given lead. There is also a common causal_model that corresponds to causal impacts of treatments
+which are jointly learned from all models.</p>
+<dl class="attribute">
+<dt id="pricingengine.estimation.dynamic_dml.DynamicDML.LEAD_LEVEL_NAME">
+<code class="descname">LEAD_LEVEL_NAME</code><em class="property"> = 'lead'</em><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.DynamicDML.LEAD_LEVEL_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.dynamic_dml.DynamicDML.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>schema</em>, <em>baseline_model=LassoCV: LassoCV(alphas=None</em>, <em>copy_X=True</em>, <em>cv=None</em>, <em>eps=0.001</em>, <em>fit_intercept=True</em>, <em>max_iter=1000</em>, <em>n_alphas=100</em>, <em>n_jobs=1</em>, <em>normalize=False</em>, <em>positive=False</em>, <em>precompute='auto'</em>, <em>random_state=None</em>, <em>selection='cyclic'</em>, <em>tol=0.0001</em>, <em>verbose=False)</em>, <em>causal_model=OLS(add_const=False)</em>, <em>error_model=LassoCV: LassoCV(alphas=None</em>, <em>copy_X=True</em>, <em>cv=None</em>, <em>eps=0.001</em>, <em>fit_intercept=True</em>, <em>max_iter=1000</em>, <em>n_alphas=100</em>, <em>n_jobs=1</em>, <em>normalize=False</em>, <em>positive=False</em>, <em>precompute='auto'</em>, <em>random_state=None</em>, <em>selection='cyclic'</em>, <em>tol=0.0001</em>, <em>verbose=False)</em>, <em>feature_builders=None</em>, <em>treatment_builders=None</em>, <em>training_filter=None</em>, <em>options=DDMLOptions(1</em>, <em>1)</em>, <em>outcome_model_type='level'</em>, <em>treatment_diff_models=[]</em>, <em>sample_splitter=KFold(n_splits=2</em>, <em>random_state=None</em>, <em>shuffle=True)</em>, <em>cluster_date=True</em>, <em>cv_structure_fn=None</em>, <em>multi_task=False</em>, <em>no_constant=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.DynamicDML.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new instance of an effect model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>schema</strong> (<a class="reference internal" href="pricingengine.html#pricingengine.schema.Schema" title="pricingengine.schema.Schema"><em>Schema</em></a>) – The schema for subsequent training and prediction data</li>
+<li><strong>baseline_model</strong> – Instance with subclass Model to be used for 
+computing baseline treatment and outcome prediction models. 
+This object may also be a dict which points from each column name to a corresponding Model.</li>
+<li><strong>causal_model</strong> (<a class="reference internal" href="pricingengine.models.html#pricingengine.models.causalmodel.CausalModel" title="pricingengine.models.causalmodel.CausalModel"><em>CausalModel</em></a>) – Model to be used for computing treatment effects</li>
+<li><strong>error_model</strong> (<a class="reference internal" href="pricingengine.models.html#pricingengine.models.model.Model" title="pricingengine.models.model.Model"><em>Model</em></a>) – Model to be used for estimating average (absolute) error size as a function of 
+features (i.e. heteroskedasticity function)</li>
+<li><strong>feature_builders</strong> – List of VarBuilder objects used to create features for first stage regressions</li>
+<li><strong>treatment_builders</strong> – List of VarBuilder objects used to create treatments for second stage regressions</li>
+<li><strong>training_filter</strong> – function that takes the feature generator and estimation_dataset and returns a vector
+of bools which indicates which observations should be used for training. Default is all observations.</li>
+<li><strong>options</strong> (<a class="reference internal" href="#pricingengine.estimation.dynamic_dml.DDMLOptions" title="pricingengine.estimation.dynamic_dml.DDMLOptions"><em>DDMLOptions</em></a>) – Model options</li>
+<li><strong>outcome_model_type</strong> – FeatureGenerator.LEVEL_MODEL (default) trains first stage model in levels.
+FeatureGenerator.DIFF_MODEL trains first stage outcome model on first differences</li>
+<li><strong>treatment_diff_models</strong> – list of treatments that are estimated in first differences (Default is LEVEL)</li>
+<li><strong>sample_splitter</strong> – member of sklearn.model_selection used for sample splitting. Default is KFold.</li>
+<li><strong>cluster_date</strong> – Bool (default True) input for whether or not to cluster standard erros at the level of the
+date column</li>
+<li><strong>cv_structure_fn</strong> – function that takes the df multiindex and returns labelled structure.
+Used by either GroupKFold or StratifiedKFold.
+Default is to use the time variable.</li>
+<li><strong>multi_task</strong> – Bool (default False) to indicate whether one instance of the specified baseline model will
+be used to make predictions for multiple leads.  (Only certain models have this capability, for instance
+CNTKCausalModel).  If False, then N copies of the model will be used to model the outcome for each lead.</li>
+<li><strong>no_constant</strong> – Bool (default False) to force the construction of ConstVar treatments with all
+available interactions. If True, these constants are omitted.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pricingengine.estimation.dynamic_dml.DynamicDML.gen_prepredicted_baselines">
+<em class="property">static </em><code class="descname">gen_prepredicted_baselines</code><span class="sig-paren">(</span><em>df</em>, <em>base_error_class=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.DynamicDML.gen_prepredicted_baselines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a DataFrame of recorded predictions in dictionary of PrePredicted models</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.dynamic_dml.DynamicDML.get_design_matrices">
+<code class="descname">get_design_matrices</code><span class="sig-paren">(</span><em>dataset</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.DynamicDML.get_design_matrices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets all the design (and related) matrices from all the stages
+:param dataset: Needs to have same schema as estimation dataset but can be much smaller
+:return: Tuple of baseline_variables, baseline_features, train_fold, causal_outcomes, causal_treatments.</p>
+<blockquote>
+<div>The first two are nested dictionaries of lead-&gt;varname-&gt;data
+The inner datasets of the first two, and train_fold all have the same row index so can be concatted.
+The final two datasets are the causal regression.
+The causal variables will be the original values (possibly scaled) rather than residuals.
+For the error model, query the first two with Model.ERROR_VAR_NAME (Note: folds are meaningless here).</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.dynamic_dml.DynamicDML.get_diffed_vars">
+<code class="descname">get_diffed_vars</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.DynamicDML.get_diffed_vars" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.dynamic_dml.DynamicDML.get_marginal_effects">
+<code class="descname">get_marginal_effects</code><span class="sig-paren">(</span><em>treatment_name</em>, <em>competition_col</em>, <em>leads=None</em>, <em>filter_dic=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.DynamicDML.get_marginal_effects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="pricingengine.estimation.dynamic_dml.DynamicDML.get_rec_df_from_csv">
+<em class="property">static </em><code class="descname">get_rec_df_from_csv</code><span class="sig-paren">(</span><em>fname</em>, <em>schema</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.DynamicDML.get_rec_df_from_csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a csv file with recordings from a DynamicDML prediction
+:param fname: filename of csv of recorded model predictions
+:param schema: Schema object
+:returns: DataFrame of prediction recordings</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.estimation.dynamic_dml.DynamicDML.options">
+<code class="descname">options</code><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.DynamicDML.options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the options given during initialization</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.dynamic_dml.DynamicDML.outcome_coefficients">
+<code class="descname">outcome_coefficients</code><span class="sig-paren">(</span><em>lead</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.DynamicDML.outcome_coefficients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get first stage coefficients (averaged over splits) from outcome regression corresponding to the given lead.
+Will account for baseline feature scaling</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>lead</strong> – integer corresponding to preferred lead</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pricingengine.estimation.dynamic_dml.DynamicDML.translate_prediction_to_rec">
+<em class="property">static </em><code class="descname">translate_prediction_to_rec</code><span class="sig-paren">(</span><em>pred_df</em>, <em>date_col</em>, <em>exp_ind=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.DynamicDML.translate_prediction_to_rec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes back the targets according to lead (because in fitting they are lagged to the information date)</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pricingengine.estimation.dynamic_dml.DynamicDML.translate_rec_to_prediction">
+<em class="property">static </em><code class="descname">translate_rec_to_prediction</code><span class="sig-paren">(</span><em>rec_df</em>, <em>leads</em>, <em>date_col</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.DynamicDML.translate_rec_to_prediction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Advances the targets according to lead (in the fitting they were lagged to the information date)
+and then averages across the folds of the model.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.dynamic_dml.DynamicDML.treatment_coefficients">
+<code class="descname">treatment_coefficients</code><span class="sig-paren">(</span><em>lead</em>, <em>treatment_name</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.DynamicDML.treatment_coefficients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get first stage coefficients (averaged over splits) from treatment regression corresponding to the given
+lead and treatment_name.
+Will account for baseline feature scaling</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>treatment_name</strong> (<em>str</em>) – name of treatment variable</li>
+<li><strong>lead</strong> (<em>int</em>) – preferred lead</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pricingengine.estimation.dynamic_dml.MultiTaskBaseAndError">
+<em class="property">class </em><code class="descclassname">pricingengine.estimation.dynamic_dml.</code><code class="descname">MultiTaskBaseAndError</code><span class="sig-paren">(</span><em>schema</em>, <em>baseline_model</em>, <em>causal_model</em>, <em>error_model</em>, <em>n_splits</em>, <em>leads</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.MultiTaskBaseAndError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.estimation.dynamic_dml.BaseAndError" title="pricingengine.estimation.dynamic_dml.BaseAndError"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.estimation.dynamic_dml.BaseAndError</span></code></a></p>
+<dl class="method">
+<dt id="pricingengine.estimation.dynamic_dml.MultiTaskBaseAndError.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>schema</em>, <em>baseline_model</em>, <em>causal_model</em>, <em>error_model</em>, <em>n_splits</em>, <em>leads</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.MultiTaskBaseAndError.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.dynamic_dml.MultiTaskBaseAndError.baseline_fit_diagnostics">
+<code class="descname">baseline_fit_diagnostics</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.MultiTaskBaseAndError.baseline_fit_diagnostics" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.dynamic_dml.MultiTaskBaseAndError.baseline_models_feat_info">
+<code class="descname">baseline_models_feat_info</code><span class="sig-paren">(</span><em>avg_splits=False</em>, <em>combine_vars=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.MultiTaskBaseAndError.baseline_models_feat_info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.dynamic_dml.MultiTaskBaseAndError.error_model_predict">
+<code class="descname">error_model_predict</code><span class="sig-paren">(</span><em>features_fit</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.MultiTaskBaseAndError.error_model_predict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.dynamic_dml.MultiTaskBaseAndError.fit_baseline_models_featurized">
+<code class="descname">fit_baseline_models_featurized</code><span class="sig-paren">(</span><em>common_features</em>, <em>lead_features</em>, <em>outcome_lead</em>, <em>treatments_lead</em>, <em>folds</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.MultiTaskBaseAndError.fit_baseline_models_featurized" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>common_features</strong> – features common to all leads</li>
+<li><strong>lead_features</strong> – lead-specific features</li>
+<li><strong>outcome_lead</strong> – dict mapping lead to outcome variable values</li>
+<li><strong>treatments_lead</strong> – dict mapping lead to treatment variable values</li>
+<li><strong>folds</strong> – list of train test splits used for cross validation</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.dynamic_dml.MultiTaskBaseAndError.fit_error_model">
+<code class="descname">fit_error_model</code><span class="sig-paren">(</span><em>features_fit</em>, <em>err</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.MultiTaskBaseAndError.fit_error_model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="pricingengine.estimation.dynamic_dml.MultiTaskBaseAndError.gen_prepredicted">
+<em class="property">static </em><code class="descname">gen_prepredicted</code><span class="sig-paren">(</span><em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.MultiTaskBaseAndError.gen_prepredicted" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.dynamic_dml.MultiTaskBaseAndError.outcome_coefficients">
+<code class="descname">outcome_coefficients</code><span class="sig-paren">(</span><em>lead</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.MultiTaskBaseAndError.outcome_coefficients" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.dynamic_dml.MultiTaskBaseAndError.predict_baseline">
+<code class="descname">predict_baseline</code><span class="sig-paren">(</span><em>common_features</em>, <em>lead_features</em>, <em>fold_fit_info</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.MultiTaskBaseAndError.predict_baseline" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>common_features</strong> – features common to all leads</li>
+<li><strong>lead_features</strong> – lead-specific features</li>
+<li><strong>fold_fit_info</strong> – same data format as folds variable in fit_baseline_models_featurized</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.dynamic_dml.MultiTaskBaseAndError.treatment_coefficients">
+<code class="descname">treatment_coefficients</code><span class="sig-paren">(</span><em>lead</em>, <em>treatment_name</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.MultiTaskBaseAndError.treatment_coefficients" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pricingengine.estimation.dynamic_dml.N_Split">
+<em class="property">class </em><code class="descclassname">pricingengine.estimation.dynamic_dml.</code><code class="descname">N_Split</code><span class="sig-paren">(</span><em>n_splits</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.N_Split" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="pricingengine.estimation.dynamic_dml.N_Split.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>n_splits</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.dynamic_dml.N_Split.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pricingengine.estimation.estimation_dataset">
+<span id="pricingengine-estimation-estimation-dataset-module"></span><h2>pricingengine.estimation.estimation_dataset module<a class="headerlink" href="#module-pricingengine.estimation.estimation_dataset" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pricingengine.estimation.estimation_dataset.EstimationDataSet">
+<em class="property">class </em><code class="descclassname">pricingengine.estimation.estimation_dataset.</code><code class="descname">EstimationDataSet</code><span class="sig-paren">(</span><em>data</em>, <em>schema</em>, <em>validators=frozenset({&lt;pricingengine.estimation.estimation_dataset.ValidPanels object&gt;})</em>, <em>fold_fit_info=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.estimation_dataset.EstimationDataSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.estimation.typed_dataset.TypedDataSet" title="pricingengine.estimation.typed_dataset.TypedDataSet"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.estimation.typed_dataset.TypedDataSet</span></code></a></p>
+<p>Dataset with known schema used for generating features</p>
+<dl class="method">
+<dt id="pricingengine.estimation.estimation_dataset.EstimationDataSet.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>data</em>, <em>schema</em>, <em>validators=frozenset({&lt;pricingengine.estimation.estimation_dataset.ValidPanels object&gt;})</em>, <em>fold_fit_info=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.estimation_dataset.EstimationDataSet.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>data</strong> – pandas dataframe containing date, units, and price columns with a single column index</li>
+<li><strong>schema</strong> – Schema describing the data</li>
+<li><strong>validators</strong> – A list of validators to use for verifying data integrity</li>
+<li><strong>fold_fit_info</strong> – Series where each value is the index of the model that has this as the test portion
+or NaN if all folds can have this as test (when fit on subset of dataset).
+This is None if this dataset has been fit. Will be set after fit.
+We store this rather than folds since we can filter more easily.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.estimation_dataset.EstimationDataSet.append_data_one_instance">
+<code class="descname">append_data_one_instance</code><span class="sig-paren">(</span><em>panel_dic</em>, <em>treatments_path</em>, <em>start_date</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.estimation_dataset.EstimationDataSet.append_data_one_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a new estimation_dataset object with additional rows corresponding to the product specified in 
+panel_dic and the given price_path. The synthetic data will begin on the start_date and carry forward at the 
+same intervals as the rest of the data. If necessary, it will overwrite pre-existing data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>panel_dic</strong> – dictionary of panel values that must specify a unique instance</li>
+<li><strong>treatments_path</strong> – dictionary (keyed by treatment_names) with values as iterables of numbers 
+specifying the planned treatments of that instance week-by-week going forward. 
+The 0th value of each iterable corresponds to the start_date</li>
+<li><strong>start_date</strong> – First week in which the price_path is applied. I.E. price_path[0] specifies the price on 
+the start_date. This value must be in the estimation_dataset or immediately following an observation in 
+the estimation_dataset.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pricingengine.estimation.estimation_dataset.EstimationDataSet.convert_folds_across_indexes">
+<em class="property">static </em><code class="descname">convert_folds_across_indexes</code><span class="sig-paren">(</span><em>orig_folds</em>, <em>orig_idx</em>, <em>new_idx</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.estimation_dataset.EstimationDataSet.convert_folds_across_indexes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts fold info from one DataFrame index to another</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.estimation.estimation_dataset.EstimationDataSet.data">
+<code class="descname">data</code><a class="headerlink" href="#pricingengine.estimation.estimation_dataset.EstimationDataSet.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns data</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.estimation.estimation_dataset.EstimationDataSet.data_interval">
+<code class="descname">data_interval</code><a class="headerlink" href="#pricingengine.estimation.estimation_dataset.EstimationDataSet.data_interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the temporal spacing between consecutive data points</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.estimation_dataset.EstimationDataSet.filter">
+<code class="descname">filter</code><span class="sig-paren">(</span><em>filter_dic=None</em>, <em>first_date=None</em>, <em>last_date=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.estimation_dataset.EstimationDataSet.filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a new estimation_dataset object which is filtered by the requirements in the filter_dic</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>filter_dic</strong> – dictionary mapping data columns to lists of allowed values</li>
+<li><strong>first_date</strong> – omit any data before this date</li>
+<li><strong>last_date</strong> – omit any data from after this date</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.estimation.estimation_dataset.EstimationDataSet.fold_fit_info">
+<code class="descname">fold_fit_info</code><a class="headerlink" href="#pricingengine.estimation.estimation_dataset.EstimationDataSet.fold_fit_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the folds (test part at least) for what was fit</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pricingengine.estimation.estimation_dataset.EstimationDataSet.from_df">
+<em class="property">static </em><code class="descname">from_df</code><span class="sig-paren">(</span><em>df</em>, <em>treatment_colname='treatment'</em>, <em>outcome_colname='units'</em>, <em>date_colname='date'</em>, <em>is_panel_col=&lt;function EstimationDataSet.&lt;lambda&gt;&gt;</em>, <em>validators=frozenset({&lt;pricingengine.estimation.estimation_dataset.ValidPanels object&gt;})</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.estimation_dataset.EstimationDataSet.from_df" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an EstimationDataSet from the given dataframe.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>df</strong> – <p>A pandas dataframe containing price, units, and date columns.</p>
+<ul>
+<li>String columns and panel columns will be interpreted as categorical columns</li>
+<li><dl class="first docutils">
+<dt>Float/int columns will be interpreted as numeric columns (convert numeric columns to string if</dt>
+<dd>the column is to be interpreted as categorical)</dd>
+</dl>
+</li>
+</ul>
+</li>
+<li><strong>treatment_colname</strong> – The name of the numeric column containing treatment</li>
+<li><strong>outcome_colname</strong> – The name of the numeric column quantities</li>
+<li><strong>date_colname</strong> – The name of the datetime column containing dates</li>
+<li><strong>is_panel_col</strong> – A function that takes in a column names and returns a boolean indicating if 
+the column is used to break the dataset into panels</li>
+<li><strong>validators</strong> – list of validators applied to the produced EstimationDataSet</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.estimation_dataset.EstimationDataSet.gen_folds_for_new_index">
+<code class="descname">gen_folds_for_new_index</code><span class="sig-paren">(</span><em>new_idx</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.estimation_dataset.EstimationDataSet.gen_folds_for_new_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts fold info from this object’s index to another</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.estimation.estimation_dataset.EstimationDataSet.schema">
+<code class="descname">schema</code><a class="headerlink" href="#pricingengine.estimation.estimation_dataset.EstimationDataSet.schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns schema</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.estimation_dataset.EstimationDataSet.set_folds_from_other_index">
+<code class="descname">set_folds_from_other_index</code><span class="sig-paren">(</span><em>other_folds</em>, <em>other_idx</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.estimation_dataset.EstimationDataSet.set_folds_from_other_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets this object’s fold info to that from another context (fold_info and index)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pricingengine.estimation.regression">
+<span id="pricingengine-estimation-regression-module"></span><h2>pricingengine.estimation.regression module<a class="headerlink" href="#module-pricingengine.estimation.regression" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pricingengine.estimation.regression.Estimation">
+<em class="property">class </em><code class="descclassname">pricingengine.estimation.regression.</code><code class="descname">Estimation</code><span class="sig-paren">(</span><em>schema</em>, <em>cluster_date</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.regression.Estimation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="pricingengine.estimation.regression.Estimation.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>schema</em>, <em>cluster_date</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.regression.Estimation.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.regression.Estimation.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>estimation_dataset</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.regression.Estimation.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit baseline and causal models on the given dataset</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>estimation_dataset</strong> (<a class="reference internal" href="#pricingengine.estimation.estimation_dataset.EstimationDataSet" title="pricingengine.estimation.estimation_dataset.EstimationDataSet"><em>EstimationDataSet</em></a>) – A dataset on which to train the model</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.regression.Estimation.get_coefficients">
+<code class="descname">get_coefficients</code><span class="sig-paren">(</span><em>human_index=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.regression.Estimation.get_coefficients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get coefficients from the causal model</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>human_index</strong> – If True, then the interactions levels of the multiindex are squashed.
+Otherwise, they are are left separate (useful for automated post-processing).</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.regression.Estimation.get_standard_errors">
+<code class="descname">get_standard_errors</code><span class="sig-paren">(</span><em>human_index=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.regression.Estimation.get_standard_errors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get standard errors from the causal model</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.regression.Estimation.get_variance_matrix">
+<code class="descname">get_variance_matrix</code><span class="sig-paren">(</span><em>human_index=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.regression.Estimation.get_variance_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get variance matrix from the causal model</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pricingengine.estimation.regression.Estimation.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>dataset</em>, <em>ret_pred=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.regression.Estimation.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute predictions for the given dataset using previously trained model</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dataset</strong> (<em>EstimationDataset</em>) – A dataset containing features from which to generate 
+predictions. The schema of the dataset must match the schema of the dataset used to fit the model.</li>
+<li><strong>ret_pred</strong> – Pass in an empty dataframe if you want that dataframe to be populated with predictions
+of the first stage models</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ValueError</strong> – If the schema of the given dataset does not match the schema given for initialization</li>
+<li><strong>RuntimeError</strong> – If the model has not yet been fit</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pricingengine.estimation.regression.Regression">
+<em class="property">class </em><code class="descclassname">pricingengine.estimation.regression.</code><code class="descname">Regression</code><span class="sig-paren">(</span><em>schema</em>, <em>model=OLS(add_const=False)</em>, <em>error_model=LassoCV: LassoCV(alphas=None</em>, <em>copy_X=True</em>, <em>cv=None</em>, <em>eps=0.001</em>, <em>fit_intercept=True</em>, <em>max_iter=1000</em>, <em>n_alphas=100</em>, <em>n_jobs=1</em>, <em>normalize=False</em>, <em>positive=False</em>, <em>precompute='auto'</em>, <em>random_state=None</em>, <em>selection='cyclic'</em>, <em>tol=0.0001</em>, <em>verbose=False)</em>, <em>regressor_builders=None</em>, <em>cluster_date=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.regression.Regression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pricingengine.estimation.regression.Estimation" title="pricingengine.estimation.regression.Estimation"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.estimation.regression.Estimation</span></code></a></p>
+<p>Class for implement estimation with VarBuilders</p>
+<dl class="method">
+<dt id="pricingengine.estimation.regression.Regression.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>schema</em>, <em>model=OLS(add_const=False)</em>, <em>error_model=LassoCV: LassoCV(alphas=None</em>, <em>copy_X=True</em>, <em>cv=None</em>, <em>eps=0.001</em>, <em>fit_intercept=True</em>, <em>max_iter=1000</em>, <em>n_alphas=100</em>, <em>n_jobs=1</em>, <em>normalize=False</em>, <em>positive=False</em>, <em>precompute='auto'</em>, <em>random_state=None</em>, <em>selection='cyclic'</em>, <em>tol=0.0001</em>, <em>verbose=False)</em>, <em>regressor_builders=None</em>, <em>cluster_date=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.regression.Regression.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize a new Regression instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>schema</strong> – The expected schema of datasets to be fit and transformed</li>
+<li><strong>model</strong> (<a class="reference internal" href="pricingengine.models.html#pricingengine.models.model.Model" title="pricingengine.models.model.Model"><em>Model</em></a>) – used for estimation</li>
+<li><strong>error_model</strong> (<a class="reference internal" href="pricingengine.models.html#pricingengine.models.model.Model" title="pricingengine.models.model.Model"><em>Model</em></a>) – model used to estiamte average abs error (i.e. heteroskedasticity function)</li>
+<li><strong>regressor_builders</strong> – List of VarBuilders used to create regressors</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.estimation.regression.Regression.error_model">
+<code class="descname">error_model</code><a class="headerlink" href="#pricingengine.estimation.regression.Regression.error_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the error model</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.estimation.regression.Regression.model">
+<code class="descname">model</code><a class="headerlink" href="#pricingengine.estimation.regression.Regression.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the causal model</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pricingengine.estimation.typed_dataset">
+<span id="pricingengine-estimation-typed-dataset-module"></span><h2>pricingengine.estimation.typed_dataset module<a class="headerlink" href="#module-pricingengine.estimation.typed_dataset" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pricingengine.estimation.typed_dataset.ColType">
+<em class="property">class </em><code class="descclassname">pricingengine.estimation.typed_dataset.</code><code class="descname">ColType</code><a class="headerlink" href="#pricingengine.estimation.typed_dataset.ColType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">enum.Enum</span></code></p>
+<p>Input IDs for know pricing data column content</p>
+<dl class="attribute">
+<dt id="pricingengine.estimation.typed_dataset.ColType.OUTCOME">
+<code class="descname">OUTCOME</code><em class="property"> = 10</em><a class="headerlink" href="#pricingengine.estimation.typed_dataset.ColType.OUTCOME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.estimation.typed_dataset.ColType.OUTCOME_RESIDUAL">
+<code class="descname">OUTCOME_RESIDUAL</code><em class="property"> = 12</em><a class="headerlink" href="#pricingengine.estimation.typed_dataset.ColType.OUTCOME_RESIDUAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.estimation.typed_dataset.ColType.PREDETERMINED">
+<code class="descname">PREDETERMINED</code><em class="property"> = 13</em><a class="headerlink" href="#pricingengine.estimation.typed_dataset.ColType.PREDETERMINED" title="Permalink to this definition">¶</a></dt>
+<dd><p>A description of the data contained in a single column</p>
+<ul class="simple">
+<li>The column tagged as ColType.ITEM must have DataType.CATEGORICAL</li>
+<li>The column tagged as ColType.OUTCOME must be have DataType.NUMERIC</li>
+<li>The column tagged as ColType.TREATMENT must be have DataType.NUMERIC</li>
+</ul>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.estimation.typed_dataset.ColType.TREATMENT">
+<code class="descname">TREATMENT</code><em class="property"> = 9</em><a class="headerlink" href="#pricingengine.estimation.typed_dataset.ColType.TREATMENT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.estimation.typed_dataset.ColType.TREATMENT_RESIDUAL">
+<code class="descname">TREATMENT_RESIDUAL</code><em class="property"> = 11</em><a class="headerlink" href="#pricingengine.estimation.typed_dataset.ColType.TREATMENT_RESIDUAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pricingengine.estimation.typed_dataset.TypedDataSet">
+<em class="property">class </em><code class="descclassname">pricingengine.estimation.typed_dataset.</code><code class="descname">TypedDataSet</code><span class="sig-paren">(</span><em>data</em>, <em>schema</em>, <em>required_types</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.typed_dataset.TypedDataSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pricingengine.html#pricingengine.dataset.DataSet" title="pricingengine.dataset.DataSet"><code class="xref py py-class docutils literal"><span class="pre">pricingengine.dataset.DataSet</span></code></a></p>
+<p>Dataset class</p>
+<dl class="method">
+<dt id="pricingengine.estimation.typed_dataset.TypedDataSet.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>data</em>, <em>schema</em>, <em>required_types</em><span class="sig-paren">)</span><a class="headerlink" href="#pricingengine.estimation.typed_dataset.TypedDataSet.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes a new instance of the DataSet class. The DataSet class combines time series data, a schema that
+specifies the column meta-data for the the given time series data.</p>
+<p>The given data-schema pair needs to adhere to the following expectations:</p>
+<ul>
+<li><p class="first">Each column defined in the given schema must be contained in the corresponding given time series data</p>
+</li>
+<li><p class="first">Each column must have a data type corresponding to its schema DataType as follows:</p>
+<blockquote>
+<div><ul class="simple">
+<li>DataType.NUMERIC: integer or floating-point</li>
+<li>DataType.DATE_TIME: datetime</li>
+<li>DataType.CATEGORICAL: string or integer</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">In the specified schema, the name of the column with id ITEM must also be included in the 
+list of panel column names</p>
+</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>data</strong> – The time series data to be used for computing effects</li>
+<li><strong>schema</strong> – The schema specifying the meta-data for the time series</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pricingengine.estimation.typed_dataset.TypedDataSet.group_labels">
+<code class="descname">group_labels</code><a class="headerlink" href="#pricingengine.estimation.typed_dataset.TypedDataSet.group_labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list parallel to the rows of the dataset with a label for each row.
+The labels can be passed to a Pandas groupby call to group data using known groups.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pricingengine.estimation">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pricingengine.estimation" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">Pricing Engine</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../classes.html">Class Hierarchy</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="pricingengine.html">pricingengine package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="pricingengine.html#subpackages">Subpackages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.html#module-pricingengine.dataset">pricingengine.dataset module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.html#module-pricingengine.schema">pricingengine.schema module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pricingengine.html#module-pricingengine">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../msecore/msecore.html">msecore package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../msecoreml/msecoreml.html">msecoreml package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../history.html">Project History</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="pricingengine.html">pricingengine package</a><ul>
+      <li>Previous: <a href="pricingengine.html" title="previous chapter">pricingengine package</a></li>
+      <li>Next: <a href="pricingengine.featurizers.html" title="next chapter">pricingengine.featurizers package</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Matt Goldman, Brian Quistorff.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
