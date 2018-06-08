@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "oj_demand_modeling", "oj_demand_modeling\oj_demand_modeling.pyproj", "{B46E16FB-65C6-47C8-B556-063E77367E70}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "pricingengine", "..\..\pricingengine\pricingengine.pyproj", "{EE9B9ADE-C977-4866-A430-E0D4E85EAAED}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "msecoreml", "..\..\msecoreml\msecoreml.pyproj", "{301147DE-F036-4B10-A99A-03FAA3F0001B}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "msecore", "..\..\msecore\msecore.pyproj", "{7416D71A-4DAB-4668-BEE0-44183CAF835F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B46E16FB-65C6-47C8-B556-063E77367E70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B46E16FB-65C6-47C8-B556-063E77367E70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE9B9ADE-C977-4866-A430-E0D4E85EAAED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE9B9ADE-C977-4866-A430-E0D4E85EAAED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{301147DE-F036-4B10-A99A-03FAA3F0001B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{301147DE-F036-4B10-A99A-03FAA3F0001B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7416D71A-4DAB-4668-BEE0-44183CAF835F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7416D71A-4DAB-4668-BEE0-44183CAF835F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
