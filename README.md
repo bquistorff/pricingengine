@@ -29,17 +29,10 @@ Note: Newer versions of packages may work but given our currently limited resour
 We have only tested the package on Windows 10 and Windows Server 2012R2 environments.
 
 ### Local
-You can install the wheel using
+You can install the wheel by downloading it from the `pkgrepo` folder and using
 ```batch
 pip install pricingengine-X.X.X-py3-none-any.whl
 ```
-
-### Python Package index
-We provide a Simple package repository if you would like to use the package without the git repo.
-```batch
-pip install --find-links https://raw.github.com/bquistorff/pricingengine/master/pkgrepo pricingengine
-```
-With a newer version of `pip` you may also want to add the argument `--upgrade-strategy only-if-needed`.
 
 USAGE
 --------
